@@ -28,7 +28,6 @@ $ yarn build
 "react-redux": "^8.0.2",
 "@reduxjs/toolkit": "^1.8.1",
 "styled-components": "^5.3.5",
-...
 ```
 
 <br />
