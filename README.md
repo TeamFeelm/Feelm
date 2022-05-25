@@ -2,13 +2,13 @@
 ## ⛏ 클론 후 초기 셋팅
 > 🧨🎃 클론 후 꼭 하위폴더로 이동!!  
 
-0. yarn 미설치시 yarn부터 설치합니다
+0. yarn 미설치시 yarn부터 설치
 ```javascript
 $ npm i -g yarn
 ```
   
 1. 터미널에 $ yarn 을 치면  
-: package.json에 의존성으로 등록한 라이브러리들이 자동으로 설치됩니다
+: package.json에 의존성으로 등록한 라이브러리들이 자동으로 설치됨
 ```javascript
 $ yarn  
   
