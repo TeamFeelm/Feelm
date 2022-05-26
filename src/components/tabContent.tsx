@@ -13,8 +13,8 @@ const TabContent = ({tab}:tabProps) => {
 
     return [
             <div>습습 누가지었냐...</div>,
-            <div>졸귀탱</div>,
-            <div>💙</div>,
+            <div>찰떡ㅋㅎ</div>,
+            <div>💙 소중해 💙</div>,
             <div>내용3</div>
           ][tab]
 };
