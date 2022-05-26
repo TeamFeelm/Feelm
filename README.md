@@ -51,3 +51,6 @@ $ yarn build
 - [🧑 김준용](https://github.com/djdj4275)
 - [👱‍♂️ 구자경](https://github.com/koqun)
 - [👶 박광훈](https://github.com/10004ok)
+
+
+리드미 수정 테스트
