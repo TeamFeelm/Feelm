@@ -10,14 +10,14 @@ import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 /*-------------------------------------------
     컴퍼넌트 import
 -------------------------------------------*/
-
+import Detail from './pages/Detail'
 /*-------------------------------------------
     App 화면 구성
 -------------------------------------------*/
 export default function App(): JSX.Element {
   return (
     <>
-      <h1>ㅎㅇㅎㅇ왜안돼?</h1>
+      <Detail></Detail>
 
       {/* <Routes>
         <Route path="/" element={
