@@ -49,9 +49,9 @@ const ImgBox = styled.div<props>`
 `
 const TabBox = styled.div<props>`
   padding-top: 50px;
+  padding-bottom: 10px;
   margin: auto;
   width: 60%;
-  height: 30px;
   background: ${(props) => props.bg};
   color: ${(props) => (props.bg === "white" ? "black" : "white")};
   border-bottom: 1px solid black;
