@@ -9,7 +9,7 @@
     "lint": "npm run lint-eslint && npm run lint-prettier",
     "lint-eslint": "eslint --ignore-path .gitignore src/**/*{js,jsx,ts,tsx} --fix",
     "lint-prettier": "prettier --write \"src/**/*.(js|jsx|ts|tsx)\"",
-    "husky-init": "npx husky install .husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -39,6 +39,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^12.4.2",
     "prettier": "^2.6.2",
+    "typescript": "^4.7.2",
     "vite": "^2.9.9"
   },
   "lint-staged": {
