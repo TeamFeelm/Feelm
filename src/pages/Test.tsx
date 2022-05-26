@@ -1,17 +1,21 @@
 /* library import */
 import { useState } from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 /* component */
 export default function Test() {
-  const [question, setQuestion] = useState(0);
-  const [answer, setAnswer] = useState(0);
+  const [question, setQuestion] = useState();
+  const [answer, setAnswer] = useState();
 
   return (
     <>
-      <QueDiv bg="grey">
-
-      </QueDiv>
+      <h1>Test.tsx</h1>
+      <QueBox bg="blue" color="white">
+        question
+      </QueBox>
+      <AnsBox bg="red" color="black">
+        answer
+      </AnsBox>
     </>
   );
 }
@@ -23,6 +27,11 @@ interface props {
 }
 
 /* styled-components */
-const QueDiv = styled.div<props>`
+const QueBox = styled.div<props>`
   background-color: ${(props) => props.bg};
+  color: ${(props) => props.color};
+`
+const AnsBox = styled.div<props>`
+  background-color: ${(props) => props.bg};
+  color: ${(props) => props.color};
 `
