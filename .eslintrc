@@ -55,7 +55,7 @@
     ], // 객체 괄호 앞 뒤 공백 추가
     "space-in-parens": [
       "error",
-      "always"
+      "never"
     ], // 일반 괄호 앞 뒤 공백 추가
     "computed-property-spacing": [
       "error",

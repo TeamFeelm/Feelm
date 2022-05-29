@@ -15,10 +15,9 @@ import { RootState, setUser, setMyPost } from "../store";
   컴퍼넌트
 -------------------------------------------*/
 const Login = () => {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
-
   // # 로그인 하면 그 정보 스테이트로 받아갈게요~
   useEffect(() => {
     axios
@@ -70,7 +69,7 @@ interface props {
 /*-------------------------------------------
     CSS
 -------------------------------------------*/
-let Outer = styled.div`
+const Outer = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -82,7 +81,7 @@ let Outer = styled.div`
   opacity: 1;
   transition: all 0.3s;
 `;
-let Inner = styled.div`
+const Inner = styled.div`
   width: 80%;
   height: 90%;
   max-width: 50%;
@@ -93,7 +92,7 @@ let Inner = styled.div`
   padding: 20px;
   font-size: 30px;
 `;
-let Box = styled.div<props>`
+const Box = styled.div<props>`
   padding: 20px;
   margin: 100px;
   width: 60%;
