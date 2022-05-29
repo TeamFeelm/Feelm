@@ -1,6 +1,6 @@
 /* library import */
 import { useState } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 /* component */
 export default function Test() {
@@ -16,6 +16,9 @@ export default function Test() {
       <AnsBox bg="red" color="black">
         answer
       </AnsBox>
+
+      <h2>글로벌 styled 테스트</h2>
+      <제목>테마 styled 테스트</제목>
     </>
   );
 }
@@ -30,8 +33,12 @@ interface props {
 const QueBox = styled.div<props>`
   background-color: ${(props) => props.bg};
   color: ${(props) => props.color};
-`
+`;
 const AnsBox = styled.div<props>`
   background-color: ${(props) => props.bg};
   color: ${(props) => props.color};
-`
+`;
+
+const 제목 = styled.h1`
+  ${(props) => props.theme.fonts.h1}
+`;
