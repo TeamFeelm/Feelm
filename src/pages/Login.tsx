@@ -1,20 +1,16 @@
-/*-------------------------------------------
-  라이브러리 import
--------------------------------------------*/
 import axios from "axios";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RootState, setUser, setMyPost } from "../store";
-/*-------------------------------------------
-  컴퍼넌트 import
--------------------------------------------*/
+import { RootState, setUser } from "../store";
 
-/*-------------------------------------------
-  컴퍼넌트
--------------------------------------------*/
-const Login = () => {
+interface props {
+  bg?: string;
+  color?: string;
+}
+
+export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
@@ -56,19 +52,8 @@ const Login = () => {
     );
   }
   return <></>;
-};
-
-/*-------------------------------------------
-    스타일드 컴퍼넌트- 프롭스 타입
--------------------------------------------*/
-interface props {
-  bg?: string;
-  color?: string;
 }
 
-/*-------------------------------------------
-    CSS
--------------------------------------------*/
 const Outer = styled.div`
   width: 100%;
   height: 100%;
@@ -103,5 +88,3 @@ const Box = styled.div<props>`
   border-radius: 10px;
   border: none;
 `;
-
-export default Login;
