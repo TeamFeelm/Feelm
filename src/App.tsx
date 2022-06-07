@@ -1,29 +1,24 @@
-/*-------------------------------------------
-    기본 import
--------------------------------------------*/
-import { useEffect, useState } from "react";
-/*-------------------------------------------
-    라이브러리 import
--------------------------------------------*/
-import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { Home, Detail } from "./pages";
+import { DataDummy, Layout, NotFound } from "./components";
 
-/*-------------------------------------------
-    컴퍼넌트 import
--------------------------------------------*/
-import { Detail } from "./pages";
-import Test from "./pages/Test";
-/*-------------------------------------------
-    App 화면 구성
--------------------------------------------*/
 export default function App(): JSX.Element {
   return (
-    <>
-      <Detail></Detail>
-      <Test></Test>
-
-      <Routes>
-        <Route path="/" element={<></>} />
-      </Routes>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <Layout />
+            <DataDummy />
+          </>
+        }>
+        <Route index element={<Home />} />
+        <Route path="/detail" element={<Detail />}>
+          {/* <Route path="/:id" element={<></>} /> */}
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }

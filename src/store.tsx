@@ -1,74 +1,46 @@
-/*-------------------------------------------
-    라이브러리 Import
--------------------------------------------*/
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-/*-------------------------------------------
-    스테이트 정의
--------------------------------------------*/
-/* 예시 */
-const user = createSlice({
-  name: "user",
-  initialState: { id: "", img: "" },
-  reducers: {
-    setUser(state, action) {
-      state.id = action.payload.id;
-      if (action.payload.img) {
-        state.img = action.payload.img;
-      } else {
-        state.img = "default.jpg";
-      }
-    },
-  },
-});
-export const { setUser } = user.actions;
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+export type RootState = ReturnType<typeof store.getState>;
 
-/* 예시 */
-const myPost = createSlice({
-  name: "myPost",
+type movieType = {
+  id: number;
+  title: string;
+  genre: string;
+  synop: string;
+  director: string;
+  cast: string[];
+  rating: string;
+  runTime: number;
+  year: number;
+  img: string;
+}[];
+
+const movieList = createSlice({
+  name: "movieList",
   initialState: [
     {
-      number: 0,
-      id: "",
+      id: 0,
       title: "",
-      content: "",
-      date: "",
-      like: 3,
-      reply: false,
-    },
-    {
-      number: 0,
-      id: "",
-      title: "",
-      content: "",
-      date: "",
-      like: 3,
-      reply: false,
+      genre: "",
+      synop: "",
+      director: "",
+      cast: [""],
+      rating: "",
+      runTime: 0,
+      year: 0,
+      img: "",
     },
   ],
   reducers: {
-    setMyPost(state, action) {
+    setMovies(state, action: PayloadAction<any>) {
       return (state = action.payload);
-    },
-    setMyLike(state, action) {
-      state[action.payload].like++;
-    },
-    setMySwitch(state, action) {
-      state[action.payload].reply = !state[action.payload].reply;
     },
   },
 });
-export const { setMyPost, setMyLike, setMySwitch } = myPost.actions;
+export const { setMovies } = movieList.actions;
 
-/*-------------------------------------------
-    스테이드 등록 및 내보내기
--------------------------------------------*/
 const store = configureStore({
   reducer: {
-    user: user.reducer,
-    myPost: myPost.reducer,
+    movieList: movieList.reducer,
   },
 });
 export default store;
-
-/* useSelector => State 타입스크립트 */
-export type RootState = ReturnType<typeof store.getState>;

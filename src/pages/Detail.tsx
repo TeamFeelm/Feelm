@@ -1,15 +1,12 @@
-/*-------------------------------------------
-  라이브러리 import
--------------------------------------------*/
 import { useState } from "react";
 import styled from "styled-components";
-/*-------------------------------------------
-  컴퍼넌트 import
--------------------------------------------*/
-import TabContent from "../components/tabContent";
-/*-------------------------------------------
-  컴퍼넌트
--------------------------------------------*/
+import TabContent from "../components/TabContent";
+
+interface props {
+  bg?: string;
+  color?: string;
+}
+
 export default function Detail() {
   const [tab, setTab] = useState(0);
 
@@ -28,21 +25,10 @@ export default function Detail() {
   );
 }
 
-/*-------------------------------------------
-    스타일드 컴퍼넌트- 프롭스 타입
--------------------------------------------*/
-interface props {
-  bg?: string;
-  color?: string;
-}
-/*-------------------------------------------
-    CSS
--------------------------------------------*/
 export const ImgBox = styled.div<props>`
   width: 40%;
   height: 500px;
   margin: auto;
-  margin-top: 50px;
   background: ${(props) => props.bg};
   color: ${(props) => (props.bg === "blue" ? "white" : "black")};
   font-size: 100px;
@@ -50,16 +36,16 @@ export const ImgBox = styled.div<props>`
 export const TabBox = styled.div<props>`
   padding-top: 50px;
   padding-bottom: 10px;
-  margin: auto;
   width: 60%;
+  margin: auto;
   background: ${(props) => props.bg};
   color: ${(props) => (props.bg === "white" ? "black" : "white")};
   border-bottom: 1px solid black;
 `;
 export const ContentBox = styled.div`
+  width: 60%;
   padding: 20px;
   margin: auto;
-  width: 60%;
 `;
 export const Tab = styled.span`
   padding: 20px;

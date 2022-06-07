@@ -58,6 +58,24 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'SSD';
   }
 
+  nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    top: 0px;
+  }
+
+  main {
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
 
 `;
 
