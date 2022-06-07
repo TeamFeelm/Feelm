@@ -9,7 +9,7 @@ export default function Home() {
       {movieList.map((a, i) => {
         return (
           <div key={a.id}>
-            <img src={a.img} alt="왓더" />
+            {/* <img src={a.img} alt="왓더" /> */}
             <h4>{a.title}</h4>
           </div>
         );
