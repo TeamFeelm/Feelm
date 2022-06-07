@@ -10,7 +10,7 @@ import TabContent from "../components/tabContent";
 /*-------------------------------------------
   컴퍼넌트
 -------------------------------------------*/
-const Detail = () => {
+export default function Detail() {
   const [tab, setTab] = useState(0);
 
   return (
@@ -26,7 +26,7 @@ const Detail = () => {
       </ContentBox>
     </>
   );
-};
+}
 
 /*-------------------------------------------
     스타일드 컴퍼넌트- 프롭스 타입
@@ -38,7 +38,7 @@ interface props {
 /*-------------------------------------------
     CSS
 -------------------------------------------*/
-const ImgBox = styled.div<props>`
+export const ImgBox = styled.div<props>`
   width: 40%;
   height: 500px;
   margin: auto;
@@ -47,7 +47,7 @@ const ImgBox = styled.div<props>`
   color: ${(props) => (props.bg === "blue" ? "white" : "black")};
   font-size: 100px;
 `;
-const TabBox = styled.div<props>`
+export const TabBox = styled.div<props>`
   padding-top: 50px;
   padding-bottom: 10px;
   margin: auto;
@@ -56,14 +56,12 @@ const TabBox = styled.div<props>`
   color: ${(props) => (props.bg === "white" ? "black" : "white")};
   border-bottom: 1px solid black;
 `;
-const ContentBox = styled.div`
+export const ContentBox = styled.div`
   padding: 20px;
   margin: auto;
   width: 60%;
 `;
-const Tab = styled.span`
+export const Tab = styled.span`
   padding: 20px;
   margin-right: 30px;
 `;
-
-export default Detail;
