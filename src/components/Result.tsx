@@ -3,11 +3,11 @@ import Poster from "./Poster";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
-const Result = ({ data }: any) => {
-  // const movieList = useSelector((state: RootState) => state.movieList);
+const Result = () => {
+  const movieList = useSelector((state: RootState) => state.movieList);
   return (
     <Box>
-      {data.map((movie: any) => {
+      {movieList.result.map((movie) => {
         return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
       })}
     </Box>
