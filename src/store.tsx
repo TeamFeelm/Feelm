@@ -16,32 +16,49 @@ type movieType = {
 
 const movieList = createSlice({
   name: "movieList",
-  initialState: [
-    {
-      id: 0,
-      title: "",
-      genre: "",
-      synop: "",
-      director: "",
-      cast: [""],
-      rating: "",
-      runTime: 0,
-      year: 0,
-      img: "",
-    },
-  ],
+  initialState: {
+    movies: [
+      {
+        id: 0,
+        title: "",
+        genre: "",
+        synop: "",
+        director: "",
+        cast: [""],
+        rating: "",
+        runTime: 0,
+        year: 0,
+        img: "",
+      },
+    ],
+    result: [
+      {
+        id: 0,
+        title: "",
+        genre: "",
+        synop: "",
+        director: "",
+        cast: [""],
+        rating: "",
+        runTime: 0,
+        year: 0,
+        img: "",
+      },
+    ],
+  },
   reducers: {
     setMovies(state, action: PayloadAction<any>) {
-      return (state = action.payload);
+      state.movies = action.payload;
+      state.result = action.payload;
     },
     findMovies(state, action: PayloadAction<string>) {
-      const result = state.filter(
+      const result = state.movies.filter(
         (item) =>
           item.title.includes(action.payload) ||
           item.genre.includes(action.payload) ||
           item.director.includes(action.payload),
       );
-      return (state = result);
+      state.result = result;
     },
   },
 });
