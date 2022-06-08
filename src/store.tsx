@@ -34,9 +34,18 @@ const movieList = createSlice({
     setMovies(state, action: PayloadAction<any>) {
       return (state = action.payload);
     },
+    findMovies(state, action: PayloadAction<string>) {
+      const result = state.filter(
+        (item) =>
+          item.title.includes(action.payload) ||
+          item.genre.includes(action.payload) ||
+          item.director.includes(action.payload),
+      );
+      return (state = result);
+    },
   },
 });
-export const { setMovies } = movieList.actions;
+export const { setMovies, findMovies } = movieList.actions;
 
 const store = configureStore({
   reducer: {
