@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import TabContent from "../components/TabContent";
+import { TabContents } from "../components";
 
 interface props {
   bg?: string;
@@ -19,7 +19,7 @@ export default function Detail() {
         <Tab onClick={() => setTab(2)}>줄거리</Tab>
       </TabBox>
       <ContentBox>
-        <TabContent tab={tab} />
+        <TabContents tab={tab} />
       </ContentBox>
     </>
   );
