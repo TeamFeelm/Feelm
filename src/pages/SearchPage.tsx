@@ -14,9 +14,10 @@ const SearchPage = () => {
 };
 
 const Box = styled.div`
-  width: 80vw;
-  height: 100vh;
+  width: 75vw;
+  height: 100%;
   margin: auto;
+  position: relative;
 `;
 
 export default SearchPage;

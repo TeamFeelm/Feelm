@@ -1,7 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { findMovies } from "../store";
 
 const Tags = () => {
+  const dispatch = useDispatch();
   const [hashTags, setHashTags] = useState([
     "액션",
     "스릴러/호러",
@@ -20,30 +23,34 @@ const Tags = () => {
     "스포츠",
     "범죄",
   ]);
-  const SelectTag = () => {
-    // 현재데이터 변경
-  };
+  const SelectTag = (hashTag: string) => (event: React.MouseEvent) =>
+    dispatch(findMovies(hashTag));
   return (
     <Box>
       {hashTags.map((hashTag, i) => (
-        <Tag key={i}>#{hashTag}</Tag>
+        <Tag key={i} onClick={SelectTag(hashTag)}>
+          #{hashTag}
+        </Tag>
       ))}
     </Box>
   );
 };
 
 const Tag = styled.span`
-  width: 100px;
-  height: 50px;
+  width: auto;
+  height: auto;
   background-color: black;
   color: white;
   margin-left: 10px;
+  margin-bottom: 10px;
   padding: 5px 10px;
+  display: inline-block;
+  cursor: pointer;
 `;
 
 const Box = styled.div`
-  width: 80vw;
+  width: 100%;
   height: 200px;
-  margin: auto;
+  margin: 30px;
 `;
 export default Tags;

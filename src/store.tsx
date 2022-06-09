@@ -56,7 +56,8 @@ const movieList = createSlice({
         (item) =>
           item.title.includes(action.payload) ||
           item.genre.includes(action.payload) ||
-          item.director.includes(action.payload),
+          item.director.includes(action.payload) ||
+          item.cast.toString().includes(action.payload),
       );
       state.result = result;
     },

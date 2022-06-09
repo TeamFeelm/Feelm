@@ -15,9 +15,12 @@ const Result = () => {
 };
 
 const Box = styled.div`
-  width: 60%;
+  width: 100%;
   height: 100%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export default Result;
