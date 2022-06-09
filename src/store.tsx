@@ -4,7 +4,7 @@ export type RootState = ReturnType<typeof store.getState>;
 type movieType = {
   id: number;
   title: string;
-  genre: string;
+  genre: string[];
   synop: string;
   director: string;
   cast: string[];
@@ -21,7 +21,7 @@ const movieList = createSlice({
       {
         id: 0,
         title: "",
-        genre: "",
+        genre: [""],
         synop: "",
         director: "",
         cast: [""],
@@ -35,7 +35,7 @@ const movieList = createSlice({
       {
         id: 0,
         title: "",
-        genre: "",
+        genre: [""],
         synop: "",
         director: "",
         cast: [""],
