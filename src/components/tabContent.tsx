@@ -4,15 +4,12 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { RootState } from "../store";
 
-interface tabProps {
-  tab: number;
-}
-
 interface props {
   bg?: string;
   color?: string;
   w?: string;
 }
+
 interface movieType {
   id: string;
   title: string;
@@ -26,7 +23,7 @@ interface movieType {
   img: string;
 }
 
-const TabContent = () => {
+export default function TabContent() {
   const [tab, setTab] = useState(0);
   const [movie, setMovie] = useState<movieType>();
   const movieList = useSelector((state: RootState) => state.movieList.movies);
@@ -39,24 +36,27 @@ const TabContent = () => {
     setMovie(loadMovie);
   }, []);
 
-  return (
-    <>
-      <div style={{ width: "400px", height: "500px" }}>
-        <Poster src={movie?.img} />
-      </div>
-      <TabBox bg="white">
-        <Tab onClick={() => setTab(0)}>기본</Tab>
-        <Tab onClick={() => setTab(1)}>출연</Tab>
-        <Tab onClick={() => setTab(2)}>줄거리</Tab>
-      </TabBox>
-      <ContentBox>
-        {(tab === 0 && <span style={{ lineHeight: "1.7" }}>{movie?.genre}</span>) ||
-          (tab === 1 && <span style={{ lineHeight: "1.7" }}>{movie?.cast}</span>) ||
-          (tab === 2 && <span style={{ lineHeight: "1.7" }}>{movie?.synop}</span>)}
-      </ContentBox>
-    </>
-  );
-};
+  if (movie) {
+    return (
+      <>
+        <div style={{ width: "400px", height: "500px" }}>
+          <Poster src={movie?.img} />
+        </div>
+        <TabBox bg="white">
+          <Tab onClick={() => setTab(0)}>기본</Tab>
+          <Tab onClick={() => setTab(1)}>출연</Tab>
+          <Tab onClick={() => setTab(2)}>줄거리</Tab>
+        </TabBox>
+        <ContentBox>
+          {(tab === 0 && <span style={{ lineHeight: "1.7" }}>{movie?.genre}</span>) ||
+            (tab === 1 && <span style={{ lineHeight: "1.7" }}>{movie?.cast}</span>) ||
+            (tab === 2 && <span style={{ lineHeight: "1.7" }}>{movie?.synop}</span>)}
+        </ContentBox>
+      </>
+    );
+  }
+  return null;
+}
 
 export const TabBox = styled.div<props>`
   padding-top: 50px;
@@ -82,5 +82,3 @@ export const Poster = styled.img<props>`
   height: 500px;
   /* object-fit: contain; */
 `;
-
-export default TabContent;
