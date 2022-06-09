@@ -1,25 +1,12 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type RootState = ReturnType<typeof store.getState>;
 
-type movieType = {
-  id: number;
-  title: string;
-  genre: string[];
-  synop: string;
-  director: string;
-  cast: string[];
-  rating: string;
-  runTime: number;
-  year: number;
-  img: string;
-}[];
-
 const movieList = createSlice({
   name: "movieList",
   initialState: {
     movies: [
       {
-        id: 0,
+        id: "",
         title: "",
         genre: [""],
         synop: "",
@@ -33,7 +20,7 @@ const movieList = createSlice({
     ],
     result: [
       {
-        id: 0,
+        id: "",
         title: "",
         genre: [""],
         synop: "",
@@ -47,9 +34,10 @@ const movieList = createSlice({
     ],
   },
   reducers: {
-    setMovies(state, action: PayloadAction<any>) {
+    setMovies(state, action: PayloadAction<[]>) {
       state.movies = action.payload;
       state.result = action.payload;
+      console.log(state.movies);
     },
     findMovies(state, action: PayloadAction<string>) {
       const result = state.movies.filter(

@@ -77,6 +77,7 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 100px;
   }
 
+  
 `;
 
 export default GlobalStyle;
