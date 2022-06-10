@@ -3,3 +3,7 @@ export { default as Layout } from "./Layout";
 export { default as Footer } from "./Footer";
 export { default as DataDummy } from "./DataDummy";
 export { default as NotFound } from "./NotFound";
+export { default as Poster } from "./Poster";
+export { default as Result } from "./Result";
+export { default as Search } from "./Search";
+export { default as Tags } from "./Tags";

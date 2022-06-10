@@ -10,7 +10,7 @@ const Poster = ({ id, src }: props) => {
 };
 
 interface props {
-  id: string;
+  id?: string;
   src: string;
 }
 
