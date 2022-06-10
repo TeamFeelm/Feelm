@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Detail } from "./pages";
+import { Home, Test, Detail } from "./pages";
 import { DataDummy, Layout, NotFound, TabContents } from "./components";
 
 export default function App(): JSX.Element {
@@ -15,6 +15,7 @@ export default function App(): JSX.Element {
         }
       >
         <Route index element={<Home />} />
+        <Route path="test" element={<Test />}></Route>
         <Route path="detail" element={<Detail />}>
           <Route path=":id" element={<TabContents />} />
         </Route>
