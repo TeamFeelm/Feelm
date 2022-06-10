@@ -16,8 +16,10 @@ export default function Questions() {
   );
 }
 
-const QueWrap = styled.div`
-  float: left;
+const QueWrap = styled.div``;
+const QueNumDiv = styled.div`
+  font-size: 100px;
 `;
-const QueNumDiv = styled.div``;
-const QueDiv = styled.div``;
+const QueDiv = styled.div`
+  font-size: 100px;
+`;
