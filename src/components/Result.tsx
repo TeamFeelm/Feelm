@@ -6,15 +6,15 @@ import { RootState } from "../store";
 const Result = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
   return (
-    <Box>
+    <ResultBox>
       {movieList.result.map((movie) => {
         return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
       })}
-    </Box>
+    </ResultBox>
   );
 };
 
-const Box = styled.div`
+const ResultBox = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
