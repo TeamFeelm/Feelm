@@ -1,23 +1,27 @@
 import styled from "styled-components";
-import Result from "../components/Result";
-import Tags from "../components/Tags";
-import Search from "../components/Search";
+import { Result, Tags, Search } from "../components";
 
 const SearchPage = () => {
   return (
-    <Box>
+    <SearchBox>
       <Search></Search>
       <Tags></Tags>
       <Result></Result>
-    </Box>
+    </SearchBox>
   );
 };
 
-const Box = styled.div`
-  width: 75vw;
+const SearchBox = styled.div`
+  width: 78vw;
   height: 100%;
   margin: auto;
   position: relative;
+  @media screen and (max-width: 1024px) {
+    width: 90vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 96vw;
+  }
 `;
 
 export default SearchPage;
