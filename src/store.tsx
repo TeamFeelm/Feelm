@@ -39,19 +39,23 @@ const movieList = createSlice({
       state.result = action.payload;
       console.log(state.movies);
     },
-    findMovies(state, action: PayloadAction<string>) {
+    findMoviesByValue(state, action: PayloadAction<string>) {
       const result = state.movies.filter(
         (item) =>
           item.title.includes(action.payload) ||
-          item.genre.includes(action.payload) ||
+          item.genre.some((el) => el.includes(action.payload)) ||
           item.director.includes(action.payload) ||
           item.cast.toString().includes(action.payload),
       );
       state.result = result;
     },
+    findMoviesByTag(state, action: PayloadAction<string>) {
+      const result = state.movies.filter((item) => item.genre.some((el) => el == action.payload));
+      state.result = result;
+    },
   },
 });
-export const { setMovies, findMovies } = movieList.actions;
+export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actions;
 
 const store = configureStore({
   reducer: {

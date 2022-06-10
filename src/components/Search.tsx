@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { findMovies } from "../store";
+import { findMoviesByValue } from "../store";
 import styled from "styled-components";
 
 const Search = () => {
@@ -12,14 +12,12 @@ const Search = () => {
   const SearchData = (e: React.FormEvent) => {
     // Result의 datas 변경
     e.preventDefault();
-    dispatch(findMovies(inputValue));
+    dispatch(findMoviesByValue(inputValue));
+    setInputValue("");
   };
   return (
     <SearchForm onSubmit={SearchData}>
-      <SearchValue
-        type="text"
-        onChange={ChangeValue}
-        placeholder="검색어를 입력해주세요"></SearchValue>
+      <SearchValue type="text" onChange={ChangeValue} placeholder="검색어를 입력해주세요" value={inputValue}></SearchValue>
       <SearchSubmit type="submit" value="검색" />
     </SearchForm>
   );
