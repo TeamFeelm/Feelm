@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home, TestPage, SearchPage, Detail } from "./pages";
 import { DataDummy, Layout, NotFound } from "./components";
 
+
 export default function App(): JSX.Element {
   return (
     <Routes>
