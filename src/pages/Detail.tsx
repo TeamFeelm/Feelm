@@ -4,7 +4,6 @@ import styled from "styled-components";
 export default function Detail() {
   return (
     <>
-      <제목>디테일 인덱스 페이지</제목>
       <Outlet />
     </>
   );

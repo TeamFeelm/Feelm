@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const Poster = ({ id, src }: props) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Poster = ({ id, src }: props) => {
 };
 
 interface props {
-  id: string;
+  id?: string;
   src: string;
 }
 

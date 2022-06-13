@@ -1,8 +1,14 @@
 import { createGlobalStyle } from "styled-components";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
   }
 
   body {
@@ -70,10 +76,10 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     position: relative;
-    display: flex;
+    /*display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
+    justify-content: center;*/
     margin-top: 100px;
   }
 
