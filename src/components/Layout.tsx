@@ -11,8 +11,8 @@ export default function Layout() {
         <Link to="/test">
           <Space>Test</Space>
         </Link>
-        <Link to="/detail">
-          <Space>Detail</Space>
+        <Link to="/search">
+          <Space>Search</Space>
         </Link>
       </nav>
       <main>

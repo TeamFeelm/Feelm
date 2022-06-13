@@ -39,24 +39,26 @@ export default function TabContent() {
   if (movie) {
     return (
       <>
-        <div style={{ width: "400px", height: "500px" }}>
-          <Poster src={movie?.img} />
-        </div>
+        <Poster src={movie?.img} />
         <TabBox bg="white">
           <Tab onClick={() => setTab(0)}>기본</Tab>
           <Tab onClick={() => setTab(1)}>출연</Tab>
           <Tab onClick={() => setTab(2)}>줄거리</Tab>
         </TabBox>
         <ContentBox>
-          {(tab === 0 && <span style={{ lineHeight: "1.7" }}>{movie?.genre}</span>) ||
-            (tab === 1 && <span style={{ lineHeight: "1.7" }}>{movie?.cast}</span>) ||
-            (tab === 2 && <span style={{ lineHeight: "1.7" }}>{movie?.synop}</span>)}
+          {(tab === 0 && <Span>{movie?.genre}</Span>) ||
+            (tab === 1 && <Span>{movie?.cast}</Span>) ||
+            (tab === 2 && <Span>{movie?.synop}</Span>)}
         </ContentBox>
       </>
     );
   }
   return null;
 }
+
+export const Span = styled.span`
+  line-height: 1.7;
+`;
 
 export const TabBox = styled.div<props>`
   padding-top: 50px;
