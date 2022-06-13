@@ -3,32 +3,40 @@ import styled from "styled-components";
 import { Poster } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useEffect } from "react";
 
-const MovieSlide = () => {
+const MovieSlide = ({ className, isEvent }: propsType) => {
   const movieList = useSelector((state: RootState) => state.movieList);
+  const copyList = movieList.movies.slice();
+  const shuffleList = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
   const settings = {
     dots: true,
+    dotsClass: "slick-dots slick-thumb",
     infinite: true,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
+    arrows: false,
+    adaptiveHeight: true,
   };
 
   const moveEvent = (e: React.MouseEvent) => {
-    let x = -(window.innerWidth / 2 - e.pageX) / 10;
-    let y = (window.innerWidth / 2 - e.pageY) / 30;
-    (e.target as HTMLInputElement).setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
+    if (isEvent) {
+      let x = -(window.innerWidth / 2 - e.pageX) / 15;
+      let y = (window.innerHeight / 2 - e.pageY) / 5;
+      (e.target as HTMLInputElement).setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
+    }
   };
 
   return (
-    <MovieBox>
+    <MovieBox className={className}>
       <MovieSlider {...settings}>
-        {movieList.movies.map((movie) => {
+        {shuffleList.map((movie) => {
           return (
-            <div onMouseMove={moveEvent} key={movie.id}>
-              <Poster src={movie.img} id={movie.id}></Poster>
+            <div onMouseMove={moveEvent}>
+              <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>
             </div>
           );
         })}
@@ -37,10 +45,15 @@ const MovieSlide = () => {
   );
 };
 
+interface propsType {
+  className: string;
+  isEvent: boolean;
+}
+
 const MovieBox = styled.div`
   width: 100vw;
   height: 700px;
-  background-color: white;
+  background-color: #be8b8b;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -52,13 +65,18 @@ const MovieSlider = styled(Slider)`
   margin: 0;
   margin-top: 100px;
   .slick-dots {
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .slick-dots li button:before {
+    font-size: 18px;
+    color: #0505be;
   }
 
   .slick-slide {
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: black;
   }
 
   .slick-slide div {
