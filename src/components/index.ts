@@ -7,3 +7,4 @@ export { default as Poster } from "./Poster";
 export { default as Result } from "./Result";
 export { default as Search } from "./Search";
 export { default as Tags } from "./Tags";
+export { default as MovieSlide } from "./MovieSlide";

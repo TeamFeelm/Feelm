@@ -1,9 +1,9 @@
-import Test from "../components/test/Test";
+import Questions from "../components/test/Questions";
 
 export default function TestPage() {
   return (
     <>
-      <Test />
+      <Questions />
     </>
   );
 }
