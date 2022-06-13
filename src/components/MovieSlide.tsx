@@ -12,14 +12,25 @@ const MovieSlide = () => {
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
+
+  const moveEvent = (e: React.MouseEvent) => {
+    let x = -(window.innerWidth / 2 - e.pageX) / 10;
+    let y = (window.innerWidth / 2 - e.pageY) / 30;
+    (e.target as HTMLInputElement).setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
+  };
+
   return (
     <MovieBox>
       <MovieSlider {...settings}>
         {movieList.movies.map((movie) => {
-          return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
+          return (
+            <div onMouseMove={moveEvent} key={movie.id}>
+              <Poster src={movie.img} id={movie.id}></Poster>
+            </div>
+          );
         })}
       </MovieSlider>
     </MovieBox>
@@ -51,7 +62,10 @@ const MovieSlider = styled(Slider)`
   }
 
   .slick-slide div {
+    width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: center;
   }
 `;
 
