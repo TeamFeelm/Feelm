@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, TestPage, SearchPage } from "./pages";
-import { DataDummy, Layout, NotFound, TabContents } from "./components";
+import { Home, TestPage, SearchPage, Detail } from "./pages";
+import { DataDummy, Layout, NotFound } from "./components";
+
 
 export default function App(): JSX.Element {
   return (
@@ -16,7 +17,7 @@ export default function App(): JSX.Element {
       >
         <Route index element={<Home />} />
         <Route path="/test" element={<TestPage />}></Route>
-        <Route path="/detail/:id" element={<TabContents />} />
+        <Route path="/detail/:id" element={<Detail />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
