@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useEffect } from "react";
 
-const MovieSlide = () => {
+const MovieSlide = ({ className, isEvent }: propsType) => {
   const movieList = useSelector((state: RootState) => state.movieList);
   const copyList = movieList.movies.slice();
   const shuffleList = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
@@ -21,16 +21,34 @@ const MovieSlide = () => {
     arrows: false,
     adaptiveHeight: true,
   };
+
+  const moveEvent = (e: React.MouseEvent) => {
+    if (isEvent) {
+      let x = -(window.innerWidth / 2 - e.pageX) / 15;
+      let y = (window.innerHeight / 2 - e.pageY) / 5;
+      (e.target as HTMLInputElement).setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
+    }
+  };
+
   return (
-    <MovieBox>
+    <MovieBox className={className}>
       <MovieSlider {...settings}>
         {shuffleList.map((movie) => {
-          return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
+          return (
+            <div onMouseMove={moveEvent}>
+              <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>
+            </div>
+          );
         })}
       </MovieSlider>
     </MovieBox>
   );
 };
+
+interface propsType {
+  className: string;
+  isEvent: boolean;
+}
 
 const MovieBox = styled.div`
   width: 100vw;
@@ -62,7 +80,10 @@ const MovieSlider = styled(Slider)`
   }
 
   .slick-slide div {
+    width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: center;
   }
 `;
 
