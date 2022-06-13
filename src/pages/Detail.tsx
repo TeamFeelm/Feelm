@@ -5,7 +5,7 @@ import { RootState } from "../store";
 import { TabTitle } from "../components";
 import styled from "styled-components";
 
-export default function TabContent() {
+export default function Detail() {
   const [movie, setMovie] = useState<movieType>();
   const movieList = useSelector((state: RootState) => state.movieList.movies);
   const { id } = useParams<{ id: string }>();

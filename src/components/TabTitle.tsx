@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TabContent } from "../components";
 import styled from "styled-components";
 
-export default function TabSelect({ movie }: movie) {
+export default function TabTitle({ movie }: movie) {
   const [tab, setTab] = useState(0);
   return (
     <>

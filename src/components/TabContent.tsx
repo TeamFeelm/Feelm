@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function TabContext({ tab, movie }: propsType) {
+export default function TabContent({ tab, movie }: propsType) {
   return (
     <ContentBox>
       {(tab === 0 && <Span>{movie.genre}</Span>) ||
