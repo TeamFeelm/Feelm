@@ -1,20 +1,28 @@
-import { useState } from "react";
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
 
-export default function AnswerList() {
-  const data = AnswerData.answers;
-  const [progress, setProgress] = useState(0);
+export default function AnswerList({ progress }: props) {
+  const data = AnswerData.answers[progress];
+
   return (
     <>
       <AnsWrap>
-        <AnsDiv></AnsDiv>
-        {/* <AnsDiv>{data[progress].answer[i]}</AnsDiv> */}
-        {/* map이든 for이든 돌려서 answer배열 뽑기 나중에 ^^ */}
+        {data.answer.map((a, idx) => (
+          <AnsDiv key={idx}>{a}</AnsDiv>
+        ))}
       </AnsWrap>
     </>
   );
 }
 
-const AnsWrap = styled.div``;
-const AnsDiv = styled.div``;
+interface props {
+  progress: number;
+}
+
+const AnsWrap = styled.div`
+  font-size: 50px;
+  background: darkgray;
+`;
+const AnsDiv = styled.div`
+  cursor: pointer;
+`;

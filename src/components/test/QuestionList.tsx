@@ -1,25 +1,28 @@
-import { useState } from "react";
 import styled from "styled-components";
 import QuestionData from "./QuestionData.json";
 
-export default function Questions() {
-  const data = QuestionData.questions;
-  const [progress, setProgress] = useState(0);
+export default function QuestionList({ progress }: props) {
+  const data = QuestionData.questions[progress];
 
   return (
     <>
       <QueWrap>
         <QueNumDiv>{progress}.</QueNumDiv>
-        <QueDiv>{data[progress].question1}</QueDiv>
+        <QueDiv>{data.quetitle}</QueDiv>
+        <QueDiv>{data.quedetail}</QueDiv>
       </QueWrap>
     </>
   );
 }
 
-const QueWrap = styled.div``;
-const QueNumDiv = styled.div`
+interface props {
+  progress: number;
+}
+
+const QueWrap = styled.div`
   font-size: 100px;
+  color: blue;
+  background: darkgray;
 `;
-const QueDiv = styled.div`
-  font-size: 100px;
-`;
+const QueNumDiv = styled.div``;
+const QueDiv = styled.div``;
