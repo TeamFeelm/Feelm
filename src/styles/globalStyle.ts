@@ -81,7 +81,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    margin-top: 50px; 
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
   }
 
   
