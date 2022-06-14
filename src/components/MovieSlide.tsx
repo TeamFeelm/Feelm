@@ -38,14 +38,13 @@ const MovieSlide = () => {
 
   return (
     <>
-      <MovieBox>
+      <MovieBox onMouseMove={moveEvent}>
         <MovieSlider {...settings}>
           {shuffle.map((movie: movieType) => {
             return <Poster rotate={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
           })}
         </MovieSlider>
       </MovieBox>
-      <Window onMouseMove={moveEvent}></Window>
     </>
   );
 };
@@ -65,7 +64,7 @@ interface movieType {
 
 const MovieBox = styled.div`
   width: 100vw;
-  height: 700px;
+  height: 100vh;
   background-color: #be8b8b;
   display: flex;
   justify-content: center;

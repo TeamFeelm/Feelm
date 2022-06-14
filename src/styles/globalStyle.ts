@@ -70,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 70px;
+    height: 0px;
     top: 0px;
     z-index: 10;
     background-color: white;
@@ -78,11 +78,10 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     position: relative;
-    /*display: flex;
+    display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;*/
-    margin-top: 100px;
+    justify-content: center;
   }
 
   
