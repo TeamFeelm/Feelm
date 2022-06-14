@@ -1,9 +1,10 @@
 import QuestionList from "./QuestionList";
 import AnswerList from "./AnswerList";
-import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export default function Test() {
-  const [progress, setProgress] = useState(0);
+  const progress = useSelector((state: RootState) => state.progress.progress);
 
   return (
     <>
