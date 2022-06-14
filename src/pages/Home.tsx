@@ -45,6 +45,7 @@ export default function Home() {
     };
     outerRef.current.addEventListener("wheel", wheelHandler);
   }, [outerRef]);
+
   return (
     <Outer style={sty} ref={outerRef}>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
@@ -59,7 +60,6 @@ export default function Home() {
     </Outer>
   );
 }
-
 interface color {
   color: string;
 }

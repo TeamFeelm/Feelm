@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import React, { useEffect, useState } from "react";
 
-const MovieSlide = () => {
+const MovieSlide = ({ aref, now }: props) => {
   const movieList = useSelector((state: RootState) => state.movieList);
   const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
@@ -24,8 +24,8 @@ const MovieSlide = () => {
   const [y, setY] = useState(0);
   const [sty, setSty] = useState<React.CSSProperties>();
   const moveEvent = (e: React.MouseEvent) => {
-    setX(-(window.innerWidth / 2 - e.pageX) / 30);
-    setY((window.innerHeight / 2 - e.pageY) / 10);
+    setX(-(window.innerWidth / 2 - e.pageX) / 50);
+    setY((window.innerHeight / 2 - e.pageY) / 150);
     //document.querySelector('.poster').setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
     setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
   };
@@ -62,6 +62,11 @@ interface movieType {
   img: string;
 }
 
+interface props {
+  aref: any;
+  now?: React.CSSProperties;
+}
+
 const MovieBox = styled.div`
   width: 100vw;
   height: 100vh;
@@ -76,8 +81,10 @@ const MovieSlider = styled(Slider)`
   display: inline-block;
   margin: 0;
   margin-top: 100px;
+  z-index: 1000;
   .slick-dots {
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
   }
 
   .slick-dots li button:before {
@@ -103,6 +110,7 @@ const Window = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
+  background: rgba(00, 00, 00, 0.5);
 `;
 
 export default MovieSlide;
