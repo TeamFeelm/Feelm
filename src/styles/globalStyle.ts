@@ -72,6 +72,8 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 70px;
     top: 0px;
+    z-index: 10;
+    background-color: white;
   }
 
   main {
