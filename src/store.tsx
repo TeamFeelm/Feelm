@@ -69,12 +69,19 @@ const progressSlice = createSlice({
   reducers: {
     incrementProgress(state) {
       state.progress++;
+      console.log("progress is " + state.progress);
     },
-    decrementProgress(state) {
-      state.progress--;
+    decrementProgress(state, action: PayloadAction<number>) {
+      if (state.progress > 0) {
+        state.progress -= action.payload;
+      } else {
+        null;
+      }
+      console.log("progress is " + state.progress);
     },
     incrementByAmount(state, action: PayloadAction<number>) {
       state.progress += action.payload;
+      console.log(state.progress);
     },
   },
 });
