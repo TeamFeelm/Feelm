@@ -38,14 +38,13 @@ const MovieSlide = ({ aref, now }: props) => {
 
   return (
     <>
-      <MovieBox ref={aref}>
+      <MovieBox onMouseMove={moveEvent}>
         <MovieSlider {...settings}>
           {shuffle.map((movie: movieType) => {
             return <Poster rotate={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
           })}
         </MovieSlider>
       </MovieBox>
-      <Window style={now} onMouseMove={moveEvent}></Window>
     </>
   );
 };
@@ -70,7 +69,7 @@ interface props {
 
 const MovieBox = styled.div`
   width: 100vw;
-  height: 700px;
+  height: 100vh;
   background-color: #be8b8b;
   display: flex;
   justify-content: center;

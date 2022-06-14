@@ -57,9 +57,47 @@ const movieList = createSlice({
 });
 export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actions;
 
+// progress
+interface ProgressState {
+  progress: number;
+  data: [
+    {
+      id: number;
+      answer: string[];
+    },
+  ];
+}
+
+const initialState = { progress: 0, data: [{ id: 0, answer: [""] }] } as ProgressState;
+const progressSlice = createSlice({
+  name: "progress",
+  initialState,
+  reducers: {
+    incrementProgress(state) {
+      state.progress++;
+      console.log("progress is " + state.progress);
+    },
+    decrementProgress(state, action: PayloadAction<number>) {
+      if (state.progress > 0) {
+        state.progress -= action.payload;
+      } else {
+        null;
+      }
+      console.log("progress is " + state.progress);
+    },
+    incrementByAmount(state, action: PayloadAction<number>) {
+      state.progress += action.payload;
+      console.log(state.progress);
+    },
+  },
+});
+
+export const { incrementProgress, decrementProgress, incrementByAmount } = progressSlice.actions;
+
 const store = configureStore({
   reducer: {
     movieList: movieList.reducer,
+    progress: progressSlice.reducer,
   },
 });
 export default store;
