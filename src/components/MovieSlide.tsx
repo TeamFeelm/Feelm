@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Poster } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const MovieSlide = () => {
+const MovieSlide = ({ aref, now }: props) => {
   const movieList = useSelector((state: RootState) => state.movieList);
-  const [shuffle, setShuffle] = useState<any>([]);
+  const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
     dots: true,
     dotsClass: "slick-dots slick-thumb",
@@ -22,33 +22,51 @@ const MovieSlide = () => {
   };
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const [sty, setSty] = useState({});
+  const [sty, setSty] = useState<React.CSSProperties>();
   const moveEvent = (e: React.MouseEvent) => {
-    setX(-(window.innerWidth / 2 - e.pageX) / 30);
-    setY((window.innerHeight / 2 - e.pageY) / 10);
+    setX(-(window.innerWidth / 2 - e.pageX) / 50);
+    setY((window.innerHeight / 2 - e.pageY) / 150);
     //document.querySelector('.poster').setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
     setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
   };
 
   useEffect(() => {
     const copyList = [...movieList.movies];
-    const a = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
-    setShuffle(a);
-  }, []);
+    const shuffleAndCut = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
+    setShuffle(shuffleAndCut);
+  }, [movieList]);
 
   return (
     <>
-      <MovieBox>
+      <MovieBox ref={aref}>
         <MovieSlider {...settings}>
-          {shuffle.map((movie: any) => {
-            return <Poster a={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
+          {shuffle.map((movie: movieType) => {
+            return <Poster rotate={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
           })}
         </MovieSlider>
       </MovieBox>
-      <Window onMouseMove={moveEvent}></Window>
+      <Window style={now} onMouseMove={moveEvent}></Window>
     </>
   );
 };
+
+interface movieType {
+  id: string;
+  title: string;
+  genre: string[];
+  synop: string;
+  director: string;
+  cast: string[];
+  rating: string;
+  runTime: number;
+  year: number;
+  img: string;
+}
+
+interface props {
+  aref: any;
+  now?: React.CSSProperties;
+}
 
 const MovieBox = styled.div`
   width: 100vw;
@@ -64,8 +82,10 @@ const MovieSlider = styled(Slider)`
   display: inline-block;
   margin: 0;
   margin-top: 100px;
+  z-index: 1000;
   .slick-dots {
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
   }
 
   .slick-dots li button:before {
@@ -91,7 +111,7 @@ const Window = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(00, 00, 00, 0.5);
 `;
 
 export default MovieSlide;

@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setMovies, RootState } from "../store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setMovies } from "../store";
 
 export default function DataDummy() {
   const dispatch = useDispatch();
-  const movieList = useSelector((state: RootState) => state.movieList.movies);
 
   useEffect(() => {
     (async () => {
