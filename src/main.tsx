@@ -11,14 +11,12 @@ import theme from "./styles/theme";
 import store from "./store";
 /* 가상돔 구조 */
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <GlobalStyle />
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>,
 );
