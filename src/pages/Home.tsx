@@ -1,53 +1,45 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
+import { throttle } from "lodash";
 
 export default function Home() {
-  const outerRef = useRef<any>();
-  const [sty, setSty] = useState<React.CSSProperties>();
+  const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const [translate, setTranslate] = useState<React.CSSProperties>();
+  const [pageHeight, setPageHeight] = useState(window.innerHeight);
   useEffect(() => {
     const wheelHandler = (e: React.WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
-      const { scrollTop } = outerRef.current;
-      const pageHeight = window.innerHeight;
+      const viewport = pageHeight + 5;
+      console.log(viewport);
       if (deltaY > 0) {
         if (outerRef.current.style.cssText === "") {
-          setSty({ transform: "translateY(-942px)" });
-        } else if (outerRef.current.style.cssText === "transform: translateY(-942px);") {
-          setSty({ transform: "translateY(-1884px)" });
-        } else if (outerRef.current.style.cssText === "transform: translateY(-1884px);") {
-          setSty({ transform: "translateY(-2826px)" });
-        } else if (outerRef.current.style.cssText === "transform: translateY(-2826px);") {
-          setSty({ transform: "translateY(-3768px)" });
+          setTranslate({ transform: `translateY(-${viewport}px)` });
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport}px);`) {
+          setTranslate({ transform: `translateY(-${viewport * 2}px)` });
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 2}px);`) {
+          setTranslate({ transform: `translateY(-${viewport * 3}px)` });
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 3}px);`) {
+          setTranslate({ transform: `translateY(-${viewport * 4}px)` });
         }
       } else {
-        if (scrollTop >= 0 && scrollTop < pageHeight) {
-          outerRef.current.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-          });
-        } else if (scrollTop > pageHeight && scrollTop < pageHeight * 2) {
-          outerRef.current.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-          });
-        } else {
-          outerRef.current.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-          });
+        if (outerRef.current.style.cssText === `transform: translateY(-${viewport}px);`) {
+          setTranslate({});
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 2}px);`) {
+          setTranslate({ transform: `translateY(-${viewport}px)` });
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 3}px);`) {
+          setTranslate({ transform: `translateY(-${viewport * 2}px)` });
+        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 4}px);`) {
+          setTranslate({ transform: `translateY(-${viewport * 3}px)` });
         }
       }
     };
-    outerRef.current.addEventListener("wheel", wheelHandler);
+    outerRef.current.addEventListener("wheel", throttle(wheelHandler, 1000));
   }, [outerRef]);
 
   return (
-    <Outer style={sty} ref={outerRef}>
+    <Outer style={translate} ref={outerRef}>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
       <Divider></Divider>
       <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
