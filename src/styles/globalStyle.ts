@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
+
+  .hide {
+    opacity: 0;
+  }
   
   a {
     text-decoration: none;
