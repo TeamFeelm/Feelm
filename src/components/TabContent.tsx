@@ -30,6 +30,9 @@ export const ContentBox = styled.div`
   width: 50%;
   padding: 20px;
   margin: auto;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const Span = styled.span`

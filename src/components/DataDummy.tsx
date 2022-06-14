@@ -5,7 +5,7 @@ import { setMovies, RootState } from "../store";
 
 export default function DataDummy() {
   const dispatch = useDispatch();
-  const movieList = useSelector((state: RootState) => state.movieList);
+  const movieList = useSelector((state: RootState) => state.movieList.movies);
 
   useEffect(() => {
     (async () => {
