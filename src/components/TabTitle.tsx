@@ -23,7 +23,6 @@ export default function TabTitle({ movie }: movie) {
 interface styleProps {
   bg?: string;
   color?: string;
-  w?: string;
   x?: number;
 }
 
@@ -45,23 +44,39 @@ interface movie {
 export const TabBox = styled.div<styleProps>`
   display: flex;
   width: 45%;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  padding-top: 40px;
   border-bottom: 1px solid black;
+  font-family: "SSD";
+  font-size: 0.8em;
+  @media screen and (max-width: 768px) {
+    width: 65%;
+  }
 `;
 
 export const Tab = styled.div`
   display: flex;
+  flex-basis: 33.333333%;
   justify-content: center;
   align-items: center;
-  flex-basis: 33.333333%;
+  padding: 10px 0;
+  cursor: pointer;
+  :hover {
+    background-color: black;
+    color: white;
+    transition: all 0.5s;
+  }
 `;
 
 // 탭 타이틀 전체 박스
 export const Underline = styled.div`
   display: flex;
   width: 45%;
-  height: 1px;
+  height: 2px;
+  position: relative;
+  bottom: 2px;
+  @media screen and (max-width: 768px) {
+    width: 65%;
+  }
 `;
 
 // 탭 타이틀 슬라이딩 언더라인

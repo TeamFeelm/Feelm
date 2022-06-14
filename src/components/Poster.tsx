@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 
-const Poster = ({ id, src }: props) => {
+const Poster = ({ id, src, rotate }: props) => {
   const navigate = useNavigate();
   const toDetail = () => {
     navigate(`/detail/${id}`);
   };
-  return <Box src={src} alt="" onClick={toDetail} />;
+  return <Box style={rotate} src={src} alt="" onClick={toDetail} />;
 };
 
 interface props {
   id?: string;
   src: string;
+  rotate?: React.CSSProperties;
 }
 
 const Box = styled.img`
