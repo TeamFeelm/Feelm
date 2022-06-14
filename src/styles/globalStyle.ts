@@ -66,23 +66,18 @@ export const GlobalStyle = createGlobalStyle`
 
   nav {
     position: fixed;
+    width: 100%;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 70px;
-    top: 0px;
     z-index: 10;
     background-color: white;
+    height: 50px;
   }
 
   main {
-    position: relative;
-    /*display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;*/
-    margin-top: 100px;
+    margin-top: 50px; 
   }
 
   

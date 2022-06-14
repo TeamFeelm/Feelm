@@ -60,9 +60,15 @@ export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actio
 // progress
 interface ProgressState {
   progress: number;
+  data: [
+    {
+      id: number;
+      answer: string[];
+    },
+  ];
 }
 
-const initialState = { progress: 0 } as ProgressState;
+const initialState = { progress: 0, data: [{ id: 0, answer: [""] }] } as ProgressState;
 const progressSlice = createSlice({
   name: "progress",
   initialState,
