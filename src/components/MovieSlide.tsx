@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { Poster } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const MovieSlide = ({ className, isEvent }: propsType) => {
+const MovieSlide = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
-  const copyList = movieList.movies.slice();
-  const shuffleList = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
+  const [shuffle, setShuffle] = useState<any>([]);
   const settings = {
     dots: true,
     dotsClass: "slick-dots slick-thumb",
@@ -21,34 +20,35 @@ const MovieSlide = ({ className, isEvent }: propsType) => {
     arrows: false,
     adaptiveHeight: true,
   };
-
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [sty, setSty] = useState({});
   const moveEvent = (e: React.MouseEvent) => {
-    if (isEvent) {
-      let x = -(window.innerWidth / 2 - e.pageX) / 15;
-      let y = (window.innerHeight / 2 - e.pageY) / 5;
-      (e.target as HTMLInputElement).setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
-    }
+    setX(-(window.innerWidth / 2 - e.pageX) / 30);
+    setY((window.innerHeight / 2 - e.pageY) / 10);
+    //document.querySelector('.poster').setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
+    setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
   };
 
+  useEffect(() => {
+    const copyList = [...movieList.movies];
+    const a = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
+    setShuffle(a);
+  }, []);
+
   return (
-    <MovieBox className={className}>
-      <MovieSlider {...settings}>
-        {shuffleList.map((movie) => {
-          return (
-            <div onMouseMove={moveEvent}>
-              <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>
-            </div>
-          );
-        })}
-      </MovieSlider>
-    </MovieBox>
+    <>
+      <MovieBox>
+        <MovieSlider {...settings}>
+          {shuffle.map((movie: any) => {
+            return <Poster a={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
+          })}
+        </MovieSlider>
+      </MovieBox>
+      <Window onMouseMove={moveEvent}></Window>
+    </>
   );
 };
-
-interface propsType {
-  className: string;
-  isEvent: boolean;
-}
 
 const MovieBox = styled.div`
   width: 100vw;
@@ -74,8 +74,6 @@ const MovieSlider = styled(Slider)`
   }
 
   .slick-slide {
-    display: flex;
-    justify-content: center;
     background-color: black;
   }
 
@@ -85,6 +83,15 @@ const MovieSlider = styled(Slider)`
     display: flex;
     justify-content: center;
   }
+`;
+
+const Window = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export default MovieSlide;
