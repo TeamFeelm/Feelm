@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
       <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
-      <MovieSlide className="show" isEvent={true}></MovieSlide>
+      <MovieSlide></MovieSlide>
       <Box color="orange">ㅆㅣㅈㅏㅇ</Box>
       <Box color="lightyellow">ㅆㅣㅈㅏㅇ</Box>
     </>
