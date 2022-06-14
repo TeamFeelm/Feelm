@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Poster } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const MovieSlide = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
-  const [shuffle, setShuffle] = useState<any>([]);
+  const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
     dots: true,
     dotsClass: "slick-dots slick-thumb",
@@ -22,7 +22,7 @@ const MovieSlide = () => {
   };
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const [sty, setSty] = useState({});
+  const [sty, setSty] = useState<React.CSSProperties>();
   const moveEvent = (e: React.MouseEvent) => {
     setX(-(window.innerWidth / 2 - e.pageX) / 30);
     setY((window.innerHeight / 2 - e.pageY) / 10);
@@ -32,16 +32,16 @@ const MovieSlide = () => {
 
   useEffect(() => {
     const copyList = [...movieList.movies];
-    const a = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
-    setShuffle(a);
-  }, []);
+    const shuffleAndCut = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
+    setShuffle(shuffleAndCut);
+  }, [movieList]);
 
   return (
     <>
       <MovieBox>
         <MovieSlider {...settings}>
-          {shuffle.map((movie: any) => {
-            return <Poster a={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
+          {shuffle.map((movie: movieType) => {
+            return <Poster rotate={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
           })}
         </MovieSlider>
       </MovieBox>
@@ -49,6 +49,19 @@ const MovieSlide = () => {
     </>
   );
 };
+
+interface movieType {
+  id: string;
+  title: string;
+  genre: string[];
+  synop: string;
+  director: string;
+  cast: string[];
+  rating: string;
+  runTime: number;
+  year: number;
+  img: string;
+}
 
 const MovieBox = styled.div`
   width: 100vw;
@@ -91,7 +104,6 @@ const Window = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export default MovieSlide;
