@@ -2,35 +2,41 @@ import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
+import { getEventListeners } from "events";
 
 export default function Home() {
+  const DIVIDER = 5;
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const [translate, setTranslate] = useState<React.CSSProperties>();
-  const [pageHeight, setPageHeight] = useState(window.innerHeight);
+  const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
+  const [viewport, setViewport] = useState(942);
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
-      const viewport = pageHeight + 5;
+      console.log(viewport);
       if (deltaY > 0) {
-        if (outerRef.current.style.cssText === "") {
-          setTranslate({ transform: `translateY(-${viewport}px)` });
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport}px);`) {
-          setTranslate({ transform: `translateY(-${viewport * 2}px)` });
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 2}px);`) {
-          setTranslate({ transform: `translateY(-${viewport * 3}px)` });
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 3}px);`) {
-          setTranslate({ transform: `translateY(-${viewport * 4}px)` });
+        if (viewport === 0) {
+          setViewport(pageHeight);
+        } else if (viewport === pageHeight) {
+          setViewport(pageHeight * 2);
+        } else if (viewport === pageHeight * 2) {
+          setViewport(pageHeight * 3);
+        } else if (viewport === pageHeight * 3) {
+          setViewport(pageHeight * 4);
+        } else {
+          return;
         }
       } else {
-        if (outerRef.current.style.cssText === `transform: translateY(-${viewport}px);`) {
-          setTranslate({});
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 2}px);`) {
-          setTranslate({ transform: `translateY(-${viewport}px)` });
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 3}px);`) {
-          setTranslate({ transform: `translateY(-${viewport * 2}px)` });
-        } else if (outerRef.current.style.cssText === `transform: translateY(-${viewport * 4}px);`) {
-          setTranslate({ transform: `translateY(-${viewport * 3}px)` });
+        if (viewport === pageHeight) {
+          setViewport(0);
+        } else if (viewport === pageHeight * 2) {
+          setViewport(pageHeight);
+        } else if (viewport === pageHeight * 3) {
+          setViewport(pageHeight * 2);
+        } else if (viewport === pageHeight * 4) {
+          setViewport(pageHeight * 3);
+        } else {
+          return;
         }
       }
     };
@@ -43,13 +49,14 @@ export default function Home() {
 
   useEffect(() => {
     const resizePageHeight = () => {
-      setPageHeight(window.innerHeight);
+      setPageHeight(window.innerHeight + DIVIDER);
       console.log(pageHeight);
     };
     window.addEventListener("resize", debounce(resizePageHeight, 500));
-  }, []);
+    return window.removeEventListener("resize", debounce(resizePageHeight, 500));
+  }, [pageHeight]);
   return (
-    <Outer style={translate} ref={outerRef}>
+    <Outer viewport={viewport} ref={outerRef}>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
       <Divider></Divider>
       <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
@@ -66,9 +73,14 @@ interface color {
   color: string;
 }
 
-const Outer = styled.div`
+interface viewport {
+  viewport: number;
+}
+
+const Outer = styled.div<viewport>`
   height: 100vh;
   transition: 0.8s all ease;
+  transform: translateY(-${(props) => props.viewport}px);
 `;
 const Divider = styled.div`
   width: 100%;
