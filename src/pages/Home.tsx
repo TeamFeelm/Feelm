@@ -1,18 +1,17 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
-import { throttle } from "lodash";
+import { debounce } from "lodash";
 
 export default function Home() {
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [translate, setTranslate] = useState<React.CSSProperties>();
   const [pageHeight, setPageHeight] = useState(window.innerHeight);
   useEffect(() => {
-    const wheelHandler = (e: React.WheelEvent) => {
+    const wheelHandler = (e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
       const viewport = pageHeight + 5;
-      console.log(viewport);
       if (deltaY > 0) {
         if (outerRef.current.style.cssText === "") {
           setTranslate({ transform: `translateY(-${viewport}px)` });
@@ -35,9 +34,20 @@ export default function Home() {
         }
       }
     };
-    outerRef.current.addEventListener("wheel", throttle(wheelHandler, 1000));
-  }, [outerRef]);
+    const preventScroll = (e: WheelEvent) => {
+      e.preventDefault();
+    };
+    outerRef.current.addEventListener("wheel", preventScroll);
+    outerRef.current.addEventListener("wheel", debounce(wheelHandler, 75));
+  }, [outerRef, pageHeight]);
 
+  useEffect(() => {
+    const resizePageHeight = () => {
+      setPageHeight(window.innerHeight);
+      console.log(pageHeight);
+    };
+    window.addEventListener("resize", debounce(resizePageHeight, 500));
+  }, []);
   return (
     <Outer style={translate} ref={outerRef}>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
@@ -58,7 +68,7 @@ interface color {
 
 const Outer = styled.div`
   height: 100vh;
-  transition: 0.6s all ease;
+  transition: 0.8s all ease;
 `;
 const Divider = styled.div`
   width: 100%;
