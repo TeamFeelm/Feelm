@@ -15,7 +15,7 @@ const MovieSlide = () => {
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
     adaptiveHeight: true,
@@ -24,8 +24,8 @@ const MovieSlide = () => {
   const [y, setY] = useState(0);
   const [sty, setSty] = useState<React.CSSProperties>();
   const moveEvent = (e: React.MouseEvent) => {
-    setX(-(window.innerWidth / 2 - e.pageX) / 50);
-    setY((window.innerHeight / 2 - e.pageY) / 150);
+    setX(-(window.innerWidth / 2 - e.pageX) / 40);
+    setY((window.innerHeight / 2 - e.pageY) / 20);
     //document.querySelector('.poster').setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
     setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
   };
@@ -96,6 +96,15 @@ const MovieSlider = styled(Slider)`
     margin: 0;
     display: flex;
     justify-content: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .slick-slide div img {
+    box-shadow: 0px 20px 80px 20px yellow;
+    transition: transform 0.1s linear;
+    border-radius: 20px;
+    border: 1px solid black;
   }
 `;
 
