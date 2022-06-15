@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import React, { useEffect, useState } from "react";
 
-const MovieSlide = ({ aref, now }: props) => {
+const MovieSlide = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
   const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
@@ -60,11 +60,6 @@ interface movieType {
   runTime: number;
   year: number;
   img: string;
-}
-
-interface props {
-  aref: any;
-  now?: React.CSSProperties;
 }
 
 const MovieBox = styled.div`

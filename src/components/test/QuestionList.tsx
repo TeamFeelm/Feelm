@@ -7,9 +7,9 @@ export default function QuestionList({ progress }: props) {
   return (
     <>
       <QueWrap>
-        <QueNumDiv>{progress}.</QueNumDiv>
-        <QueDiv>{data.quetitle}</QueDiv>
-        <QueDiv>{data.quedetail}</QueDiv>
+        <QueNum>{progress}.</QueNum>
+        <QueTitle>{data.quetitle}</QueTitle>
+        <QueDetail>{data.quedetail}</QueDetail>
       </QueWrap>
     </>
   );
@@ -20,9 +20,22 @@ interface props {
 }
 
 const QueWrap = styled.div`
-  font-size: 100px;
-  color: blue;
-  background: darkgray;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+
+  position: fixed;
+  width: 80%;
+  left: 10%;
 `;
-const QueNumDiv = styled.div``;
-const QueDiv = styled.div``;
+const QueNum = styled.div`
+  font-weight: bold;
+  font-size: 6vw;
+`;
+const QueTitle = styled.div`
+  font-weight: bold;
+  font-size: 2.5vw;
+`;
+const QueDetail = styled.div`
+  font-size: 2.5vw;
+`;

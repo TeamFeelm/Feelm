@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    height: auto;
   }
 
   .hide {
@@ -81,11 +82,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    position: relative;
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
     margin-top: 50px;
   }
 
