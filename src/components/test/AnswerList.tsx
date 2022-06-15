@@ -24,9 +24,9 @@ export default function AnswerList({ progress }: props) {
     <>
       <AnsWrap>
         {data.answer.map((a) => (
-          <AnsNextBtn onClick={next}>{a}</AnsNextBtn>
+          <AnsNextDiv onClick={next}>{a}</AnsNextDiv>
         ))}
-        <AnsPrevBtn onClick={prev}>back</AnsPrevBtn>
+        <AnsPrevDiv onClick={prev}>back</AnsPrevDiv>
       </AnsWrap>
     </>
   );
@@ -45,15 +45,17 @@ const AnsWrap = styled.div`
   color: white;
   background-color: rgba(255, 255, 255, 0.1);
   text-align: center;
+
   position: fixed;
-  width: 90vw;
-  bottom: 10vh;
+  width: 80%;
+  bottom: 10%;
+  left: 10%;
 `;
-const AnsNextBtn = styled.div<styleProps>`
+const AnsNextDiv = styled.div<styleProps>`
   background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 10px;
 `;
-const AnsPrevBtn = styled.div<styleProps>`
+const AnsPrevDiv = styled.div<styleProps>`
   background-color: rgba(255, 255, 255, 0.1);
   right: 0;
 `;

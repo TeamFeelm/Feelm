@@ -20,24 +20,22 @@ interface props {
 }
 
 const QueWrap = styled.div`
+  color: white;
   background-color: rgba(255, 255, 255, 0.1);
   text-align: center;
-  padding-bottom: 2vh;
+
+  position: fixed;
+  width: 80%;
+  left: 10%;
 `;
 const QueNum = styled.div`
-  color: white;
   font-weight: bold;
   font-size: 6vw;
-  /* font-size: 70px; */
 `;
 const QueTitle = styled.div`
-  color: white;
   font-weight: bold;
   font-size: 2.5vw;
-  /* font-size: 40px; */
 `;
 const QueDetail = styled.div`
-  color: white;
   font-size: 2.5vw;
-  /* font-size: 30px; */
 `;
