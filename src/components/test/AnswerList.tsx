@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function AnswerList({ progress }: props) {
-  const data = AnswerData.answers;
+  const data = AnswerData.answers[progress];
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const next = () => {
@@ -23,49 +23,10 @@ export default function AnswerList({ progress }: props) {
   return (
     <>
       <AnsWrap>
-        <AnsList>
-          <AnsDiv>
-            {data[0].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[1].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[2].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[3].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[4].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[5].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[6].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsDiv x={progress}>
-            {data[7].answer.map((a) => (
-              <div onClick={next}>{a}</div>
-            ))}
-          </AnsDiv>
-          <AnsPrev onClick={prev}>back</AnsPrev>
-        </AnsList>
+        {data.answer.map((a) => (
+          <AnsNextBtn onClick={next}>{a}</AnsNextBtn>
+        ))}
+        <AnsPrevBtn onClick={prev}>back</AnsPrevBtn>
       </AnsWrap>
     </>
   );
@@ -80,26 +41,19 @@ interface styleProps {
 }
 
 const AnsWrap = styled.div`
-  font-size: 50px;
-  background-color: darkgray;
-`;
-const AnsList = styled.div`
-  overflow: hidden;
-`;
-const AnsDiv = styled.div<styleProps>`
-  background-color: green;
-  margin-bottom: 1px;
-  right: 0;
-
-  width: 50%;
-  justify-content: right;
-  div {
-    text-align: left;
-  }
-`;
-const AnsPrev = styled.div<styleProps>`
-  background-color: red;
+  font-size: 1.5vw;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
   position: fixed;
+  width: 90vw;
+  bottom: 10vh;
+`;
+const AnsNextBtn = styled.div<styleProps>`
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+`;
+const AnsPrevBtn = styled.div<styleProps>`
+  background-color: rgba(255, 255, 255, 0.1);
   right: 0;
-  bottom: 0;
 `;

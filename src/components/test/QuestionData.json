@@ -2,43 +2,43 @@
   "questions": [
     {
       "id": 0,
-      "quetitle": "질문0",
-      "quedetail": "질문0-0"
+      "quetitle": "인생에서 가장 중요시 여기는 것",
+      "quedetail": "무엇인가요 ?"
     },
     {
       "id": 1,
-      "quetitle": "질문1",
-      "quedetail": "질문1-1"
+      "quetitle": "연휴를 맞이해 여행을 가게 된 당신",
+      "quedetail": "어떻게 보내고 싶으신가요 ?"
     },
     {
       "id": 2,
-      "quetitle": "질문2",
-      "quedetail": "질문2-2"
+      "quetitle": "당신은 서점에 들어와있다",
+      "quedetail": "무심코 집어든 책은 어떤 내용인가?"
     },
     {
       "id": 3,
-      "quetitle": "질문3",
-      "quedetail": "질문3-3"
+      "quetitle": "당신은 주변에서 정말 좋은 사람이라는 말을 많이 듣는편이다",
+      "quedetail": "당신이 생각하기에 그 이유는 무엇인가?"
     },
     {
       "id": 4,
-      "quetitle": "질문4",
-      "quedetail": "질문4-4"
+      "quetitle": "주말 저녁 넷플릭스를 켠 당신",
+      "quedetail": "어떤 것을 먼저 살펴볼까요?"
     },
     {
       "id": 5,
-      "quetitle": "질문5",
-      "quedetail": "질문5-5"
+      "quetitle": "소개팅 상대와 영화를 보던 중 예상치 못한 키스신이 나왔을 때",
+      "quedetail": "당신의 반응은?"
     },
     {
       "id": 6,
-      "quetitle": "질문6",
-      "quedetail": "질문6-6"
+      "quetitle": "여행을 왔는데 길을 모르겠다",
+      "quedetail": "나는?"
     },
     {
       "id": 7,
-      "quetitle": "질문7",
-      "quedetail": "질문7-7"
+      "quetitle": "이 동네 토박이인 사람이 길을 직접 안내해주겠다고 한다",
+      "quedetail": "걸어가면서 나는?"
     }
   ]
 }
