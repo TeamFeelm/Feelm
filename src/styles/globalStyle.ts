@@ -69,18 +69,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'SSD';
   }
 
-  nav {
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    background-color: white;
-    height: 50px;
-  }
-
   main {
     margin-top: 50px;
   }
