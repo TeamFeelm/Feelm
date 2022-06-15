@@ -27,7 +27,7 @@ interface propsType {
 }
 
 export const ContentBox = styled.div`
-  width: 50%;
+  width: 50vw;
   padding: 20px;
   margin: auto;
   @media screen and (max-width: 768px) {

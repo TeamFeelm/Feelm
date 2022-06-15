@@ -43,7 +43,7 @@ interface movie {
 
 export const TabBox = styled.div<styleProps>`
   display: flex;
-  width: 45%;
+  width: 45vw;
   padding-top: 40px;
   border-bottom: 1px solid black;
   font-family: "SSD";
@@ -62,15 +62,15 @@ export const Tab = styled.div`
   cursor: pointer;
   :hover {
     background-color: black;
-    color: white;
     transition: all 0.5s;
+    color: white;
   }
 `;
 
 // 탭 타이틀 전체 박스
 export const Underline = styled.div`
   display: flex;
-  width: 45%;
+  width: 45vw;
   height: 2px;
   position: relative;
   bottom: 2px;
