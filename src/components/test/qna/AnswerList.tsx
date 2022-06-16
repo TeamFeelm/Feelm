@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
-import { incrementProgress, decrementProgress } from "../../../store";
+import { incrementProgress, decrementProgress, resetProgress } from "../../../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -10,10 +10,10 @@ export default function AnswerList({ progress }: props) {
   const navigate = useNavigate();
   const next = () => {
     if (progress < 7) {
-      dispatch(incrementProgress());
+      dispatch(incrementProgress(1));
     } else {
       navigate(`/test/result`);
-      dispatch(decrementProgress(7));
+      dispatch(resetProgress());
     }
   };
   const prev = () => {
@@ -23,8 +23,10 @@ export default function AnswerList({ progress }: props) {
   return (
     <>
       <AnsWrap>
-        {data.answer.map((a) => (
-          <AnsNextDiv onClick={next}>{a}</AnsNextDiv>
+        {data.answer.map((a, idx) => (
+          <AnsNextDiv onClick={next} key="idx">
+            {idx}.{a}
+          </AnsNextDiv>
         ))}
         <AnsPrevDiv onClick={prev}>back</AnsPrevDiv>
       </AnsWrap>

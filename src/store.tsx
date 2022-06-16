@@ -73,8 +73,8 @@ const progressSlice = createSlice({
   name: "progress",
   initialState,
   reducers: {
-    incrementProgress(state) {
-      state.progress++;
+    incrementProgress(state, action: PayloadAction<number>) {
+      state.progress += action.payload;
       console.log("progress is " + state.progress);
     },
     decrementProgress(state, action: PayloadAction<number>) {
@@ -85,14 +85,14 @@ const progressSlice = createSlice({
       }
       console.log("progress is " + state.progress);
     },
-    incrementByAmount(state, action: PayloadAction<number>) {
-      state.progress += action.payload;
+    resetProgress(state) {
+      state.progress = 0;
       console.log(state.progress);
     },
   },
 });
 
-export const { incrementProgress, decrementProgress, incrementByAmount } = progressSlice.actions;
+export const { incrementProgress, decrementProgress, resetProgress } = progressSlice.actions;
 
 const store = configureStore({
   reducer: {
