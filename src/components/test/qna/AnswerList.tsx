@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
-import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } from "../../../store";
+import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx, resetAnsIdx } from "../../../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function AnswerList({ progress }: props) {
   const data = AnswerData.answers[progress];
@@ -15,11 +16,14 @@ export default function AnswerList({ progress }: props) {
     } else {
       navigate(`/test/result`);
       dispatch(resetProgress());
+      dispatch(resetAnsIdx());
     }
   };
   const prev = () => {
-    dispatch(decrementProgress(1));
-    dispatch(delLastAnsIdx());
+    if (progress > 0) {
+      dispatch(decrementProgress(1));
+      dispatch(delLastAnsIdx());
+    }
   };
 
   return (
@@ -35,7 +39,7 @@ export default function AnswerList({ progress }: props) {
             {ans}
           </AnsNextDiv>
         ))}
-        <AnsPrevDiv onClick={prev}>back</AnsPrevDiv>
+        {progress > 0 && <AnsPrevDiv onClick={prev}>뒤로가기</AnsPrevDiv>}
       </AnsWrap>
     </>
   );
@@ -53,7 +57,7 @@ const AnsWrap = styled.div`
 
   position: fixed;
   width: 80%;
-  bottom: 10%;
+  bottom: 20%;
   left: 10%;
 `;
 const AnsNextDiv = styled.div`
