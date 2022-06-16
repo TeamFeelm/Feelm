@@ -1,4 +1,4 @@
-import Questions from "../components/test/Questions";
+import Questions from "../components/test/qna/Questions";
 
 export default function TestPage() {
   return (

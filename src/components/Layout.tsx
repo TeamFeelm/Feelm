@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Layout() {
   return (
     <>
-      <nav style={{ display: "flex" }}>
+      <TopNav style={{ display: "flex" }}>
         <Link to="/">
           <Space>Home</Space>
         </Link>
@@ -14,13 +14,28 @@ export default function Layout() {
         <Link to="/search">
           <Space>Search</Space>
         </Link>
-      </nav>
+      </TopNav>
       <main>
         <Outlet></Outlet>
       </main>
     </>
   );
 }
+
+const TopNav = styled.nav`
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  height: 50px;
+
+  background-color: rgba(1, 5, 27, 1);
+  color: white;
+  box-shadow: black 0px 0px 5px;
+`;
 
 const Space = styled.div`
   display: flex;
