@@ -2,42 +2,33 @@ import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
-import { getEventListeners } from "events";
 
 export default function Home() {
-  const DIVIDER = 5;
+  const DIVIDER = 3;
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
-  const [viewport, setViewport] = useState(942);
+  const [page, setPage] = useState(0);
+  const [y, setY] = useState(0);
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
-      console.log(viewport);
       if (deltaY > 0) {
-        if (viewport === 0) {
-          setViewport(pageHeight);
-        } else if (viewport === pageHeight) {
-          setViewport(pageHeight * 2);
-        } else if (viewport === pageHeight * 2) {
-          setViewport(pageHeight * 3);
-        } else if (viewport === pageHeight * 3) {
-          setViewport(pageHeight * 4);
-        } else {
-          return;
-        }
+        setPage((prev) => {
+          if (prev < 4) {
+            return prev + 1;
+          } else {
+            return prev;
+          }
+        });
       } else {
-        if (viewport === pageHeight) {
-          setViewport(0);
-        } else if (viewport === pageHeight * 2) {
-          setViewport(pageHeight);
-        } else if (viewport === pageHeight * 3) {
-          setViewport(pageHeight * 2);
-        } else if (viewport === pageHeight * 4) {
-          setViewport(pageHeight * 3);
-        } else {
-          return;
-        }
+        setPage((prev) => {
+          if (prev > 0) {
+            return prev - 1;
+          } else {
+            return prev;
+          }
+        });
       }
     };
     const preventScroll = (e: WheelEvent) => {
@@ -45,18 +36,22 @@ export default function Home() {
     };
     outerRef.current.addEventListener("wheel", preventScroll);
     outerRef.current.addEventListener("wheel", debounce(wheelHandler, 75));
-  }, [outerRef, pageHeight]);
+  }, [outerRef]);
 
   useEffect(() => {
     const resizePageHeight = () => {
       setPageHeight(window.innerHeight + DIVIDER);
-      console.log(pageHeight);
     };
     window.addEventListener("resize", debounce(resizePageHeight, 500));
     return window.removeEventListener("resize", debounce(resizePageHeight, 500));
-  }, [pageHeight]);
+  }, []);
+
+  useEffect(() => {
+    setY(page * pageHeight);
+  }, [page, pageHeight]);
+
   return (
-    <Outer viewport={viewport} ref={outerRef}>
+    <Outer transY={y} ref={outerRef}>
       <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
       <Divider></Divider>
       <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
@@ -69,22 +64,23 @@ export default function Home() {
     </Outer>
   );
 }
+
 interface color {
   color: string;
 }
 
-interface viewport {
-  viewport: number;
+interface transY {
+  transY: number;
 }
 
-const Outer = styled.div<viewport>`
+const Outer = styled.div<transY>`
   height: 100vh;
   transition: 0.8s all ease;
-  transform: translateY(-${(props) => props.viewport}px);
+  transform: translateY(-${(props) => props.transY}px);
 `;
 const Divider = styled.div`
   width: 100%;
-  height: 5px;
+  height: 3px;
   background-color: gray;
 `;
 
