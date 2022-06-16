@@ -9,8 +9,9 @@ export default function Home() {
   const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
   const [page, setPage] = useState(0);
   const [y, setY] = useState(0);
+  const [o, setO] = useState(0);
   useEffect(() => {
-    const wheelHandler = (e: WheelEvent) => {
+    const wheelHandler = debounce((e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
       if (deltaY > 0) {
@@ -30,40 +31,50 @@ export default function Home() {
           }
         });
       }
-    };
+    }, 75);
     const preventScroll = (e: WheelEvent) => {
       e.preventDefault();
     };
     outerRef.current.addEventListener("wheel", preventScroll);
-    outerRef.current.addEventListener("wheel", debounce(wheelHandler, 75));
+    outerRef.current.addEventListener("wheel", wheelHandler);
+    return () => {
+      outerRef.current.removeEventListener("wheel", preventScroll);
+      outerRef.current.removeEventListener("wheel", wheelHandler);
+    };
   }, [outerRef]);
 
   useEffect(() => {
-    const resizePageHeight = () => {
+    const resizePageHeight = debounce(() => {
       setPageHeight(window.innerHeight + DIVIDER);
-    };
-    window.addEventListener("resize", debounce(resizePageHeight, 100));
+    }, 200);
+    window.addEventListener("resize", resizePageHeight);
     return () => {
-      window.removeEventListener("resize", debounce(resizePageHeight, 100));
+      window.removeEventListener("resize", resizePageHeight);
     };
   }, []);
 
   useEffect(() => {
-    setY(page * pageHeight);
+    if (page < 4) {
+      setY(page * pageHeight);
+      setO(0);
+    } else {
+      setO(200);
+    }
   }, [page, pageHeight]);
 
   return (
-    <Outer transY={y} ref={outerRef}>
-      <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
-      <Divider></Divider>
-      <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
-      <Divider></Divider>
-      <MovieSlide></MovieSlide>
-      <Divider></Divider>
-      <TeamComment />
-      <Divider></Divider>
-      <Box color="lightyellow">ㅆㅣㅈㅏㅇ</Box>
-    </Outer>
+    <>
+      <Outer transY={y} ref={outerRef}>
+        <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
+        <Divider></Divider>
+        <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
+        <Divider></Divider>
+        <MovieSlide></MovieSlide>
+        <Divider></Divider>
+        <TeamComment />
+      </Outer>
+      <Foot opacity={o}>Footer</Foot>
+    </>
   );
 }
 
@@ -73,6 +84,10 @@ interface color {
 
 interface transY {
   transY: number;
+}
+
+interface opacity {
+  opacity: number;
 }
 
 const Outer = styled.div<transY>`
@@ -94,4 +109,16 @@ export const Box = styled.div<color>`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Foot = styled.div<opacity>`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: ${(props) => props.opacity}px;
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+  transition: 0.3s all ease;
 `;

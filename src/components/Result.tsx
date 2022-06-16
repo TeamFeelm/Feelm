@@ -15,12 +15,28 @@ const Result = () => {
 };
 
 const ResultBox = styled.div`
-  width: 100%;
+  width: 1140px;
   height: 100%;
   margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 1462px) {
+    width: 760px;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 870px;
+  }
+  @media screen and (max-width: 967px) {
+    width: 580px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 600px;
+  }
+  @media screen and (max-width: 625px) {
+    width: 400px;
+  }
 `;
 
 export default Result;
