@@ -1,7 +1,7 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
-import { debounce } from "lodash";
+import _, { debounce } from "lodash";
 
 export default function Home() {
   const DIVIDER = 3;
@@ -42,8 +42,10 @@ export default function Home() {
     const resizePageHeight = () => {
       setPageHeight(window.innerHeight + DIVIDER);
     };
-    window.addEventListener("resize", debounce(resizePageHeight, 500));
-    return window.removeEventListener("resize", debounce(resizePageHeight, 500));
+    window.addEventListener("resize", debounce(resizePageHeight, 100));
+    return () => {
+      window.removeEventListener("resize", debounce(resizePageHeight, 100));
+    };
   }, []);
 
   useEffect(() => {
