@@ -30,6 +30,7 @@ export default function AnswerList({ progress }: props) {
             onClick={() => {
               next(idx);
             }}
+            key={idx}
           >
             {ans}
           </AnsNextDiv>
