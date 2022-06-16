@@ -10,41 +10,38 @@ const MovieSlide = () => {
   const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
     dots: true,
-    dotsClass: "slick-dots slick-thumb",
+    dotsClass: "slick-dots",
+    adaptiveHeight: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     arrows: false,
-    adaptiveHeight: true,
   };
-  const [x, setX] = useState(0);
+  /*const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [sty, setSty] = useState<React.CSSProperties>();
   const moveEvent = (e: React.MouseEvent) => {
     setX(-(window.innerWidth / 2 - e.pageX) / 40);
     setY((window.innerHeight / 2 - e.pageY) / 20);
-    //document.querySelector('.poster').setAttribute("style", "transform: rotateY(" + x + "deg) rotateX(" + y + "deg);");
     setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
-  };
+  };*/
 
   useEffect(() => {
     const copyList = [...movieList.movies];
-    const shuffleAndCut = copyList.sort((el) => Math.random() - Math.random()).slice(-6);
+    const shuffleAndCut = copyList.sort((el) => Math.random() - Math.random()).slice(-7);
     setShuffle(shuffleAndCut);
   }, [movieList]);
 
   return (
     <>
-      <MovieBox onMouseMove={moveEvent}>
-        <MovieSlider {...settings}>
-          {shuffle.map((movie: movieType) => {
-            return <Poster rotate={sty} src={movie.img} id={movie.id} key={movie.id}></Poster>;
-          })}
-        </MovieSlider>
-      </MovieBox>
+      <MovieSlider {...settings}>
+        {shuffle.map((movie: movieType) => {
+          return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
+        })}
+      </MovieSlider>
     </>
   );
 };
@@ -62,49 +59,46 @@ interface movieType {
   img: string;
 }
 
-const MovieBox = styled.div`
+const MovieSlider = styled(Slider)`
   width: 100vw;
   height: 100vh;
-  background-color: #be8b8b;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-`;
-
-const MovieSlider = styled(Slider)`
-  width: 100%;
   display: inline-block;
-  margin: 0;
-  margin-top: 100px;
-  z-index: 1000;
+  background-color: black;
   .slick-dots {
+    position: absolute;
+    top: 30px;
+    height: 30px;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
-  }
 
-  .slick-dots li button:before {
-    font-size: 18px;
-    color: #0505be;
+    .slick-active {
+      button::before {
+        color: #0505be;
+        font-size: 21px;
+      }
+    }
+
+    button::before {
+      color: #8080d8;
+      font-size: 21px;
+      opacity: 0.7;
+    }
   }
 
   .slick-slide {
     background-color: black;
-  }
-
-  .slick-slide div {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  .slick-slide div img {
-    box-shadow: 0px 20px 80px 20px yellow;
-    transition: transform 0.1s linear;
-    border-radius: 20px;
-    border: 1px solid black;
+    height: auto;
+    div {
+      width: 100%;
+      height: 80vh;
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    div img {
+      box-shadow: 0px 10px 80px 10px #565656;
+    }
   }
 `;
 
