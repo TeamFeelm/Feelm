@@ -108,13 +108,4 @@ const MovieSlider = styled(Slider)`
   }
 `;
 
-const Window = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(00, 00, 00, 0.5);
-`;
-
 export default MovieSlide;
