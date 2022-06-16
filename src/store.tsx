@@ -81,7 +81,7 @@ const progressSlice = createSlice({
       if (state.progress > 0) {
         state.progress -= action.payload;
       } else {
-        null;
+        return;
       }
       console.log("progress is " + state.progress);
     },
