@@ -60,7 +60,7 @@ export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actio
 // progress
 const progressSlice = createSlice({
   name: "progress",
-  initialState: { progress: 0, data: [{ id: 0, answer: [""] }], ansIdxArray: [] },
+  initialState: { progress: 0, data: [{ id: 0, answer: [""] }], ansIdxArray: [0] },
   reducers: {
     incrementProgress(state, action: PayloadAction<number>) {
       state.progress += action.payload;
@@ -69,8 +69,6 @@ const progressSlice = createSlice({
     decrementProgress(state, action: PayloadAction<number>) {
       if (state.progress > 0) {
         state.progress -= action.payload;
-      } else {
-        return;
       }
       console.log("progress is " + state.progress);
     },
@@ -79,17 +77,21 @@ const progressSlice = createSlice({
       console.log(state.progress);
     },
     saveAnsIdx(state, action: PayloadAction<number>) {
-      state.ansIdxArray.push(action.payload);
-      console.log(state.ansIdxArray.map((i) => i));
+      state.ansIdxArray = state.ansIdxArray.concat(action.payload);
+      console.log(state.ansIdxArray);
     },
     delLastAnsIdx(state) {
-      state.ansIdxArray.splice(-1, 1);
-      console.log(state.ansIdxArray.map((i) => i));
+      state.ansIdxArray = state.ansIdxArray.slice(0, state.ansIdxArray.length - 1);
+      console.log(state.ansIdxArray);
+    },
+    resetAnsIdx(state) {
+      state.ansIdxArray = [0];
     },
   },
 });
 
-export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } = progressSlice.actions;
+export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx, resetAnsIdx } =
+  progressSlice.actions;
 
 const store = configureStore({
   reducer: {
