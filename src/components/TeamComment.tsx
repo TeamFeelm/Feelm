@@ -1,52 +1,65 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Box } from "../pages/Home";
 
 export default function TeamComment() {
   const [member, setMember] = useState([
-    { name: "재윤", comment: [""] },
-    { name: "준용", comment: [""] },
-    { name: "자경", comment: [""] },
-    { name: "광훈", comment: [""] },
+    { name: "재윤", comment: ["니하오마", "압살라이마이쿰", "싸와디캅"], img: "/src/assets/images/img01.jpg" },
+    { name: "준용", comment: [""], img: "" },
+    { name: "자경", comment: [""], img: "" },
+    { name: "광훈", comment: [""], img: "" },
   ]);
   return (
     <B>
-      <Left>
-        <Member>
-          <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
-          <span>{member[0].name}</span>
-        </Member>
-        <Member>
-          <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
-          <span>{member[1].name}</span>
-        </Member>
-      </Left>
-      <Right>
-        <Member>
-          <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
-          <span>{member[2].name}</span>
-        </Member>
-        <Member>
-          <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
-          <span>{member[3].name}</span>
-        </Member>
-      </Right>
+      <Ballon> {member[0].comment[Math.random() * member[0].comment.length]} </Ballon>
+      <InnerBox>
+        <Left>
+          <Member>
+            <img src={member[0].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
+            <span>{member[0].name}</span>
+          </Member>
+          <Member>
+            <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
+            <span>{member[1].name}</span>
+          </Member>
+        </Left>
+        <Right>
+          <Member>
+            <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
+            <span>{member[2].name}</span>
+          </Member>
+          <Member>
+            <img src="/src/assets/images/user.jpg" width={60} height={60} style={{ borderRadius: "9999px" }} />
+            <span>{member[3].name}</span>
+          </Member>
+        </Right>
+      </InnerBox>
     </B>
   );
 }
 
+const InnerBox = styled.div`
+  width: 60vw;
+  max-width: 800px;
+  background-color: tomato;
+  font-size: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 const Member = styled.div`
-  margin: 50px auto;
+  margin: 100px auto;
   display: flex;
   flex-direction: column;
   font-size: 16px;
   text-align: center;
 `;
 const Left = styled.div`
-  transform: translateX(100%);
+  padding-bottom: 10vh;
 `;
+
 const Right = styled.div`
-  transform: translateX(-100%);
+  padding-top: 15vh;
 `;
 
 const B = styled.div`
@@ -57,5 +70,16 @@ const B = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 400px;
+  padding-bottom: 35vh;
+`;
+
+const Ballon = styled.div`
+  position: absolute;
+  display: block;
+  width: 300px;
+  height: 100px;
+  margin-bottom: 300px;
+  margin-left: 100px;
+  background: white;
+  border-radius: 15px;
 `;
