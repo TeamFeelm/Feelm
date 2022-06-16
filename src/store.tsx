@@ -58,19 +58,9 @@ const movieList = createSlice({
 export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actions;
 
 // progress
-interface ProgressState {
-  progress: number;
-  data: [
-    {
-      id: number;
-      answer: string[];
-    },
-  ];
-}
-
 const progressSlice = createSlice({
   name: "progress",
-  initialState: { progress: 0, data: [{ id: 0, answer: [""] }] },
+  initialState: { progress: 0, data: [{ id: 0, answer: [""] }], ansIdxArray: [] },
   reducers: {
     incrementProgress(state, action: PayloadAction<number>) {
       state.progress += action.payload;
@@ -88,11 +78,14 @@ const progressSlice = createSlice({
       state.progress = 0;
       console.log(state.progress);
     },
-    saveAnsIdx(idx) {},
+    saveAnsIdx(state, action: PayloadAction<number>) {
+      state.ansIdxArray.push(action.payload);
+      console.log(state.ansIdxArray.map((i) => i));
+    },
   },
 });
 
-export const { incrementProgress, decrementProgress, resetProgress } = progressSlice.actions;
+export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx } = progressSlice.actions;
 
 const store = configureStore({
   reducer: {
