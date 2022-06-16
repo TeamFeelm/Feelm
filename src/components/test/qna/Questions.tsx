@@ -1,7 +1,7 @@
 import QuestionList from "./QuestionList";
 import AnswerList from "./AnswerList";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../../store";
 import styled from "styled-components";
 
 export default function Test() {
@@ -11,7 +11,7 @@ export default function Test() {
     <>
       <QuestionsWrap>
         <QuestionList progress={progress} />
-        <VideoBg src="src\components\test\testbg.mp4" muted autoPlay loop>
+        <VideoBg src="src\components\test\qna\testbg.mp4" muted autoPlay loop>
           <strong>Your browser does not support the video tag.</strong>
         </VideoBg>
         <AnswerList progress={progress} />

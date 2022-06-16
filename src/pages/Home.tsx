@@ -1,7 +1,7 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
-import { debounce } from "lodash";
+import _, { debounce } from "lodash";
 
 export default function Home() {
   const DIVIDER = 3;
