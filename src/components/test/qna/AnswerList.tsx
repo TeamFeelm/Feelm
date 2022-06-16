@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
-import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx } from "../../../store";
+import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } from "../../../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ export default function AnswerList({ progress }: props) {
   };
   const prev = () => {
     dispatch(decrementProgress(1));
+    dispatch(delLastAnsIdx());
   };
 
   return (

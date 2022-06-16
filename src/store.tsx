@@ -82,10 +82,14 @@ const progressSlice = createSlice({
       state.ansIdxArray.push(action.payload);
       console.log(state.ansIdxArray.map((i) => i));
     },
+    delLastAnsIdx(state) {
+      state.ansIdxArray.splice(-1, 1);
+      console.log(state.ansIdxArray.map((i) => i));
+    },
   },
 });
 
-export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx } = progressSlice.actions;
+export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } = progressSlice.actions;
 
 const store = configureStore({
   reducer: {
