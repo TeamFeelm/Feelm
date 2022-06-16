@@ -14,6 +14,7 @@ export default function AnswerList({ progress }: props) {
     } else {
       navigate(`/test/result`);
       dispatch(resetProgress());
+      // dispatch(saveAnsIdx());
     }
   };
   const prev = () => {

@@ -68,10 +68,9 @@ interface ProgressState {
   ];
 }
 
-const initialState = { progress: 0, data: [{ id: 0, answer: [""] }] } as ProgressState;
 const progressSlice = createSlice({
   name: "progress",
-  initialState,
+  initialState: { progress: 0, data: [{ id: 0, answer: [""] }] },
   reducers: {
     incrementProgress(state, action: PayloadAction<number>) {
       state.progress += action.payload;
@@ -89,6 +88,7 @@ const progressSlice = createSlice({
       state.progress = 0;
       console.log(state.progress);
     },
+    saveAnsIdx(idx) {},
   },
 });
 
