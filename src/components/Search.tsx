@@ -30,18 +30,17 @@ const SearchForm = styled.form`
   display: flex;
   justify-content: center;
   width: 280px;
-  margin: 35px auto;
+  margin: 75px auto 35px;
 `;
 
 const SearchValue = styled.input`
-  width: 50%;
+  width: 150px;
   margin-left: 35px;
   padding-bottom: 4px;
   border-bottom: 1px solid tomato;
   background-color: white;
   font-family: "SSD";
   font-size: 18px;
-  /* text-indent: 15px; */
   text-align: center;
   transition: width 0.3s;
   ::placeholder {
@@ -54,7 +53,7 @@ const SearchValue = styled.input`
 `;
 
 const SearchSubmit = styled.button`
-  width: 40px;
+  margin-left: 10px;
   background-color: transparent;
 `;
 
