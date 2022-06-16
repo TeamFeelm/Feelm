@@ -1,4 +1,4 @@
-import { MovieSlide } from "../components";
+import { MovieSlide, TeamComment } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import _, { debounce } from "lodash";
@@ -60,7 +60,7 @@ export default function Home() {
       <Divider></Divider>
       <MovieSlide></MovieSlide>
       <Divider></Divider>
-      <Box color="orange">ㅆㅣㅈㅏㅇ</Box>
+      <TeamComment />
       <Divider></Divider>
       <Box color="lightyellow">ㅆㅣㅈㅏㅇ</Box>
     </Outer>
@@ -86,7 +86,7 @@ const Divider = styled.div`
   background-color: gray;
 `;
 
-const Box = styled.div<color>`
+export const Box = styled.div<color>`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.color};
