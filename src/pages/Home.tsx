@@ -1,35 +1,23 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
-import _, { debounce } from "lodash";
+import React, { useEffect, useRef } from "react";
+import { debounce } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, setInnerHeight, pageDown, pageUp, setTransY } from "../store";
 
 export default function Home() {
   const DIVIDER = 3;
+  const dispatch = useDispatch();
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
-  const [page, setPage] = useState(0);
-  const [y, setY] = useState(0);
-  const [o, setO] = useState(0);
+  const home = useSelector((state: RootState) => state.home);
   useEffect(() => {
     const wheelHandler = debounce((e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
       if (deltaY > 0) {
-        setPage((prev) => {
-          if (prev < 4) {
-            return prev + 1;
-          } else {
-            return prev;
-          }
-        });
+        dispatch(pageDown());
       } else {
-        setPage((prev) => {
-          if (prev > 0) {
-            return prev - 1;
-          } else {
-            return prev;
-          }
-        });
+        dispatch(pageUp());
       }
     }, 75);
     const preventScroll = (e: WheelEvent) => {
@@ -37,15 +25,16 @@ export default function Home() {
     };
     outerRef.current.addEventListener("wheel", preventScroll);
     outerRef.current.addEventListener("wheel", wheelHandler);
-    return () => {
+    /*return () => {
       outerRef.current.removeEventListener("wheel", preventScroll);
       outerRef.current.removeEventListener("wheel", wheelHandler);
-    };
+    };*/
   }, [outerRef]);
 
   useEffect(() => {
+    dispatch(setInnerHeight(window.innerHeight + DIVIDER));
     const resizePageHeight = debounce(() => {
-      setPageHeight(window.innerHeight + DIVIDER);
+      dispatch(setInnerHeight(window.innerHeight + DIVIDER));
     }, 200);
     window.addEventListener("resize", resizePageHeight);
     return () => {
@@ -54,17 +43,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (page < 4) {
-      setY(page * pageHeight);
-      setO(0);
-    } else {
-      setO(200);
-    }
-  }, [page, pageHeight]);
+    dispatch(setTransY());
+  }, [home.page, home.innerHeight]);
 
   return (
     <>
-      <Outer transY={y} ref={outerRef}>
+      <Outer transY={home.transY} ref={outerRef}>
         <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
         <Divider></Divider>
         <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
@@ -73,7 +57,7 @@ export default function Home() {
         <Divider></Divider>
         <Box color="orange">ㅆㅣㅈㅏㅇ</Box>
       </Outer>
-      <Foot opacity={o}>Footer</Foot>
+      <Foot opacity={home.footer}>Footer</Foot>
     </>
   );
 }
