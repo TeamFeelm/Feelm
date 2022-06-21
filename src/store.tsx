@@ -93,10 +93,40 @@ const progressSlice = createSlice({
 export const { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx, resetAnsIdx } =
   progressSlice.actions;
 
+// Home page
+const homeSlice = createSlice({
+  name: "home",
+  initialState: { page: 0, transY: 0, innerHeight: 0, footer: 0 },
+  reducers: {
+    setInnerHeight(state, action: PayloadAction<number>) {
+      state.innerHeight = action.payload;
+    },
+    pageDown(state) {
+      if (state.page < 3) {
+        state.page += 1;
+      } else {
+        state.footer = 200;
+      }
+    },
+    pageUp(state) {
+      if (state.page === 3 && state.footer > 0) {
+        state.footer = 0;
+      } else if (state.page > 0) {
+        state.page -= 1;
+      }
+    },
+    setTransY(state) {
+      state.transY = state.page * state.innerHeight;
+    },
+  },
+});
+export const { setInnerHeight, pageDown, pageUp, setTransY } = homeSlice.actions;
+
 const store = configureStore({
   reducer: {
     movieList: movieList.reducer,
     progress: progressSlice.reducer,
+    home: homeSlice.reducer,
   },
 });
 export default store;

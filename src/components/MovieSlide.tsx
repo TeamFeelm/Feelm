@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Poster } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const MovieSlide = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
@@ -90,14 +90,14 @@ const MovieSlider = styled(Slider)`
     height: auto;
     div {
       width: 100%;
-      height: 80vh;
-      margin-top: 100px;
+      padding-top: 30%;
+      padding-bottom: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     div img {
-      box-shadow: 0px 10px 80px 10px #565656;
+      box-shadow: 0px 0px 80px 10px #565656;
     }
   }
 `;
