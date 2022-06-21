@@ -34,8 +34,8 @@ const QueNum = styled.div`
 `;
 const QueTitle = styled.div`
   font-weight: bold;
-  font-size: 2.5vw;
+  font-size: 3vw;
 `;
 const QueDetail = styled.div`
-  font-size: 2.5vw;
+  font-size: 3vw;
 `;
