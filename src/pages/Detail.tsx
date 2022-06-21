@@ -51,4 +51,5 @@ export const Poster = styled.img`
   src: ${(props) => props.src};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  margin-top: 25px;
 `;

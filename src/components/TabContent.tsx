@@ -1,15 +1,23 @@
 import styled from "styled-components";
+const basic = ({ tab, movie }: propsType) => {
+  return <></>;
+};
 
 export default function TabContent({ tab, movie }: propsType) {
+  console.log(movie);
   return (
     <ContentBox>
-      {(tab === 0 && <Span>{movie.genre}</Span>) ||
-        (tab === 1 && <Span>{movie.cast}</Span>) ||
-        (tab === 2 && <Span>{movie.synop}</Span>)}
+      {(tab === 0 && (
+        <>
+          <P>장르: {movie.genre}</P>
+          <P>감독: {movie.director}</P>
+        </>
+      )) ||
+        (tab === 1 && <P>{movie.cast}</P>) ||
+        (tab === 2 && <P>{movie.synop}</P>)}
     </ContentBox>
   );
 }
-
 interface propsType {
   tab: number;
   movie: {
@@ -35,6 +43,6 @@ export const ContentBox = styled.div`
   }
 `;
 
-export const Span = styled.span`
+export const P = styled.p`
   line-height: 1.7em;
 `;
