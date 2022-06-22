@@ -24,7 +24,7 @@ const Box = styled.img`
   &:hover {
     cursor: pointer;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     width: 270px;
     height: 375px;
   }

@@ -11,7 +11,7 @@ export default function Test() {
     <>
       <QuestionsWrap>
         <QuestionList progress={progress} />
-        <VideoBg src="src\components\test\qna\testbg.mp4" muted autoPlay loop>
+        <VideoBg src="src\assets\videos\testbg.mp4" muted autoPlay loop>
           <strong>Your browser does not support the video tag.</strong>
         </VideoBg>
         <AnswerList progress={progress} />

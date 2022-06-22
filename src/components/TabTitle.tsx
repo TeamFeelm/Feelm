@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { TabContent } from "../components";
 import styled from "styled-components";
-
 export default function TabTitle({ movie }: movie) {
+  const [tabTitle] = useState(["기본", "출연", "시놉시스"]);
   const [tab, setTab] = useState(0);
   return (
     <>
-      {/* 탭 헤드라인 영역 */}
+      {/* 탭 헤드라인 */}
       <TabBox>
-        <Tab onClick={() => setTab(0)}>기본</Tab>
-        <Tab onClick={() => setTab(1)}>출연</Tab>
-        <Tab onClick={() => setTab(2)}>시놉시스</Tab>
+        {tabTitle.map((heading, i) => {
+          return <Tab onClick={() => setTab(i)}>{heading}</Tab>;
+        })}
       </TabBox>
-      {/* 탭 클릭시 언더라인 애니메이션 적용(styled props를 이용한 동적 스타일링) */}
-      <Underline>{(tab === 0 && <Lines />) || (tab === 1 && <Lines x={100} />) || (tab === 2 && <Lines x={200} />)}</Underline>
+      {/* 탭 클릭 언더라인 애니메이션 */}
+      <Underline>{<Lines x={tab * 100}></Lines>}</Underline>
       {/* 탭별 세부내용 */}
       <TabContent movie={movie} tab={tab} />
     </>
@@ -53,7 +53,7 @@ export const TabBox = styled.div<styleProps>`
   }
 `;
 
-export const Tab = styled.div`
+export const Tab = styled.div<styleProps>`
   display: flex;
   flex-basis: 33.333333%;
   justify-content: center;

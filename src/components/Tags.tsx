@@ -6,6 +6,7 @@ import { findMoviesByTag } from "../store";
 const Tags = () => {
   const dispatch = useDispatch();
   const [hashTags, setHashTags] = useState([
+    "전체",
     "액션",
     "스릴러",
     "호러",

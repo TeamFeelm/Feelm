@@ -1,73 +1,67 @@
-import { MovieSlide, Canvas } from "../components";
+import { MovieSlide, TeamComment, Canvas } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
-import _, { debounce } from "lodash";
+import { debounce } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, setInnerHeight, pageDown, pageUp, setTransY } from "../store";
 
 export default function Home() {
   const DIVIDER = 3;
-
+  const dispatch = useDispatch();
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
-  const [page, setPage] = useState(0);
-  const [y, setY] = useState(0);
-
+  const home = useSelector((state: RootState) => state.home);
+  const [slide, setSlide] = useState(3);
   useEffect(() => {
-    const wheelHandler = (e: WheelEvent) => {
+    const wheelHandler = debounce((e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
       if (deltaY > 0) {
-        setPage((prev) => {
-          if (prev < 4) {
-            return prev + 1;
-          } else {
-            return prev;
-          }
-        });
+        dispatch(pageDown());
       } else {
-        setPage((prev) => {
-          if (prev > 0) {
-            return prev - 1;
-          } else {
-            return prev;
-          }
-        });
+        dispatch(pageUp());
       }
-    };
+    }, 75);
     const preventScroll = (e: WheelEvent) => {
       e.preventDefault();
     };
     outerRef.current.addEventListener("wheel", preventScroll);
-    outerRef.current.addEventListener("wheel", debounce(wheelHandler, 75));
+    outerRef.current.addEventListener("wheel", wheelHandler);
+    /*return () => {
+      outerRef.current.removeEventListener("wheel", preventScroll);
+      outerRef.current.removeEventListener("wheel", wheelHandler);
+    };*/
   }, [outerRef]);
 
   useEffect(() => {
-    const resizePageHeight = () => {
-      setPageHeight(window.innerHeight + DIVIDER);
-    };
-    window.addEventListener("resize", debounce(resizePageHeight, 100));
+    dispatch(setInnerHeight(window.innerHeight + DIVIDER));
+    setSlide(Math.floor(window.innerWidth / 768 + 1));
+    const resizePageHeight = debounce(() => {
+      dispatch(setInnerHeight(window.innerHeight + DIVIDER));
+      setSlide(Math.floor(window.innerWidth / 768 + 1));
+    }, 200);
+    window.addEventListener("resize", resizePageHeight);
     return () => {
-      window.removeEventListener("resize", debounce(resizePageHeight, 100));
+      window.removeEventListener("resize", resizePageHeight);
     };
   }, []);
 
   useEffect(() => {
-    setY(page * pageHeight);
-  }, [page, pageHeight]);
+    dispatch(setTransY());
+  }, [home.page, home.innerHeight]);
 
   return (
-    <Outer transY={y} ref={outerRef}>
-      <Box color="lightblue">
-        <Canvas></Canvas>
-      </Box>
-      <Divider></Divider>
-      <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
-      <Divider></Divider>
-      <MovieSlide></MovieSlide>
-      <Divider></Divider>
-      <Box color="orange">ㅆㅣㅈㅏㅇ</Box>
-      <Divider></Divider>
-      <Box color="lightyellow">ㅆㅣㅈㅏㅇ</Box>
-    </Outer>
+    <>
+      <Outer transY={home.transY} ref={outerRef}>
+        <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
+        <Divider></Divider>
+        <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
+        <Divider></Divider>
+        <MovieSlide slide={slide}></MovieSlide>
+        <Divider></Divider>
+        <TeamComment />
+      </Outer>
+      <Foot opacity={home.footer}>Footer</Foot>
+    </>
   );
 }
 
@@ -77,6 +71,10 @@ interface color {
 
 interface transY {
   transY: number;
+}
+
+interface opacity {
+  opacity: number;
 }
 
 const Outer = styled.div<transY>`
@@ -90,7 +88,7 @@ const Divider = styled.div`
   background-color: gray;
 `;
 
-const Box = styled.div<color>`
+export const Box = styled.div<color>`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.color};
@@ -108,4 +106,16 @@ const Cgv = styled.div`
   backdrop-filter: blur(10px);
   color: white;
   text-align: center;
+`;
+
+const Foot = styled.div<opacity>`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: ${(props) => props.opacity}px;
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+  transition: 0.3s all ease;
 `;
