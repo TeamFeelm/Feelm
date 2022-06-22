@@ -9,7 +9,11 @@ export default function TabTitle({ movie }: movie) {
       {/* 탭 헤드라인 */}
       <TabBox>
         {tabTitle.map((heading, i) => {
-          return <Tab onClick={() => setTab(i)}>{heading}</Tab>;
+          return (
+            <Tab onClick={() => setTab(i)} key={i}>
+              {heading}
+            </Tab>
+          );
         })}
       </TabBox>
       {/* 탭 클릭 언더라인 애니메이션 */}
