@@ -50,7 +50,12 @@ const movieList = createSlice({
       state.result = result;
     },
     findMoviesByTag(state, action: PayloadAction<string>) {
-      const result = state.movies.filter((item) => item.genre.some((el) => el == action.payload));
+      let result;
+      if (action.payload === "전체") {
+        result = state.movies;
+      } else {
+        result = state.movies.filter((item) => item.genre.some((el) => el == action.payload));
+      }
       state.result = result;
     },
   },

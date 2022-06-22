@@ -16,7 +16,7 @@ const SearchBox = styled.div`
   height: 100%;
   margin: auto;
   position: relative;
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     width: 90vw;
   }
   @media screen and (max-width: 768px) {
