@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       <Outer transY={home.transY} ref={outerRef}>
-        <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
+        <Canvas></Canvas>
         <Divider></Divider>
         <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
         <Divider></Divider>
@@ -96,16 +96,6 @@ export const Box = styled.div<color>`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Cgv = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  backdrop-filter: blur(10px);
-  color: white;
-  text-align: center;
 `;
 
 const Foot = styled.div<opacity>`
