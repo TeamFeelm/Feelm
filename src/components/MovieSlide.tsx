@@ -13,7 +13,7 @@ const MovieSlide = () => {
     dotsClass: "slick-dots slick-thumb",
     infinite: true,
     speed: 600,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,

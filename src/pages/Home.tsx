@@ -1,14 +1,16 @@
-import { MovieSlide } from "../components";
+import { MovieSlide, Canvas } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import _, { debounce } from "lodash";
 
 export default function Home() {
   const DIVIDER = 3;
+
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [pageHeight, setPageHeight] = useState(window.innerHeight + DIVIDER);
   const [page, setPage] = useState(0);
   const [y, setY] = useState(0);
+
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
       e.preventDefault();
@@ -54,7 +56,9 @@ export default function Home() {
 
   return (
     <Outer transY={y} ref={outerRef}>
-      <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
+      <Box color="lightblue">
+        <Canvas></Canvas>
+      </Box>
       <Divider></Divider>
       <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
       <Divider></Divider>
@@ -94,4 +98,14 @@ const Box = styled.div<color>`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Cgv = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  color: white;
+  text-align: center;
 `;
