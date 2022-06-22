@@ -1,6 +1,6 @@
 import { MovieSlide } from "../components";
 import styled from "styled-components";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, setInnerHeight, pageDown, pageUp, setTransY } from "../store";
@@ -10,6 +10,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const outerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const home = useSelector((state: RootState) => state.home);
+  const [slide, setSlide] = useState(3);
   useEffect(() => {
     const wheelHandler = debounce((e: WheelEvent) => {
       e.preventDefault();
@@ -33,8 +34,10 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(setInnerHeight(window.innerHeight + DIVIDER));
+    setSlide(Math.floor(window.innerWidth / 768 + 1));
     const resizePageHeight = debounce(() => {
       dispatch(setInnerHeight(window.innerHeight + DIVIDER));
+      setSlide(Math.floor(window.innerWidth / 768 + 1));
     }, 200);
     window.addEventListener("resize", resizePageHeight);
     return () => {
@@ -53,7 +56,7 @@ export default function Home() {
         <Divider></Divider>
         <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
         <Divider></Divider>
-        <MovieSlide></MovieSlide>
+        <MovieSlide slide={slide}></MovieSlide>
         <Divider></Divider>
         <Box color="orange">ㅆㅣㅈㅏㅇ</Box>
       </Outer>

@@ -25,7 +25,7 @@ const ResultBox = styled.div`
   @media screen and (max-width: 1462px) {
     width: 760px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     width: 870px;
   }
   @media screen and (max-width: 967px) {
