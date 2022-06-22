@@ -1,4 +1,4 @@
-import { MovieSlide, TeamComment } from "../components";
+import { MovieSlide, TeamComment, Canvas } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       <Outer transY={home.transY} ref={outerRef}>
-        <Box color="lightblue">ㅆㅣㅈㅏㅇ</Box>
+        <Canvas></Canvas>
         <Divider></Divider>
         <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
         <Divider></Divider>
