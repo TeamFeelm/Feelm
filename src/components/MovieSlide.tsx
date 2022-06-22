@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useEffect, useState } from "react";
 
-const MovieSlide = () => {
+const MovieSlide = ({ slide }: props) => {
   const movieList = useSelector((state: RootState) => state.movieList);
   const [shuffle, setShuffle] = useState<movieType[]>([]);
   const settings = {
@@ -14,7 +14,7 @@ const MovieSlide = () => {
     adaptiveHeight: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: slide,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
@@ -46,6 +46,9 @@ const MovieSlide = () => {
   );
 };
 
+interface props {
+  slide: number;
+}
 interface movieType {
   id: string;
   title: string;
@@ -90,8 +93,8 @@ const MovieSlider = styled(Slider)`
     height: auto;
     div {
       width: 100%;
-      padding-top: 30%;
-      padding-bottom: 30%;
+      padding-top: 20vh;
+      padding-bottom: 10vh;
       display: flex;
       justify-content: center;
       align-items: center;
