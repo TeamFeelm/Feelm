@@ -8,7 +8,7 @@ export default function DataDummy() {
 
   useEffect(() => {
     (async () => {
-      const db = await axios.get("https://raw.githubusercontent.com/10004ok/dummyList/10004ok/movieList.json");
+      const db = await axios.get("https://raw.githubusercontent.com/TeamFeelm/MovieList/master/movieList.json");
       dispatch(setMovies(db.data.movieList));
       console.log("데이터 로드 성공");
     })();

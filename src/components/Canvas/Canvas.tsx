@@ -1,8 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { start } from "repl";
 import styled from "styled-components";
-import { RootState } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
