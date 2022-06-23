@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, resetAnsIdx } from "../../../store";
+import { RootState, resetAnsIdx } from "../store";
+import TestResultData from "../components/Test/Result/TestResultData.json";
 
 export default function TestResult() {
   const ansIdxArray = useSelector((state: RootState) => state.progress.ansIdxArray);
   const dispatch = useDispatch();
+  const [resultIdx, setResultIdx] = useState(0);
+  const data = TestResultData[resultIdx];
+
   useEffect(() => {
     let drama = 0;
     let fantasy = 0;
@@ -126,11 +130,24 @@ export default function TestResult() {
     console.log(resultArr);
 
     console.log(resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr)));
-
+    setResultIdx(resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr)));
     return () => {
       dispatch(resetAnsIdx());
     };
   }, [ansIdxArray]);
 
-  return <>result입니다</>;
+  const sc = require(`src/assets/characters/${data.img}`).default;
+  return (
+    <>
+      {resultIdx}
+      <div>
+        <div>
+          {data.name}
+          {data.genre}
+        </div>
+        <img src={sc} />
+        <div></div>
+      </div>
+    </>
+  );
 }
