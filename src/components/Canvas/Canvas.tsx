@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { start } from "repl";
 import styled from "styled-components";
-import { RootState } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
   let ctx: any = undefined;
 
   const video = useRef() as React.MutableRefObject<HTMLVideoElement>;
+
+  const spotRaf = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const text = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
     const canvas = canvasRaf.current;
@@ -18,57 +18,125 @@ export default function Canvas() {
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
 
-    let oX = canvas.width / 2;
-    let oY = canvas.height / 4;
-    let scale = 0.01;
+    let x = 0.2;
+    let y = 0.3;
 
-    const stateTitle = [
-      {
-        time: 1,
-        message: "여러분이 만약 영화속에 들어가게된다면 어떤 캐릭터가 되게 될까요",
-        x: oX,
-        y: oY,
-      },
-      {
-        time: 2,
-        message: "테스트를 진행하시고 당신의 캐릭터를 찾아보세요",
-        x: oX,
-        y: oY + 70,
-      },
-    ];
+    let circle1 = 0.5;
+    let circle2 = 0.2;
 
-    const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 1)";
-      ctx.resetTransform();
-      ctx.textAlign = "center";
-      ctx.font = "normal 60px serif";
-      ctx.resetTransform();
-    };
+    let step = 1;
 
-    const render = () => {
+    let id: any;
+    let id2: any;
+
+    const render: any = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(video.current, 0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < stateTitle.length; i++) {
-        if (video.current.currentTime > stateTitle[i].time) {
-          scale = scale + (1 - scale) * 0.1;
-          ctx.scale(scale, scale);
-          ctx.fillText(stateTitle[i].message, stateTitle[i].x, stateTitle[i].y);
-          draw();
-          if (scale >= 0.999) {
-            scale = 1;
-          }
-        }
-      }
+      id = requestAnimationFrame(resetFocus);
+      id2 = requestAnimationFrame(render);
+    };
 
-      requestAnimationFrame(render);
+    const resetFocus: any = () => {
+      spotRaf.current.style.background = `radial-gradient(
+        circle
+        ${(window.innerWidth + window.innerHeight) * circle1 * circle2}px at 
+        ${window.innerWidth * x + "px"} 
+        ${window.innerHeight * y + "px"},
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 70%,
+        rgba(0, 0, 0, 1) 100%`;
+
+      switch (step) {
+        case 1:
+          if (x < 0.8 && step == 1) {
+            x += 0.02;
+            y += 0.02;
+          }
+          if (x >= 0.8) {
+            step = 2;
+          }
+          break;
+
+        case 2:
+          if (x >= 0.1 && step == 2) {
+            x -= 0.02;
+            y -= 0.01;
+          }
+          if (x <= 0.1) {
+            step = 3;
+          }
+          break;
+
+        case 3:
+          if (x <= 0.1 && step == 3) {
+            x += 0.01;
+            y -= 0.02;
+          }
+          if (y >= 0.1) {
+            step = 4;
+          }
+          break;
+
+        case 4:
+          if (y >= 0.1 && step == 4) {
+            x += 0.02;
+            y += 0.02;
+          }
+          if (y >= 0.8) {
+            step = 5;
+          }
+          break;
+
+        case 5:
+          if (y >= 0.8 && step == 5) {
+            x -= 0.02;
+            y -= 0.02;
+          }
+          if (y >= 0.1) {
+            step = 6;
+          }
+          break;
+
+        case 6:
+          if (y >= 0.1 && step == 6) {
+            x += 0.01;
+            y -= 0.02;
+          }
+          if (y <= 0.4) {
+            circle1 += 0.02;
+            circle2 += 0.02;
+          }
+          if (circle1 >= 1) {
+            text.current.style.opacity = "1";
+            step = 7;
+          }
+          break;
+
+        case 7:
+          if (circle1 == window.innerWidth) {
+            circle1 == window.innerWidth;
+            circle2 == window.innerHeight;
+          }
+          break;
+      }
     };
 
     video.current.addEventListener("canplaythrough", render);
+    video.current.addEventListener("canplaythrough", resetFocus);
+
+    return () => {
+      cancelAnimationFrame(id);
+      cancelAnimationFrame(id2);
+    };
   }, []);
 
   return (
     <MovieBox>
+      <SpotLight ref={spotRaf} />
+      <Text ref={text}>
+        <h1>영화 등장인물 테스트</h1>
+      </Text>
       <Video ref={video} src="src\assets\images\asd.mp4" autoPlay muted loop></Video>
       <canvas ref={canvasRaf} style={{ width: "100vw", height: "100vh" }}></canvas>
     </MovieBox>
@@ -84,4 +152,29 @@ const Video = styled.video`
 const MovieBox = styled.div`
   width: 100vw;
   height: 100vh;
+`;
+
+const SpotLight = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle 50px at 100px 100px,
+    rgba(0, 0, 0, 0.01) 0%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0.96) 100%
+  );
+  transition: top 0.1s, left 0.1s;
+  z-index: 10;
+`;
+
+const Text = styled.div`
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  top: 10%;
+  font-size: 2rem;
+  transition-duration: 1s;
+  color: white;
 `;
