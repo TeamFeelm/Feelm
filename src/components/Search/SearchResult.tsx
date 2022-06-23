@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Poster from "./Poster";
+import Poster from "../Poster";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 
 const Result = () => {
   const movieList = useSelector((state: RootState) => state.movieList);

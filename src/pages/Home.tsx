@@ -26,10 +26,10 @@ export default function Home() {
     };
     outerRef.current.addEventListener("wheel", preventScroll);
     outerRef.current.addEventListener("wheel", wheelHandler);
-    /*return () => {
-      outerRef.current.removeEventListener("wheel", preventScroll);
-      outerRef.current.removeEventListener("wheel", wheelHandler);
-    };*/
+    // return (() => {
+    //   outerRef.current.removeEventListener("wheel", preventScroll);
+    //   outerRef.current.removeEventListener("wheel", wheelHandler);
+    // });
   }, [outerRef]);
 
   useEffect(() => {

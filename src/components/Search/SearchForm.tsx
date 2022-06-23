@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { findMoviesByValue } from "../store";
+import { findMoviesByValue } from "../../store";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
 
