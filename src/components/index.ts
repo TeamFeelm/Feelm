@@ -11,3 +11,8 @@ export { default as TabTitle } from "./TabTitle";
 export { default as TabContent } from "./TabContent";
 export { default as Canvas } from "./Canvas/Canvas";
 export { default as TeamComment } from "./TeamComment";
+// test
+export { default as QuestionList } from "./TempTest/TempQna/QuestionList";
+export { default as AnswerList } from "./TempTest/TempQna/AnswerList";
+// test-result
+export { default as TestResult } from "./TempTest/TempResult/TestResult";
