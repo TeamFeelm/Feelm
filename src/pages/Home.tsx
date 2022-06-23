@@ -38,7 +38,7 @@ export default function Home() {
     const resizePageHeight = debounce(() => {
       dispatch(setInnerHeight(window.innerHeight + DIVIDER));
       setSlide(Math.floor(window.innerWidth / 768 + 1));
-    }, 200);
+    }, 100);
     window.addEventListener("resize", resizePageHeight);
     return () => {
       window.removeEventListener("resize", resizePageHeight);
