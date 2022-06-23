@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { findMoviesByTag } from "../store";
+import { findMoviesByTag } from "../../store";
 
 const Tags = () => {
   const dispatch = useDispatch();

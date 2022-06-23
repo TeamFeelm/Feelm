@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Result, Tags, Search } from "../components";
+import { SearchResult, Tags, SearchForm } from "../components";
 
 const SearchPage = () => {
   return (
     <SearchBox>
-      <Search></Search>
+      <SearchForm></SearchForm>
       <Tags></Tags>
-      <Result></Result>
+      <SearchResult></SearchResult>
     </SearchBox>
   );
 };
