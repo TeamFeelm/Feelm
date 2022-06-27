@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, resetAnsIdx } from "../store";
 import styled from "styled-components";
@@ -9,6 +9,8 @@ export default function TestResult() {
   const dispatch = useDispatch();
   const [resultIdx, setResultIdx] = useState(0);
   const data = TestResultData[resultIdx];
+
+  const Character = useRef() as React.MutableRefObject<HTMLImageElement>;
 
   useEffect(() => {
     let drama = 0;
@@ -29,6 +31,12 @@ export default function TestResult() {
     const soso = 0.9;
     const bad = 0.5;
     const verybad = -0.45;
+
+    window.addEventListener("mousemove", (e) => {
+      let x = (window.innerWidth / 1.5 - e.pageX) / 40;
+      let y = (window.innerHeight / 2 - e.pageY) / 40;
+      Character.current.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
+    });
 
     // 질문 1번
     if (ansIdxArray[1] === 0) {
@@ -155,7 +163,7 @@ export default function TestResult() {
           </tr>
         </TestResultList>
         <CharacterCard>
-          <CharacterImg src={`/src/assets/characters/${data.img}`} />
+          <CharacterImg ref={Character} src={`/src/assets/characters/${data.img}`} />
           {<span></span>}
         </CharacterCard>
       </TestResultWrap>
@@ -183,11 +191,16 @@ const Genre = styled.td`
   font-size: 1vw;
 `;
 
-const CharacterCard = styled.div``;
+const CharacterCard = styled.div`
+  perspective: 1500px;
+`;
 
 const CharacterImg = styled.img`
   width: 500px;
   height: 500px;
   object-fit: cover;
   float: right;
+  transform-style: preserve-3d;
+  transition: transform 0.05s linear;
+  box-shadow: -20px 40px 80px -50px blue;
 `;

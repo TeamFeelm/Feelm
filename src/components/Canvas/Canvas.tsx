@@ -50,9 +50,9 @@ export default function Canvas() {
         ${(window.innerWidth + window.innerHeight) * circle1 * circle2}px at 
         ${window.innerWidth * x + "px"} 
         ${window.innerHeight * y + "px"},
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.3) 70%,
-        rgba(0, 0, 0, 1) 100%`;
+        rgba(1, 5, 27, 0) 0%,
+        rgba(1, 5, 27, 0.3) 70%,
+        rgba(1, 5, 27, 1) 100%`;
 
       switch (step) {
         case 1:
@@ -176,9 +176,9 @@ const SpotLight = styled.div`
   height: 100%;
   background: radial-gradient(
     circle 50px at 100px 100px,
-    rgba(0, 0, 0, 0.01) 0%,
-    rgba(0, 0, 0, 0.5) 70%,
-    rgba(0, 0, 0, 0.96) 100%
+    rgba(1, 5, 27, 0.01) 0%,
+    rgba(1, 5, 27, 0.5) 70%,
+    rgba(1, 5, 27, 0.96) 100%
   );
   transition: top 0.1s, left 0.1s;
   z-index: 10;
