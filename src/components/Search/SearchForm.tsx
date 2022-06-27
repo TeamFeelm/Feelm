@@ -34,21 +34,23 @@ const SearchForm = styled.form`
 `;
 
 const SearchValue = styled.input`
-  width: 150px;
+  width: 200px;
   margin-left: 35px;
   padding-bottom: 4px;
   border-bottom: 1px solid tomato;
-  background-color: white;
+  border-radius: 3px;
+  background-color: #484d64;
   font-family: "SSD";
   font-size: 18px;
   text-align: center;
   transition: width 0.3s;
+  color: white;
   ::placeholder {
-    color: rgba(34, 37, 54, 0.479);
+    color: lightgray;
     font-size: 14px;
   }
   :focus {
-    width: 100%;
+    width: 400px;
   }
 `;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SearchResult, Tags, SearchForm } from "../components";
+import { SearchResult, Tags, SearchForm, Footer } from "../components";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
@@ -29,6 +29,7 @@ const SearchPage = () => {
           }}
         ></BsArrowUpCircle>
       )}
+      <Footer height={105}></Footer>
     </SearchBox>
   );
 };

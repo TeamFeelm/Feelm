@@ -65,7 +65,7 @@ export const Tab = styled.div<styleProps>`
   padding: 10px 0;
   cursor: pointer;
   :hover {
-    background-color: black;
+    background-color: #8080d8;
     transition: all 0.5s;
     color: white;
   }

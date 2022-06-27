@@ -110,7 +110,7 @@ const homeSlice = createSlice({
       if (state.page < 3) {
         state.page += 1;
       } else {
-        state.footer = 150;
+        state.footer = 105;
       }
     },
     pageUp(state) {

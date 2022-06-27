@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     height: auto;
+    background-color: rgba(1, 5, 27, 1);
+    color: white;
   }
 
   .hide {
