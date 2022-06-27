@@ -85,7 +85,7 @@ const Outer = styled.div<transY>`
 const Divider = styled.div`
   width: 100%;
   height: 3px;
-  background-color: gray;
+  background-color: rgba(1, 5, 27, 1);
 `;
 
 const Foot = styled.div<opacity>`

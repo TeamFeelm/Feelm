@@ -42,8 +42,8 @@ const Tags = () => {
 const Tag = styled.span`
   width: auto;
   height: auto;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: rgba(1, 5, 27, 1);
   margin-left: 10px;
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -53,7 +53,7 @@ const Tag = styled.span`
 
 const Box = styled.div`
   width: 80%;
-  height: auto;
+  height: fit-content;
   margin: auto;
   margin-top: 30px;
 `;

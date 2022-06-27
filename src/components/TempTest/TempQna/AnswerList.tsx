@@ -3,6 +3,7 @@ import AnswerData from "./AnswerData.json";
 import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } from "../../../store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 export default function AnswerList({ progress }: props) {
   const data = AnswerData.answers[progress];
@@ -37,7 +38,11 @@ export default function AnswerList({ progress }: props) {
             {ans}
           </AnsNextDiv>
         ))}
-        {progress > 0 && <AnsPrevDiv onClick={prev}>뒤로가기</AnsPrevDiv>}
+        {progress > 0 && (
+          <AnsPrevDiv>
+            뒤로 가기<RiArrowGoBackLine className="prev_btn"></RiArrowGoBackLine>
+          </AnsPrevDiv>
+        )}
       </AnsWrap>
     </>
   );
@@ -65,4 +70,6 @@ const AnsNextDiv = styled.div`
 const AnsPrevDiv = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   right: 0;
+  .prev_btn {
+  }
 `;

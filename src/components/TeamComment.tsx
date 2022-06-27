@@ -41,7 +41,6 @@ export default function TeamComment() {
 
 const InnerBox = styled.div`
   width: 48vw;
-  background-color: tomato;
   font-size: 50px;
   display: flex;
   justify-content: space-between;
@@ -74,7 +73,7 @@ const Right = styled.div`
 const B = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: tomato;
+  background-color: #f05c42ce;
   font-size: 50px;
   display: flex;
   justify-content: space-around;
