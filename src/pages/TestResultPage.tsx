@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, resetAnsIdx } from "../../../store";
+import { RootState, resetAnsIdx } from "../store";
+import styled from "styled-components";
+import TestResultData from "../components/Test/Result/TestResultData.json";
 
 export default function TestResult() {
   const ansIdxArray = useSelector((state: RootState) => state.progress.ansIdxArray);
   const dispatch = useDispatch();
+  const [resultIdx, setResultIdx] = useState(0);
+  const data = TestResultData[resultIdx];
+
   useEffect(() => {
     let drama = 0;
     let fantasy = 0;
@@ -125,12 +130,64 @@ export default function TestResult() {
     const resultArr = [drama, fantasy, hero, action, comedy, anime, music, horror, criminal, romance, sf, adult];
     console.log(resultArr);
 
+    setResultIdx(resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr)));
     console.log(resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr)));
-
     return () => {
       dispatch(resetAnsIdx());
     };
   }, [ansIdxArray]);
 
-  return <>result입니다</>;
+  return (
+    <>
+      <TestResultWrap>
+        <TestResultList>
+          <tr>
+            <Chracter>{data.name}</Chracter>
+          </tr>
+          <tr>
+            <Detail>{data.title1},</Detail>
+          </tr>
+          <tr>
+            <Detail>{data.title2}!</Detail>
+          </tr>
+          <tr>
+            <Genre>{data.genre}</Genre>
+          </tr>
+        </TestResultList>
+        <CharacterCard>
+          <CharacterImg src={`/src/assets/characters/${data.img}`} />
+          {<span></span>}
+        </CharacterCard>
+      </TestResultWrap>
+    </>
+  );
 }
+
+const TestResultWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 5vw;
+`;
+
+const TestResultList = styled.table`
+  height: auto;
+  float: left;
+`;
+const Chracter = styled.th`
+  font-size: 2vw;
+`;
+const Detail = styled.td`
+  font-size: 1vw;
+`;
+const Genre = styled.td`
+  font-size: 1vw;
+`;
+
+const CharacterCard = styled.div``;
+
+const CharacterImg = styled.img`
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  float: right;
+`;
