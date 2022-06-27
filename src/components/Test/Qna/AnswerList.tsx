@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
-import { incrementProgress, decrementProgress, resetProgress, saveAnsIdx, delLastAnsIdx } from "../../../store";
-import { useDispatch } from "react-redux";
+import { incrementProgress, decrementProgress, onChangeAnsIdx, delLastAnsIdx, testResultCalc } from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
@@ -12,10 +12,10 @@ export default function AnswerList({ progress }: props) {
   const next = (idx: any) => {
     if (progress < 7) {
       dispatch(incrementProgress(1));
-      dispatch(saveAnsIdx(idx));
+      dispatch(onChangeAnsIdx(idx));
     } else {
+      dispatch(testResultCalc());
       navigate(`/test/result`);
-      dispatch(resetProgress());
     }
   };
   const prev = () => {
