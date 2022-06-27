@@ -1,4 +1,4 @@
-import { MovieSlide, TeamComment, Canvas } from "../components";
+import { MovieSlide, TeamComment, Canvas, Footer } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
@@ -60,7 +60,7 @@ export default function Home() {
         <Divider></Divider>
         <TeamComment />
       </Outer>
-      <Foot opacity={home.footer}>Footer</Foot>
+      <Footer height={home.footer}></Footer>
     </>
   );
 }
