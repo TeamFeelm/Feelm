@@ -186,10 +186,12 @@ const SpotLight = styled.div`
 
 const Text = styled.div`
   position: absolute;
-  width: 100%;
+  width: fit-content;
   text-align: center;
   opacity: 0;
   top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
   font-size: 2rem;
   transition-duration: 1s;
   color: white;
@@ -197,16 +199,22 @@ const Text = styled.div`
 
 const StartBtn = styled.button`
   position: absolute;
-  bottom: 150px;
-  right: 100px;
-  color: white;
-  background-color: transparent;
-  padding: 30px 80px 30px 80px;
-  border-radius: 40px;
-  border: 1px solid white;
+  bottom: 25vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: rgba(1, 5, 27, 1);
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 200px;
+  height: 80px;
+  border-radius: 5px;
   font-size: 20px;
   transition-duration: 1s;
   z-index: 100;
   opacity: 0;
-  cursor: default;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    transition-duration: 0.2s;
+    font-size: 22px;
+  }
 `;

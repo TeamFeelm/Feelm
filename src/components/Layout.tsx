@@ -1,19 +1,19 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Layout() {
   return (
     <>
       <TopNav style={{ display: "flex" }}>
-        <Link to="/">
+        <NavLink to="/" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
           <Space>Home</Space>
-        </Link>
-        <Link to="/test">
+        </NavLink>
+        <NavLink to="/test" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
           <Space>Test</Space>
-        </Link>
-        <Link to="/search">
+        </NavLink>
+        <NavLink to="/search" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
           <Space>Search</Space>
-        </Link>
+        </NavLink>
       </TopNav>
       <main>
         <Outlet></Outlet>
@@ -32,9 +32,9 @@ const TopNav = styled.nav`
   z-index: 10;
   height: 50px;
 
-  background-color: rgba(1, 5, 27, 1);
+  background-color: #030a2e;
   color: white;
-  box-shadow: black 0px 0px 5px;
+  box-shadow: white 0px -25px 50px;
 `;
 
 const Space = styled.div`
@@ -43,13 +43,12 @@ const Space = styled.div`
   justify-content: center;
   align-items: center;
   width: 70px;
-  height: 30px;
+  height: 46px;
   margin: 0 10px;
   font-size: 1em;
   font-family: "SSD";
-  transition: box-shadow 0.3s;
   border-radius: 30px;
   :hover {
-    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+    opacity: 0.7;
   }
 `;
