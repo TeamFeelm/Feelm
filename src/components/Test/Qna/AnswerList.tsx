@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import AnswerData from "./AnswerData.json";
-import {
-  incrementProgress,
-  decrementProgress,
-  resetProgress,
-  onChangeAnsIdx,
-  delLastAnsIdx,
-  testResultCalc,
-} from "../../../store";
+import { incrementProgress, decrementProgress, onChangeAnsIdx, delLastAnsIdx, testResultCalc } from "../../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RiArrowGoBackLine } from "react-icons/ri";

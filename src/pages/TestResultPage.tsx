@@ -58,11 +58,16 @@ const Genre = styled.td`
   font-size: 1vw;
 `;
 
-const CharacterCard = styled.div``;
+const CharacterCard = styled.div`
+  perspective: 1500px;
+`;
 
 const CharacterImg = styled.img`
   width: 500px;
   height: 500px;
   object-fit: cover;
   float: right;
+  transform-style: preserve-3d;
+  transition: transform 0.05s linear;
+  box-shadow: -20px 40px 80px -50px blue;
 `;
