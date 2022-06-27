@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Canvas() {
@@ -9,6 +10,12 @@ export default function Canvas() {
 
   const spotRaf = useRef() as React.MutableRefObject<HTMLDivElement>;
   const text = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const btn = useRef() as React.MutableRefObject<HTMLButtonElement>;
+
+  const navigate = useNavigate();
+  const btnClick = () => {
+    navigate("/test");
+  };
 
   useEffect(() => {
     const canvas = canvasRaf.current;
@@ -50,8 +57,8 @@ export default function Canvas() {
       switch (step) {
         case 1:
           if (x < 0.8 && step == 1) {
-            x += 0.02;
-            y += 0.02;
+            x += 0.03;
+            y += 0.03;
           }
           if (x >= 0.8) {
             step = 2;
@@ -70,7 +77,7 @@ export default function Canvas() {
 
         case 3:
           if (x <= 0.1 && step == 3) {
-            x += 0.01;
+            x += 0.02;
             y -= 0.02;
           }
           if (y >= 0.1) {
@@ -109,15 +116,21 @@ export default function Canvas() {
           }
           if (circle1 >= 1) {
             text.current.style.opacity = "1";
+            btn.current.style.opacity = "1";
             step = 7;
           }
           break;
 
         case 7:
-          if (circle1 == window.innerWidth) {
+          if (circle1 >= 1) {
             circle1 == window.innerWidth;
             circle2 == window.innerHeight;
+            btn.current.style.cursor = "pointer";
+            step = 8;
           }
+          break;
+
+        case 8:
           break;
       }
     };
@@ -137,6 +150,9 @@ export default function Canvas() {
       <Text ref={text}>
         <h1>영화 등장인물 테스트</h1>
       </Text>
+      <StartBtn ref={btn} onClick={btnClick}>
+        TEST START
+      </StartBtn>
       <Video ref={video} src="src\assets\images\asd.mp4" autoPlay muted loop></Video>
       <canvas ref={canvasRaf} style={{ width: "100vw", height: "100vh" }}></canvas>
     </MovieBox>
@@ -177,4 +193,20 @@ const Text = styled.div`
   font-size: 2rem;
   transition-duration: 1s;
   color: white;
+`;
+
+const StartBtn = styled.button`
+  position: absolute;
+  bottom: 150px;
+  right: 100px;
+  color: white;
+  background-color: transparent;
+  padding: 30px 80px 30px 80px;
+  border-radius: 40px;
+  border: 1px solid white;
+  font-size: 20px;
+  transition-duration: 1s;
+  z-index: 100;
+  opacity: 0;
+  cursor: default;
 `;

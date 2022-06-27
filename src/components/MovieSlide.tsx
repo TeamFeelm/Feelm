@@ -66,12 +66,12 @@ const MovieSlider = styled(Slider)`
   width: 100vw;
   height: 100vh;
   display: inline-block;
-  background-color: black;
+  background-color: rgba(1, 5, 27, 1);
   .slick-dots {
     position: absolute;
     top: 30px;
     height: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(1, 5, 27, 1);
     z-index: 1000;
 
     .slick-active {
@@ -89,7 +89,7 @@ const MovieSlider = styled(Slider)`
   }
 
   .slick-slide {
-    background-color: black;
+    background-color: rgba(1, 5, 27, 1);
     height: auto;
     div {
       width: 100%;

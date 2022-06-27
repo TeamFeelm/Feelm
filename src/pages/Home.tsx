@@ -1,4 +1,4 @@
-import { MovieSlide, TeamComment, Canvas } from "../components";
+import { MovieSlide, TeamComment, Canvas, Character, Footer } from "../components";
 import styled from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
@@ -54,13 +54,13 @@ export default function Home() {
       <Outer transY={home.transY} ref={outerRef}>
         <Canvas></Canvas>
         <Divider></Divider>
-        <Box color="lightgreen">ㅆㅣㅈㅏㅇ</Box>
+        <Character />
         <Divider></Divider>
         <MovieSlide slide={slide}></MovieSlide>
         <Divider></Divider>
         <TeamComment />
       </Outer>
-      <Foot opacity={home.footer}>Footer</Foot>
+      <Footer height={home.footer}></Footer>
     </>
   );
 }
@@ -85,17 +85,7 @@ const Outer = styled.div<transY>`
 const Divider = styled.div`
   width: 100%;
   height: 3px;
-  background-color: gray;
-`;
-
-export const Box = styled.div<color>`
-  width: 100vw;
-  height: 100vh;
-  background-color: ${(props) => props.color};
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(1, 5, 27, 1);
 `;
 
 const Foot = styled.div<opacity>`
