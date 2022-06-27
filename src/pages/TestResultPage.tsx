@@ -136,17 +136,18 @@ export default function TestResult() {
     };
   }, [ansIdxArray]);
 
-  const sc = require(`src/assets/characters/${data.img}`).default;
+  // const src = src\assets\characters\김태리1.jpg;
   return (
     <>
-      {resultIdx}
       <div>
+        {resultIdx}
         <div>
           {data.name}
           {data.genre}
         </div>
-        <img src={sc} />
-        <div></div>
+        <div>
+          <img src={`/src/assets/characters/${data.img}`} />
+        </div>
       </div>
     </>
   );
