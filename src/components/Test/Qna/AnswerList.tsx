@@ -39,7 +39,7 @@ export default function AnswerList({ progress }: props) {
           </AnsNextDiv>
         ))}
         {progress > 0 && (
-          <AnsPrevDiv>
+          <AnsPrevDiv onClick={prev}>
             뒤로 가기<RiArrowGoBackLine className="prev_btn"></RiArrowGoBackLine>
           </AnsPrevDiv>
         )}
@@ -53,23 +53,38 @@ interface props {
 }
 
 const AnsWrap = styled.div`
-  font-size: 1.5vw;
+  font-size: 1.5rem;
   color: white;
-  background-color: rgba(255, 255, 255, 0.1);
   text-align: center;
-
   position: fixed;
-  width: 80%;
-  bottom: 20%;
-  left: 10%;
+  width: fit-content;
+  min-width: 400px;
+  bottom: 15%;
+  left: 50%;
+  margin: auto;
 `;
 const AnsNextDiv = styled.div`
+  padding: 15px 30px;
+  margin-top: 5px;
+  transform: translate(-50%, 0);
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
+  &:hover {
+    background-color: white;
+    color: rgba(1, 5, 27, 1);
+  }
 `;
 const AnsPrevDiv = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  right: 0;
-  .prev_btn {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1.15rem;
+  margin-top: 20px;
+  cursor: pointer;
+  &:hover {
+    color: darkgray;
   }
 `;

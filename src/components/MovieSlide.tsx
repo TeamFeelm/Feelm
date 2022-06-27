@@ -76,15 +76,16 @@ const MovieSlider = styled(Slider)`
 
     .slick-active {
       button::before {
-        color: #0505be;
+        color: #f5c443;
         font-size: 21px;
+        opacity: 1;
       }
     }
 
     button::before {
-      color: #8080d8;
+      color: #f5c443;
       font-size: 21px;
-      opacity: 0.7;
+      opacity: 0.5;
     }
   }
 

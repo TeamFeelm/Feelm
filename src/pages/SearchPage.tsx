@@ -60,7 +60,7 @@ const SearchBox = styled.div<size>`
     transition: 0.3s all ease;
     cursor: pointer;
     :hover {
-      color: gray;
+      color: #f5c443;
     }
   }
 `;

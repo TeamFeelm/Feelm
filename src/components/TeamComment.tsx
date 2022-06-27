@@ -61,6 +61,7 @@ const Member = styled.div`
   font-size: 16px;
   text-align: center;
   position: relative;
+  color: black;
 `;
 const Left = styled.div`
   padding-bottom: 10vh;
@@ -73,7 +74,7 @@ const Right = styled.div`
 const B = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #f05c42ce;
+  background-color: #f5c443;
   font-size: 50px;
   display: flex;
   justify-content: space-around;
