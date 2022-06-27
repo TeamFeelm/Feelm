@@ -20,7 +20,7 @@ const Search = () => {
     <SearchForm onSubmit={SearchData}>
       <SearchValue type="text" onChange={ChangeValue} placeholder="검색어를 입력해주세요" value={inputValue}></SearchValue>
       <SearchSubmit type="submit" value="검색">
-        <BsSearch size={"1.5em"} color={"tomato"} />
+        <BsSearch size={"1.5em"} className="search_btn" />
       </SearchSubmit>
     </SearchForm>
   );
@@ -29,34 +29,38 @@ const Search = () => {
 const SearchForm = styled.form`
   display: flex;
   justify-content: center;
-  width: 280px;
+  width: fit-content;
   margin: 75px auto 35px;
 `;
 
 const SearchValue = styled.input`
   width: 200px;
+  height: 40px;
   margin-left: 35px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid tomato;
-  border-radius: 3px;
-  background-color: #484d64;
+  border-bottom: 1.5px solid #f5c443;
   font-family: "SSD";
   font-size: 18px;
   text-align: center;
-  transition: width 0.3s;
   color: white;
+  transition: all 0.3s;
   ::placeholder {
     color: lightgray;
     font-size: 14px;
+    opacity: 1;
   }
-  :focus {
-    width: 400px;
+  &:focus {
+    width: 280px;
   }
 `;
 
 const SearchSubmit = styled.button`
-  margin-left: 10px;
-  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid #f5c443;
+  .search_btn {
+    color: #f5c443;
+    opacity: 1;
+  }
 `;
 
 export default Search;

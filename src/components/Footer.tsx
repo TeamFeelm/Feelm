@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Footer({ height }: props) {
   return (
     <Foot height={height}>
-      <a href="https://github.com/TeamFeelm/Feelm">
+      <a href="https://github.com/TeamFeelm/Feelm" target="_blank">
         <img src="/src/assets/images/feelm.png" alt="feelm" width={100} height={50} style={{ objectFit: "cover" }} />
       </a>
       <p>Copyright 2022. Feelm Co. all rights reserved.</p>

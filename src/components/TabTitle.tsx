@@ -65,7 +65,7 @@ export const Tab = styled.div<styleProps>`
   padding: 10px 0;
   cursor: pointer;
   :hover {
-    background-color: #8080d8;
+    background-color: #5f5fc7;
     transition: all 0.5s;
     color: white;
   }
@@ -86,7 +86,7 @@ export const Underline = styled.div`
 // 탭 타이틀 슬라이딩 언더라인
 export const Lines = styled.div<styleProps>`
   flex-basis: 33.333333%;
-  background-color: blue;
+  background-color: #f5c443;
   transform: translateX(${(props) => props.x}%);
   transition: transform 0.6s;
 `;
