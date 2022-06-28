@@ -3,7 +3,11 @@ import styled from "styled-components";
 export default function TeamComment() {
   const member = [
     { name: "재윤", comment: ["니하오마", "압살라이마이쿰", "싸와디캅"], img: "/src/assets/images/재윤.png" },
-    { name: "준용", comment: [""], img: "/src/assets/images/준용.jpg" },
+    {
+      name: "준용",
+      comment: ["반딧불이의 숲으로>> 보고있으면 마음이 평온해지고 힐링되는 영화, 짧은 러닝타임으로 부담없이 즐길 수 있어요."],
+      img: "/src/assets/images/준용.jpg",
+    },
     { name: "자경", comment: [""], img: "/src/assets/images/자경.jpg" },
     { name: "광훈", comment: [""], img: "/src/assets/images/광훈.jpg" },
   ];
@@ -14,12 +18,12 @@ export default function TeamComment() {
           <Member>
             <img src={member[0].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[0].name}</span>
-            <CommentL></CommentL>
+            <CommentL>{member[0].comment[0]}</CommentL>
           </Member>
           <Member>
             <img src={member[1].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[1].name}</span>
-            <CommentL></CommentL>
+            <CommentL>{member[1].comment[0]}</CommentL>
           </Member>
         </Left>
         <Right>
