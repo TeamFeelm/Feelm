@@ -4,7 +4,12 @@ import { DataLoad, Layout, NotFound } from "./components";
 import { Suspense, lazy } from "react";
 
 export default function App(): JSX.Element {
-  const TestResultPage = lazy(() => import("./pages/TestResultPage"));
+  const TestResultPage = lazy(() => {
+    const promise1 = import("./pages/TestResultPage");
+    const promise2 = new Promise((resolve) => setTimeout(resolve, 0));
+
+    return Promise.all([promise1, promise2]).then(([moduleExports]) => moduleExports);
+  });
 
   return (
     <Routes>
