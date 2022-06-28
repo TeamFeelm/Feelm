@@ -18,7 +18,7 @@ export default function Character() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 10000,
+    autoplaySpeed: 2000,
     arrows: true,
     rows: 2,
     slidesPerRow: 2,
