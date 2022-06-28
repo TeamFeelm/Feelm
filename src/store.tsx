@@ -83,7 +83,7 @@ const progressSlice = createSlice({
     },
     onChangeAnsIdx(state, action: PayloadAction<number>) {
       state.ansIdxArray = state.ansIdxArray.concat(action.payload);
-      console.log("save ansIdxArray " + state.ansIdxArray);
+      console.log("onChange ansIdxArray " + state.ansIdxArray);
     },
     delLastAnsIdx(state) {
       state.ansIdxArray = state.ansIdxArray.slice(0, state.ansIdxArray.length - 1);

@@ -1,41 +1,45 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, resetAnsIdx, testResultCalc } from "../store";
 import styled from "styled-components";
-import TestResultData from "../components/Test/Result/TestResultData.json";
+import { TestResultData } from "../components";
+import { useParams } from "react-router-dom";
 
 export default function TestResult() {
-  const testResultIdx = useSelector((state: RootState) => state.progress.testResultIdx);
-  const dispatch = useDispatch();
-  const data = TestResultData[testResultIdx];
-
-  useEffect(() => {
-    dispatch(resetAnsIdx());
-  });
+  const { id } = useParams<{ id: string | undefined }>();
+  const data: characterType | undefined = TestResultData.find((el) => el.id === id);
 
   return (
     <>
       <TestResultWrap>
         <TestResultList>
           <tr>
-            <Chracter>{data.name}</Chracter>
+            <Chracter>{data && data.name}</Chracter>
           </tr>
           <tr>
-            <Detail>{data.title1},</Detail>
+            <Detail>{data && data.title1},</Detail>
           </tr>
           <tr>
-            <Detail>{data.title2}!</Detail>
+            <Detail>{data && data.title2}!</Detail>
           </tr>
           <tr>
-            <Genre>{data.genre}</Genre>
+            <Genre>{data && data.genre}</Genre>
           </tr>
         </TestResultList>
         <CharacterCard>
-          <CharacterImg src={`/src/assets/characters/${data.img}`} />
+          <CharacterImg src={`/src/assets/characters/${data && data.img}`} />
         </CharacterCard>
       </TestResultWrap>
     </>
   );
+}
+
+interface characterType {
+  id: string;
+  genre: string[];
+  name: string;
+  img: string;
+  title1: string;
+  title2: string;
+  hashtag: string[];
+  detail1: string;
 }
 
 const TestResultWrap = styled.div`
@@ -49,13 +53,13 @@ const TestResultList = styled.table`
   float: left;
 `;
 const Chracter = styled.th`
-  font-size: 2vw;
+  font-size: 2rem;
 `;
 const Detail = styled.td`
-  font-size: 1vw;
+  font-size: 1rem;
 `;
 const Genre = styled.td`
-  font-size: 1vw;
+  font-size: 1rem;
 `;
 
 const CharacterCard = styled.div`

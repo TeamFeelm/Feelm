@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import QuestionData from "./QuestionData.json";
+import { QuestionData } from "../..";
 
 export default function QuestionList({ progress }: props) {
   const data = QuestionData.questions[progress];
