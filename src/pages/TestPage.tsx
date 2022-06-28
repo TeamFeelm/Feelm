@@ -24,7 +24,7 @@ const QuestionsWrap = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(31, 35, 57, 1);
+  background-color: rgb(0, 11, 58);
   opacity: 1;
 `;
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import Slider from "react-slick";
-import TestResultData from "../Test/Result/TestResultData.json";
+import { TestResultData } from "..";
 import { useNavigate } from "react-router-dom";
 
 export default function Character() {
@@ -25,8 +25,6 @@ export default function Character() {
     rows: 2,
     slidesPerRow: 2,
   };
-
-  const [] = TestResultData;
 
   useEffect(() => {
     if (home.page === 1) {
