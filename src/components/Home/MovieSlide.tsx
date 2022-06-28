@@ -1,8 +1,8 @@
 import Slider from "react-slick";
 import styled from "styled-components";
-import { Poster } from "../components";
+import { Poster } from "..";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 import { useEffect, useState } from "react";
 
 const MovieSlide = ({ slide }: props) => {

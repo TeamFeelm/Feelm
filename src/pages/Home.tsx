@@ -87,15 +87,3 @@ const Divider = styled.div`
   height: 3px;
   background-color: rgba(1, 5, 27, 1);
 `;
-
-const Foot = styled.div<opacity>`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: ${(props) => props.opacity}px;
-  background-color: white;
-  font-size: 50px;
-  text-align: center;
-  transition: 0.3s all ease;
-`;
