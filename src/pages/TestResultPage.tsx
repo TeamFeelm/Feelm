@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TestResultData from "../components/Test/Result/TestResultData.json";
+import { TestResultData } from "../components";
 import { useParams } from "react-router-dom";
 
 export default function TestResult() {
