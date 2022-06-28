@@ -5,13 +5,15 @@ export default function Layout() {
   return (
     <>
       <TopNav style={{ display: "flex" }}>
-        <NavLink to="/" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
-          <Space>Home</Space>
+        <NavLink to="/" style={({ isActive }) => (isActive ? { borderBottom: "2px solid #f5c443" } : {})}>
+          <Space>
+            <img src="/src/assets/images/feelm.png" width={70} height={46} style={{ objectFit: "cover" }} />
+          </Space>
         </NavLink>
-        <NavLink to="/test" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
+        <NavLink to="/test" style={({ isActive }) => (isActive ? { borderBottom: "2px solid #f5c443" } : {})}>
           <Space>Test</Space>
         </NavLink>
-        <NavLink to="/search" style={({ isActive }) => (isActive ? { borderBottom: "2px solid white" } : {})}>
+        <NavLink to="/search" style={({ isActive }) => (isActive ? { borderBottom: "2px solid #f5c443" } : {})}>
           <Space>Search</Space>
         </NavLink>
       </TopNav>
@@ -31,9 +33,7 @@ const TopNav = styled.nav`
   justify-content: center;
   z-index: 10;
   height: 50px;
-
   background-color: #030a2e;
-  color: white;
   box-shadow: white 0px -25px 50px;
 `;
 
@@ -42,10 +42,11 @@ const Space = styled.div`
   flex-basis: 33.33%;
   justify-content: center;
   align-items: center;
+  color: #f5c443;
   width: 70px;
   height: 46px;
   margin: 0 10px;
-  font-size: 1em;
+  font-size: 0.8em;
   font-family: "SSD";
   border-radius: 30px;
   :hover {

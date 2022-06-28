@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setMovies } from "../store";
+import { setMovies } from "../../store";
 
-export default function DataDummy() {
+export default function DataLoad() {
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TabContent } from "../components";
+import { TabContent } from "..";
 import styled from "styled-components";
 export default function TabTitle({ movie }: movie) {
   const [tabTitle] = useState(["기본", "출연", "시놉시스"]);
@@ -67,7 +67,6 @@ export const Tab = styled.div<styleProps>`
   :hover {
     background-color: #5f5fc7;
     transition: all 0.5s;
-    color: white;
   }
 `;
 
