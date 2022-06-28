@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import Slider from "react-slick";
+import TestResultData from "../Test/Result/TestResultData.json";
+import { useNavigate } from "react-router-dom";
 
 export default function Character() {
   const home = useSelector((state: RootState) => state.home);
-
   const [o, setO] = useState(0);
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -24,20 +26,7 @@ export default function Character() {
     slidesPerRow: 2,
   };
 
-  const imageArray = [
-    "김태리.jpg",
-    "납득이.png",
-    "네드.jpg",
-    "메리.jpg",
-    "미아.jpg",
-    "셜록.jpg",
-    "애나벨.jpg",
-    "오타쿠.jpg",
-    "존윅.jpeg",
-    "캡틴아메리카.jpg",
-    "해리포터.jpeg",
-    "형욱.jpg",
-  ];
+  const [] = TestResultData;
 
   useEffect(() => {
     if (home.page === 1) {
@@ -48,14 +37,20 @@ export default function Character() {
   return (
     <CharacterContainer>
       <CharacterBox>
-        {imageArray.map((item, i) => (
-          <CharacterCard src={`/src/assets/characters/${item}`} key={i} delay={0.1 * i} opacity={o} />
+        {TestResultData.map((item, i) => (
+          <CharacterCard
+            src={`/src/assets/characters/${item.img}`}
+            key={i}
+            delay={0.1 * i}
+            opacity={o}
+            onClick={() => navigate(`/test/result/${i}`)}
+          />
         ))}
       </CharacterBox>
 
       <CharacterSlider {...settings}>
-        {imageArray.map((item, i) => (
-          <img src={`/src/assets/characters/${item}`} key={i} />
+        {TestResultData.map((item, i) => (
+          <img src={`/src/assets/characters/${item.img}`} key={i} onClick={() => navigate(`/test/result/${i}`)} />
         ))}
       </CharacterSlider>
     </CharacterContainer>
@@ -65,6 +60,18 @@ export default function Character() {
 interface props {
   delay: number;
   opacity: number;
+}
+interface temp {
+  item: {
+    id: number;
+    genre: string[];
+    name: string;
+    img: string;
+    title1: string;
+    title2: string;
+    hashtag: string[];
+    detail1: string;
+  };
 }
 
 const CharacterContainer = styled.div`
