@@ -3,19 +3,24 @@ import AnswerData from "./AnswerData.json";
 import { incrementProgress, decrementProgress, onChangeAnsIdx, delLastAnsIdx, testResultCalc } from "../../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState, resetAnsIdx, resetProgress } from "../../../store";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 export default function AnswerList({ progress }: props) {
   const data = AnswerData.answers[progress];
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const testResultIdx = useSelector((state: RootState) => state.progress.testResultIdx);
+
   const next = (idx: any) => {
     if (progress < 7) {
       dispatch(incrementProgress(1));
       dispatch(onChangeAnsIdx(idx));
     } else {
       dispatch(testResultCalc());
-      navigate(`/test/result`);
+      navigate(`/test/result/${testResultIdx}`);
+      dispatch(resetProgress());
+      dispatch(resetAnsIdx());
     }
   };
   const prev = () => {

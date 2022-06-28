@@ -16,7 +16,7 @@ export default function App(): JSX.Element {
       >
         <Route index element={<Home />} />
         <Route path="/test" element={<TestPage />}></Route>
-        <Route path="/test/result" element={<TestResultPage />}></Route>
+        <Route path="/test/result/:id" element={<TestResultPage />}></Route>
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<NotFound />} />

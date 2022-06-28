@@ -1,17 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, resetAnsIdx, testResultCalc } from "../store";
 import styled from "styled-components";
 import TestResultData from "../components/Test/Result/TestResultData.json";
+import { useParams } from "react-router-dom";
 
 export default function TestResult() {
-  const testResultIdx = useSelector((state: RootState) => state.progress.testResultIdx);
-  const dispatch = useDispatch();
-  const data = TestResultData[testResultIdx];
-
-  useEffect(() => {
-    dispatch(resetAnsIdx());
-  });
+  const { id } = useParams<{ id: any }>();
+  const data = TestResultData[id];
 
   return (
     <>
