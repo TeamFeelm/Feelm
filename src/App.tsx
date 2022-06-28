@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, TestPage, TestResultPage, SearchPage, Detail } from "./pages";
-import { DataDummy, Layout, NotFound } from "./components";
+import { DataLoad, Layout, NotFound } from "./components";
 
 export default function App(): JSX.Element {
   return (
@@ -10,7 +10,7 @@ export default function App(): JSX.Element {
         element={
           <>
             <Layout />
-            <DataDummy />
+            <DataLoad />
           </>
         }
       >
