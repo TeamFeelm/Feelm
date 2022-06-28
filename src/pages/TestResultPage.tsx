@@ -53,13 +53,13 @@ const TestResultList = styled.table`
   float: left;
 `;
 const Chracter = styled.th`
-  font-size: 2vw;
+  font-size: 2rem;
 `;
 const Detail = styled.td`
-  font-size: 1vw;
+  font-size: 1rem;
 `;
 const Genre = styled.td`
-  font-size: 1vw;
+  font-size: 1rem;
 `;
 
 const CharacterCard = styled.div`

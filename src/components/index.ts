@@ -12,6 +12,7 @@ export { default as TeamComment } from "./Home/TeamComment";
 // Test
 export { default as QuestionList } from "./Test/Qna/QuestionList";
 export { default as AnswerList } from "./Test/Qna/AnswerList";
+export { default as ProgressBar } from "./Test/Qna/ProgressBar";
 // Search
 export { default as SearchResult } from "./Search/SearchResult";
 export { default as SearchForm } from "./Search/SearchForm";
