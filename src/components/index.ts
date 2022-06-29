@@ -13,6 +13,8 @@ export { default as TeamComment } from "./Home/TeamComment";
 export { default as QuestionList } from "./Test/Qna/QuestionList";
 export { default as AnswerList } from "./Test/Qna/AnswerList";
 export { default as ProgressBar } from "./Test/Qna/ProgressBar";
+export { default as Loading } from "./Test/Result/Loading";
+export { default as TestResult } from "./Test/Result/TestResult";
 export { default as QuestionData } from "./Test/Data/QuestionData.json";
 export { default as AnswerData } from "./Test/Data/AnswerData.json";
 export { default as TestResultData } from "./Test/Data/TestResultData.json";
