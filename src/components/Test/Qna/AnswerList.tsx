@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { AnswerData } from "../..";
-import { incrementProgress, decrementProgress, onChangeAnsIdx, delLastAnsIdx, testResultCalc } from "../../../store";
+import { RootState, incrementProgress, decrementProgress, onChangeAnsIdx, delLastAnsIdx, testResultCalc } from "../../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RootState, resetAnsIdx, resetProgress } from "../../../store";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 export default function AnswerList({ progress }: props) {
@@ -19,8 +18,6 @@ export default function AnswerList({ progress }: props) {
     } else {
       dispatch(testResultCalc());
       navigate(`/test/result/${testResultIdx}`);
-      dispatch(resetProgress());
-      dispatch(resetAnsIdx());
     }
   };
   const prev = () => {
