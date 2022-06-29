@@ -47,7 +47,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(setTransY());
-  }, [home.page, home.innerHeight]);
+  }, [home.page, home.innerHeight, home.footer]);
 
   return (
     <>
@@ -59,22 +59,14 @@ export default function Home() {
         <MovieSlide slide={slide}></MovieSlide>
         <Divider></Divider>
         <TeamComment />
+        <Footer></Footer>
       </Outer>
-      <Footer height={home.footer}></Footer>
     </>
   );
 }
 
-interface color {
-  color: string;
-}
-
 interface transY {
   transY: number;
-}
-
-interface opacity {
-  opacity: number;
 }
 
 const Outer = styled.div<transY>`

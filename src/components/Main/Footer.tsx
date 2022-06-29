@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Footer({ height }: props) {
+export default function Footer() {
   return (
-    <Foot height={height}>
+    <Foot>
       <a href="https://github.com/TeamFeelm/Feelm" target="_blank">
         <img src="/src/assets/images/feelm.png" alt="feelm" width={100} height={50} style={{ objectFit: "cover" }} />
       </a>
@@ -11,20 +11,8 @@ export default function Footer({ height }: props) {
   );
 }
 
-interface props {
-  height: number;
-}
-
-interface footer {
-  height: number;
-}
-
-const Foot = styled.div<footer>`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: ${(props) => props.height}px;
+const Foot = styled.div`
+  height: 105px;
   background-color: rgba(1, 5, 27, 1);
   color: white;
   font-size: 15px;
