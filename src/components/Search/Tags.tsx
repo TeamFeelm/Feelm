@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { findMoviesByTag } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { findMoviesByTag, RootState, resetTag } from "../../store";
 
 const Tags = () => {
+  const selectedTags = useSelector((state: RootState) => state.movieList.selectedTags);
   const dispatch = useDispatch();
-  const [hashTags, setHashTags] = useState([
-    "전체",
+  const hashTags = [
     "액션",
     "스릴러",
     "호러",
@@ -26,15 +26,32 @@ const Tags = () => {
     "스포츠",
     "범죄",
     "미스테리",
-  ]);
+  ];
   const SelectTag = (hashTag: string) => (event: React.MouseEvent) => dispatch(findMoviesByTag(hashTag));
   return (
     <Box>
-      {hashTags.map((hashTag, i) => (
-        <Tag key={i} onClick={SelectTag(hashTag)}>
-          #{hashTag}
+      {selectedTags.length > 1 ? (
+        <Tag
+          onClick={() => {
+            dispatch(resetTag());
+          }}
+        >
+          #전체
         </Tag>
-      ))}
+      ) : (
+        <Selected>#전체</Selected>
+      )}
+      {hashTags.map((hashTag, i) =>
+        selectedTags.includes(hashTag) ? (
+          <Selected key={i} onClick={SelectTag(hashTag)}>
+            #{hashTag}
+          </Selected>
+        ) : (
+          <Tag key={i} onClick={SelectTag(hashTag)}>
+            #{hashTag}
+          </Tag>
+        ),
+      )}
     </Box>
   );
 };
@@ -42,10 +59,22 @@ const Tags = () => {
 const Tag = styled.span`
   width: auto;
   height: auto;
-  background-color: white;
   color: #f5c443;
   background-color: rgb(1, 5, 27);
   box-shadow: #f5c443 0px 0px 2px 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  display: inline-block;
+  cursor: pointer;
+`;
+
+const Selected = styled.span`
+  width: auto;
+  height: auto;
+  background-color: #f5c443;
+  box-shadow: #f5c443 0px 0px 2px 0;
+  color: rgb(1, 5, 27);
   margin-left: 10px;
   margin-bottom: 10px;
   padding: 5px 10px;
