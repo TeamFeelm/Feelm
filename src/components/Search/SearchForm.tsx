@@ -38,7 +38,7 @@ const SearchValue = styled.input`
   height: 40px;
   margin-left: 35px;
   border-bottom: 1.5px solid #f5c443;
-  font-family: "SSD";
+  font-family: "yg-jalnan";
   font-size: 18px;
   text-align: center;
   color: white;

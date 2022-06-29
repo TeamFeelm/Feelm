@@ -148,7 +148,7 @@ export default function Canvas() {
     <MovieBox>
       <SpotLight ref={spotRaf} />
       <Text ref={text}>
-        <h1>영화 등장인물 테스트</h1>
+        <Header>Find Your Feelm</Header>
       </Text>
       <StartBtn ref={btn} onClick={btnClick}>
         TEST START
@@ -158,6 +158,8 @@ export default function Canvas() {
     </MovieBox>
   );
 }
+
+const Header = styled.h1``;
 
 const Video = styled.video`
   position: absolute;

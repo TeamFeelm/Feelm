@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     height: auto;
     background-color: rgba(1, 5, 27, 1);
     color: white;
+    font-family: 'yg-jalnan';
   }
 
   .hide {
@@ -66,16 +67,23 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  @font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
   h2 {
     font-size: clamp(2rem, 4vw + 1rem, 5rem);
-    font-family: 'SSD';
+    font-family: 'yg-jalnan';
   }
 
   main {
     margin-top: 50px;
   }
 
-  
+  @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 `;
 
 export default GlobalStyle;

@@ -18,4 +18,5 @@ const Foot = styled.div`
   font-size: 15px;
   text-align: center;
   transition: 0.3s all ease;
+  font-family: "";
 `;
