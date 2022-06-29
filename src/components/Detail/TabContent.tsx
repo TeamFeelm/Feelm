@@ -38,6 +38,7 @@ export const ContentBox = styled.div`
   width: 50vw;
   padding: 20px;
   margin: auto;
+  font-family: "SSD";
   @media screen and (max-width: 768px) {
     width: 80%;
   }

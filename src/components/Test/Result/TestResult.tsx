@@ -13,13 +13,11 @@ export default function TestResult() {
           <Chracter>{data && data.name}</Chracter>
           <Detail>{data && data.detail1},</Detail>
           <Detail>
-            당신의 캐릭터는... {data && data.movie}의 {data && data.name} !
+            당신의 캐릭터는... {data && data.movie}의 {data && data.name}!
           </Detail>
           {/* <Genre>{data && data.genre} 장르 영화를 선호하시나요 ?</Genre> */}
           <Detail>어떤 성향이 비슷하냐면요</Detail>
           <br />
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
           <Detail>- temp</Detail>
           <Detail>- temp</Detail>
           <Detail>- temp</Detail>
