@@ -32,6 +32,7 @@ const movieList = createSlice({
         img: "",
       },
     ],
+    selectedTags: [""],
   },
   reducers: {
     setMovies(state, action: PayloadAction<[]>) {
@@ -50,17 +51,24 @@ const movieList = createSlice({
       state.result = result;
     },
     findMoviesByTag(state, action: PayloadAction<string>) {
-      let result;
-      if (action.payload === "전체") {
-        result = state.movies;
+      if (state.selectedTags.includes(action.payload)) {
+        state.selectedTags = state.selectedTags.filter((item) => item != action.payload);
       } else {
-        result = state.movies.filter((item) => item.genre.some((el) => el == action.payload));
+        state.selectedTags = state.selectedTags.concat(action.payload);
       }
-      state.result = result;
+      if (state.selectedTags.length === 1) {
+        state.result = state.movies;
+      } else {
+        state.result = state.movies.filter((item) => item.genre.some((el) => state.selectedTags.includes(el)));
+      }
+    },
+    resetTag(state) {
+      state.selectedTags = [""];
+      state.result = state.movies;
     },
   },
 });
-export const { setMovies, findMoviesByValue, findMoviesByTag } = movieList.actions;
+export const { setMovies, findMoviesByValue, findMoviesByTag, resetTag } = movieList.actions;
 
 // test-progress
 const progressSlice = createSlice({
