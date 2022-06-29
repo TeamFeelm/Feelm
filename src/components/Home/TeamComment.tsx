@@ -16,8 +16,10 @@ export default function TeamComment() {
     },
     {
       name: "자경",
-      title: "",
-      comment: [""],
+      title: "<기생충>",
+      comment: [
+        "여러 영화 장르의 분위기를 한 영화에 집약한 느낌을 받을 수 있다, 후반부로 갈수록 긴장감이 짙어져 러닝타임 내내 지루하지 않았음",
+      ],
       img: "/src/assets/images/자경.jpg",
     },
     {
@@ -52,7 +54,10 @@ export default function TeamComment() {
           <Member>
             <img src={member[2].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[2].name}</span>
-            <CommentR></CommentR>
+            <CommentR>
+              <CommentTitle>{member[2].title}</CommentTitle>
+              <CommentText>{member[2].comment[0]}</CommentText>
+            </CommentR>
           </Member>
           <Member>
             <img src={member[3].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
