@@ -1,11 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, TestPage, SearchPage, Detail } from "./pages";
+import { Home, TestPage, TestResultPage, SearchPage, Detail } from "./pages";
 import { DataLoad, Layout, NotFound } from "./components";
-import { Suspense, lazy } from "react";
 
 export default function App(): JSX.Element {
-  const TestResultPage = lazy(() => import("./pages/TestResultPage"));
-
   return (
     <Routes>
       <Route
