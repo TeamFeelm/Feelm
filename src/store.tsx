@@ -226,7 +226,7 @@ export const { incrementProgress, decrementProgress, resetProgress, onChangeAnsI
 // Home page
 const homeSlice = createSlice({
   name: "home",
-  initialState: { page: 0, transY: 0, innerHeight: 0, footer: 0 },
+  initialState: { page: 0, transY: 0, innerHeight: 0, footer: false },
   reducers: {
     setInnerHeight(state, action: PayloadAction<number>) {
       state.innerHeight = action.payload;
@@ -234,19 +234,23 @@ const homeSlice = createSlice({
     pageDown(state) {
       if (state.page < 3) {
         state.page += 1;
-      } else {
-        state.footer = 105;
+      } else if (state.page === 3) {
+        state.footer = true;
       }
     },
     pageUp(state) {
-      if (state.page === 3 && state.footer > 0) {
-        state.footer = 0;
+      if (state.page === 3 && state.footer === true) {
+        state.footer = false;
       } else if (state.page > 0) {
         state.page -= 1;
       }
     },
     setTransY(state) {
-      state.transY = state.page * state.innerHeight;
+      if (state.footer) {
+        state.transY = state.page * state.innerHeight + 155;
+      } else {
+        state.transY = state.page * state.innerHeight;
+      }
     },
   },
 });
