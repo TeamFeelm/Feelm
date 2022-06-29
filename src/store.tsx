@@ -111,10 +111,10 @@ const progressSlice = createSlice({
       let sf = 0;
       let fantasy = 0;
       let comedy = 0;
-      let hero = 0;
+      let war = 0;
       let anime = 0;
-      let music = 0;
-      let documentary = 0;
+      let musical = 0;
+      let sports = 0;
 
       const verygood = 2;
       const good = 1.12;
@@ -125,23 +125,23 @@ const progressSlice = createSlice({
       // 질문 1번
       if (state.ansIdxArray[1] === 0) {
         noir += verygood;
-        hero += good;
+        war += good;
         action += soso;
-        documentary += bad;
+        sports += bad;
         romance += verybad;
         drama += verybad;
       } else if (state.ansIdxArray[1] === 1) {
         comedy += verygood;
         drama += soso;
-        hero += soso;
-        music += verybad;
+        war += soso;
+        musical += verybad;
       } else if (state.ansIdxArray[1] === 2) {
         romance += verygood;
         drama += verygood;
         thriller += good;
         action += verybad;
         noir += verybad;
-        documentary += verybad;
+        sports += verybad;
       }
 
       // 질문 2번
@@ -163,18 +163,18 @@ const progressSlice = createSlice({
       // 질문 3번
       if (state.ansIdxArray[3] === 0) {
         drama += verygood;
-        documentary += soso;
+        sports += soso;
         sf += verybad;
       } else if (state.ansIdxArray[3] === 1) {
-        music += verygood;
-        hero += soso;
+        musical += verygood;
+        war += soso;
       }
 
       // 질문 4번
       if (state.ansIdxArray[4] === 0) {
         comedy += verygood;
-        music += soso;
-        documentary += verybad;
+        musical += soso;
+        sports += verybad;
       } else if (state.ansIdxArray[4] === 1) {
         fantasy += verygood;
         drama += soso;
@@ -183,7 +183,7 @@ const progressSlice = createSlice({
       // 질문 5번
       if (state.ansIdxArray[5] === 0) {
         noir += verygood;
-        hero += soso;
+        war += soso;
         anime += verybad;
       } else if (state.ansIdxArray[5] === 1) {
         thriller += verygood;
@@ -196,7 +196,7 @@ const progressSlice = createSlice({
         drama += soso;
         thriller += verybad;
       } else if (state.ansIdxArray[6] === 1) {
-        hero += verygood;
+        war += verygood;
         comedy += soso;
       }
 
@@ -204,7 +204,7 @@ const progressSlice = createSlice({
       if (state.ansIdxArray[7] === 0) {
         comedy += verygood;
         romance += soso;
-        documentary += verybad;
+        sports += verybad;
       } else if (state.ansIdxArray[7] === 1) {
         action += verygood;
         fantasy += soso;
@@ -216,10 +216,10 @@ const progressSlice = createSlice({
         action += soso;
         anime += verybad;
       } else if (state.ansIdxArray[8] === 1) {
-        music += verygood;
+        musical += verygood;
         sf += soso;
       }
-      const resultArr = [drama, fantasy, hero, action, comedy, anime, music, documentary, noir, romance, sf, thriller];
+      const resultArr = [action, thriller, noir, drama, romance, sf, fantasy, comedy, war, anime, musical, sports];
       console.log(resultArr);
 
       state.testResultIdx = resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr));
