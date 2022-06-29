@@ -5,7 +5,7 @@ export default function Loading() {
   return (
     <>
       <TextBox>
-        Loading...
+        테스트 결과를 불러오는 중...
         <LogoBox />
       </TextBox>
     </>
@@ -49,7 +49,7 @@ const TextBox = styled.div`
   transform: translate(-50%, -50%);
   height: auto;
   width: auto;
-  letter-spacing: 20px;
+  /* letter-spacing: 20px; */
   color: #f5c443;
   font-size: 30px;
   font-weight: bolder;

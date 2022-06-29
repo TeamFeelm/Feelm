@@ -24,7 +24,7 @@ export default function TestResultPage() {
 
   return (
     <>
-      <Suspense fallback={delayTime == 0 ? "" : <Loading />}>
+      <Suspense fallback={delayTime == 0 ? null : <Loading />}>
         <TestResult></TestResult>
       </Suspense>
     </>
