@@ -4,39 +4,40 @@ import { useState, useEffect } from "react";
 export default function Loading() {
   return (
     <>
-      <LogoBox />
-      <TextBox>Loading ...</TextBox>
+      <TextBox>
+        Loading...
+        <LogoBox />
+      </TextBox>
     </>
   );
 }
 
 const LogoBox = styled.div`
   position: absolute;
-  top: 50%;
-  left: 30%;
+  left: -20%;
   transform: translate(-50%, -50%);
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background: #f5c443;
   user-select: none;
   animation: Bounce 0.5s ease infinite alternate;
   @keyframes Bounce {
     0% {
-      top: 50%;
-      height: 30px;
-      width: 100px;
+      top: 80%;
+      height: 20px;
+      width: 80px;
       border-radius: 60px 60px 20px 20px;
     }
 
     35% {
       border-radius: 50%;
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
     }
 
     100% {
-      top: 30%;
+      top: -10vh;
     }
   }
 `;
@@ -44,11 +45,11 @@ const LogoBox = styled.div`
 const TextBox = styled.div`
   position: absolute;
   top: 48%;
-  left: 60%;
+  left: 55%;
   transform: translate(-50%, -50%);
   height: auto;
   width: auto;
-  letter-spacing: 30px;
+  letter-spacing: 20px;
   color: #f5c443;
   font-size: 30px;
   font-weight: bolder;
