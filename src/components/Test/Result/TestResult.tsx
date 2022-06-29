@@ -48,17 +48,17 @@ const TestResultWrap = styled.div`
   padding: 5vw;
 `;
 
-const TestResultList = styled.table`
+const TestResultList = styled.div`
   height: auto;
   float: left;
 `;
-const Chracter = styled.th`
+const Chracter = styled.div`
   font-size: 2rem;
 `;
-const Detail = styled.td`
+const Detail = styled.div`
   font-size: 1rem;
 `;
-const Genre = styled.td`
+const Genre = styled.div`
   font-size: 1rem;
 `;
 
