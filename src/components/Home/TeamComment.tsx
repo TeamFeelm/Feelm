@@ -93,17 +93,17 @@ const CommentL = styled.div`
   width: 25vw;
   height: 75px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 12px;
   &:after {
     content: "";
     border-style: solid;
-    border-width: 1.5px 38px 18px 0;
+    border-width: 0 16px 9px 0;
     border-color: transparent white;
     position: absolute;
     display: block;
     width: 0;
-    top: 0;
-    left: -20px;
+    top: 9px;
+    left: -16px;
   }
   @media screen and (max-width: 1200px) {
     width: 40vw;
@@ -120,17 +120,17 @@ const CommentR = styled.div`
   width: 25vw;
   height: 75px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 12px;
   &:after {
     content: "";
     border-style: solid;
-    border-width: 1.5px 0px 18px 38px;
+    border-width: 0 0px 9px 16px;
     border-color: transparent white;
     position: absolute;
     display: block;
     width: 0;
-    top: 0;
-    right: -20px;
+    top: 9px;
+    right: -16px;
   }
   @media screen and (max-width: 1200px) {
     width: 40vw;
