@@ -7,8 +7,8 @@ export default function QuestionList({ progress }: props) {
   return (
     <>
       <QueWrap>
-        <QueNum>{progress}.</QueNum>
-        <QueTitle>{data.quetitle}</QueTitle>
+        <QueNum>{progress + 1}.</QueNum>
+        <QueTitle>{data.quetitle},</QueTitle>
         <QueDetail>{data.quedetail}</QueDetail>
       </QueWrap>
     </>

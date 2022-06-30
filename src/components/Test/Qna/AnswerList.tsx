@@ -12,7 +12,7 @@ export default function AnswerList({ progress }: props) {
   const testResultIdx = useSelector((state: RootState) => state.progress.testResultIdx);
 
   const next = (idx: any) => {
-    if (progress < 7) {
+    if (progress < 9) {
       dispatch(incrementProgress(1));
       dispatch(onChangeAnsIdx(idx));
     } else {
