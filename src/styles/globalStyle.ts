@@ -82,8 +82,6 @@ export const GlobalStyle = createGlobalStyle`
   main {
     margin-top: 50px;
   }
-
-  @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 `;
 
 export default GlobalStyle;
