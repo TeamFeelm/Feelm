@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function ProgressBar({ progress }: props) {
   return (
     <>
-      <ProgressDiv progress={progress * 14.3} />
+      <ProgressDiv progress={progress * 11.3} />
     </>
   );
 }

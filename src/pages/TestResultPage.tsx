@@ -11,7 +11,7 @@ export default function TestResultPage() {
   const TestResult = lazy(() => {
     const comp = import("../components/Test/Result/TestResult");
     const setdt = () => {
-      if (progress == 7) {
+      if (progress == 9) {
         setDelayTime(3000);
         dispatch(resetProgress());
         dispatch(resetAnsIdx());
