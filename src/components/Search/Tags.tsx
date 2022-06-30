@@ -60,7 +60,7 @@ const Tag = styled.span`
   width: auto;
   height: auto;
   color: #f5c443;
-  background-color: rgb(1, 5, 27);
+  background-color: rgb(8, 14, 47);
   box-shadow: #f5c443 0px 0px 2px 0;
   margin-left: 10px;
   margin-bottom: 10px;

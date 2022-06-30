@@ -96,7 +96,7 @@ const CharacterBox = styled.div`
 const CharacterCard = styled.img<props>`
   width: 15%;
   height: 40%;
-  background: black;
+  background: #050e39;
   margin: 0 10px 0 10px;
   object-fit: cover;
   opacity: ${(props) => props.opacity};
