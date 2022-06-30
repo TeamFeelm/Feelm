@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     height: auto;
-    background-color: rgba(1, 5, 27, 1);
+    background-color: rgb(8, 14, 47);
     color: white;
     font-family: 'yg-jalnan';
   }

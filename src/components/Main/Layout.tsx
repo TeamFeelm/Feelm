@@ -33,7 +33,7 @@ const TopNav = styled.nav`
   justify-content: center;
   z-index: 10;
   height: 50px;
-  background-color: #030a2e;
+  background-color: rgb(3, 10, 46);
   box-shadow: white 0px -25px 50px;
 `;
 
