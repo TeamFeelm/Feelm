@@ -1,6 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, firstPage } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
@@ -8,16 +10,23 @@ export default function Canvas() {
 
   const video = useRef() as React.MutableRefObject<HTMLVideoElement>;
 
-  const spotRaf = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const text = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const btn = useRef() as React.MutableRefObject<HTMLButtonElement>;
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const home = useSelector((state: RootState) => state.home);
+
   const btnClick = () => {
     navigate("/test");
   };
 
+  const [inner, setInner] = useState((window.innerWidth + window.innerHeight) * 0.1);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [scale, setScale] = useState(1);
+  const [opacity, setOpacity] = useState(0);
+  const [visibility, setVisiblity] = useState("hidden");
+
   useEffect(() => {
+    setVisiblity("visibility");
     const canvas = canvasRaf.current;
 
     ctx = canvas.getContext("2d");
@@ -25,132 +34,44 @@ export default function Canvas() {
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
 
-    let x = 0.2;
-    let y = 0.3;
-
-    let circle1 = 0.5;
-    let circle2 = 0.2;
-
-    let step = 1;
-
     let id: any;
-    let id2: any;
 
     const render: any = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(video.current, 0, 0, canvas.width, canvas.height);
-
-      id = requestAnimationFrame(resetFocus);
-      id2 = requestAnimationFrame(render);
-    };
-
-    const resetFocus: any = () => {
-      spotRaf.current.style.background = `radial-gradient(
-        circle
-        ${(window.innerWidth + window.innerHeight) * circle1 * circle2}px at 
-        ${window.innerWidth * x + "px"} 
-        ${window.innerHeight * y + "px"},
-        rgba(1, 5, 27, 0) 0%,
-        rgba(1, 5, 27, 0.3) 70%,
-        rgba(1, 5, 27, 1) 100%`;
-
-      switch (step) {
-        case 1:
-          if (x < 0.8 && step == 1) {
-            x += 0.03;
-            y += 0.03;
-          }
-          if (x >= 0.8) {
-            step = 2;
-          }
-          break;
-
-        case 2:
-          if (x >= 0.1 && step == 2) {
-            x -= 0.02;
-            y -= 0.01;
-          }
-          if (x <= 0.1) {
-            step = 3;
-          }
-          break;
-
-        case 3:
-          if (x <= 0.1 && step == 3) {
-            x += 0.02;
-            y -= 0.02;
-          }
-          if (y >= 0.1) {
-            step = 4;
-          }
-          break;
-
-        case 4:
-          if (y >= 0.1 && step == 4) {
-            x += 0.02;
-            y += 0.02;
-          }
-          if (y >= 0.8) {
-            step = 5;
-          }
-          break;
-
-        case 5:
-          if (y >= 0.8 && step == 5) {
-            x -= 0.02;
-            y -= 0.02;
-          }
-          if (y >= 0.1) {
-            step = 6;
-          }
-          break;
-
-        case 6:
-          if (y >= 0.1 && step == 6) {
-            x += 0.01;
-            y -= 0.02;
-          }
-          if (y <= 0.4) {
-            circle1 += 0.02;
-            circle2 += 0.02;
-          }
-          if (circle1 >= 1) {
-            text.current.style.opacity = "1";
-            btn.current.style.opacity = "1";
-            step = 7;
-          }
-          break;
-
-        case 7:
-          if (circle1 >= 1) {
-            circle1 == window.innerWidth;
-            circle2 == window.innerHeight;
-            btn.current.style.cursor = "pointer";
-            step = 8;
-          }
-          break;
-
-        case 8:
-          break;
-      }
+      id = requestAnimationFrame(render);
     };
 
     video.current.addEventListener("canplaythrough", render);
-    video.current.addEventListener("canplaythrough", resetFocus);
+
+    const movepoint = (e: MouseEvent) => {
+      setX(e.offsetX);
+      setY(e.offsetY);
+    };
+
+    window.addEventListener("mousemove", movepoint);
+
+    window.addEventListener("click", () => {
+      window.removeEventListener("mousemove", movepoint);
+      setScale(50);
+      setOpacity(1);
+      setVisiblity("hidden");
+      dispatch(firstPage());
+      console.log(home.firstpage);
+    });
 
     return () => {
       cancelAnimationFrame(id);
-      cancelAnimationFrame(id2);
     };
   }, []);
 
   return (
     <MovieBox>
-      <SpotLight ref={spotRaf} />
-      <Text ref={text}>
+      <Mouse inner={inner} x={x} y={y} scale={scale} visibility={visibility} />
+      <Text opacity={opacity}>
         <Header>Find Your Feelm</Header>
       </Text>
-      <StartBtn ref={btn} onClick={btnClick}>
+      <StartBtn onClick={btnClick} opacity={opacity}>
         TEST START
       </StartBtn>
       <Video ref={video} src="src\assets\images\asd.mp4" autoPlay muted loop></Video>
@@ -158,6 +79,34 @@ export default function Canvas() {
     </MovieBox>
   );
 }
+
+interface props {
+  inner: number;
+  x: number;
+  y: number;
+  scale: number;
+  visibility: string;
+}
+
+interface opacity {
+  opacity: number;
+}
+
+const Mouse = styled.div<props>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  transition-duration: 1s;
+  visibility: ${(props) => props.visibility};
+  transform: scale(${(props) => props.scale});
+  background: radial-gradient(
+    circle ${(props) => props.inner}px at ${(props) => props.x}px ${(props) => props.y}px,
+    rgba(8, 14, 47, 0) 50%,
+    rgba(8, 14, 47, 0.3) 70%,
+    rgba(8, 14, 47, 0.8) 100%
+  );
+`;
 
 const Header = styled.h1``;
 
@@ -172,34 +121,21 @@ const MovieBox = styled.div`
   height: 100vh;
 `;
 
-const SpotLight = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle 50px at 100px 100px,
-    rgba(1, 5, 27, 0.01) 0%,
-    rgba(1, 5, 27, 0.5) 70%,
-    rgba(1, 5, 27, 0.96) 100%
-  );
-  transition: top 0.1s, left 0.1s;
-  z-index: 10;
-`;
-
-const Text = styled.div`
+const Text = styled.div<opacity>`
   position: absolute;
   width: fit-content;
   text-align: center;
-  opacity: 0;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 2rem;
   transition-duration: 1s;
   color: white;
+  opacity: ${(opacity) => opacity.opacity};
+  transition-delay: 0.3s;
 `;
 
-const StartBtn = styled.button`
+const StartBtn = styled.button<opacity>`
   position: absolute;
   bottom: 25vh;
   left: 50%;
@@ -212,7 +148,8 @@ const StartBtn = styled.button`
   font-size: 20px;
   transition-duration: 1s;
   z-index: 100;
-  opacity: 0;
+  opacity: ${(props) => props.opacity};
+  transition-delay: 0.3s;
   cursor: pointer;
   &:hover {
     background-color: white;

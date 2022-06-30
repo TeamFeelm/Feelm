@@ -12,6 +12,7 @@ export default function DataLoad() {
       dispatch(setMovies(db.data.movieList));
       console.log("데이터 로드 성공");
     })();
+    window.scroll(0, 0);
   }, []);
 
   return null;

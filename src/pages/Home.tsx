@@ -15,10 +15,12 @@ export default function Home() {
     const wheelHandler = debounce((e: WheelEvent) => {
       e.preventDefault();
       const { deltaY } = e;
-      if (deltaY > 0) {
-        dispatch(pageDown());
-      } else {
-        dispatch(pageUp());
+      if (home.firstpage) {
+        if (deltaY > 0) {
+          dispatch(pageDown());
+        } else {
+          dispatch(pageUp());
+        }
       }
     }, 75);
     const preventScroll = (e: WheelEvent) => {
@@ -30,7 +32,7 @@ export default function Home() {
     //   outerRef.current.removeEventListener("wheel", preventScroll);
     //   outerRef.current.removeEventListener("wheel", wheelHandler);
     // });
-  }, [outerRef]);
+  }, [outerRef, home.firstpage]);
 
   useEffect(() => {
     dispatch(setInnerHeight(window.innerHeight + DIVIDER));
