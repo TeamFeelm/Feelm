@@ -103,45 +103,45 @@ const progressSlice = createSlice({
     },
     // test-result calculate part
     testResultCalc(state: any): any {
-      let drama = 0;
-      let fantasy = 0;
-      let hero = 0;
       let action = 0;
-      let comedy = 0;
-      let anime = 0;
-      let music = 0;
-      let horror = 0;
-      let criminal = 0;
+      let thriller = 0;
+      let noir = 0;
+      let drama = 0;
       let romance = 0;
       let sf = 0;
-      let adult = 0;
+      let fantasy = 0;
+      let comedy = 0;
+      let war = 0;
+      let anime = 0;
+      let musical = 0;
+      let sports = 0;
 
       const verygood = 2;
-      const good = 1.45;
-      const soso = 0.9;
-      const bad = 0.5;
-      const verybad = -0.45;
+      const good = 1.12;
+      const soso = 0.55;
+      const bad = 0.25;
+      const verybad = -0.85;
 
       // 질문 1번
       if (state.ansIdxArray[1] === 0) {
-        criminal += verygood;
-        hero += good;
+        noir += verygood;
+        war += good;
         action += soso;
-        horror += bad;
+        sports += bad;
         romance += verybad;
         drama += verybad;
       } else if (state.ansIdxArray[1] === 1) {
         comedy += verygood;
         drama += soso;
-        hero += soso;
-        music += verybad;
+        war += soso;
+        musical += verybad;
       } else if (state.ansIdxArray[1] === 2) {
         romance += verygood;
         drama += verygood;
-        adult += good;
+        thriller += good;
         action += verybad;
-        criminal += verybad;
-        horror += verybad;
+        noir += verybad;
+        sports += verybad;
       }
 
       // 질문 2번
@@ -154,7 +154,7 @@ const progressSlice = createSlice({
         romance += soso;
       } else if (state.ansIdxArray[2] === 2) {
         action += verygood;
-        adult += soso;
+        thriller += soso;
       } else if (state.ansIdxArray[2] === 3) {
         anime += verygood;
         fantasy += soso;
@@ -163,18 +163,18 @@ const progressSlice = createSlice({
       // 질문 3번
       if (state.ansIdxArray[3] === 0) {
         drama += verygood;
-        horror += soso;
+        sports += soso;
         sf += verybad;
       } else if (state.ansIdxArray[3] === 1) {
-        music += verygood;
-        hero += soso;
+        musical += verygood;
+        war += soso;
       }
 
       // 질문 4번
       if (state.ansIdxArray[4] === 0) {
         comedy += verygood;
-        music += soso;
-        horror += verybad;
+        musical += soso;
+        sports += verybad;
       } else if (state.ansIdxArray[4] === 1) {
         fantasy += verygood;
         drama += soso;
@@ -182,21 +182,21 @@ const progressSlice = createSlice({
 
       // 질문 5번
       if (state.ansIdxArray[5] === 0) {
-        criminal += verygood;
-        hero += soso;
+        noir += verygood;
+        war += soso;
         anime += verybad;
       } else if (state.ansIdxArray[5] === 1) {
-        adult += verygood;
-        criminal += soso;
+        thriller += verygood;
+        noir += soso;
       }
 
       // 질문 6번
       if (state.ansIdxArray[6] === 0) {
         sf += verygood;
         drama += soso;
-        adult += verybad;
+        thriller += verybad;
       } else if (state.ansIdxArray[6] === 1) {
-        hero += verygood;
+        war += verygood;
         comedy += soso;
       }
 
@@ -204,7 +204,7 @@ const progressSlice = createSlice({
       if (state.ansIdxArray[7] === 0) {
         comedy += verygood;
         romance += soso;
-        horror += verybad;
+        sports += verybad;
       } else if (state.ansIdxArray[7] === 1) {
         action += verygood;
         fantasy += soso;
@@ -216,10 +216,10 @@ const progressSlice = createSlice({
         action += soso;
         anime += verybad;
       } else if (state.ansIdxArray[8] === 1) {
-        music += verygood;
+        musical += verygood;
         sf += soso;
       }
-      const resultArr = [drama, fantasy, hero, action, comedy, anime, music, horror, criminal, romance, sf, adult];
+      const resultArr = [action, thriller, noir, drama, romance, sf, fantasy, comedy, war, anime, musical, sports];
       console.log(resultArr);
 
       state.testResultIdx = resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr));

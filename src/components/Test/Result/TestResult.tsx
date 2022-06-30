@@ -10,21 +10,27 @@ export default function TestResult() {
     <>
       <TestResultWrap>
         <TestResultList>
-          <tr>
-            <Chracter>{data && data.name}</Chracter>
-          </tr>
-          <tr>
-            <Detail>{data && data.title1},</Detail>
-          </tr>
-          <tr>
-            <Detail>{data && data.title2}!</Detail>
-          </tr>
-          <tr>
-            <Genre>{data && data.genre}</Genre>
-          </tr>
+          <Chracter>{data && data.name}</Chracter>
+          <Detail>{data && data.detail1},</Detail>
+          <Detail>
+            당신의 캐릭터는... {data && data.movie}의 {data && data.name}!
+          </Detail>
+          {/* <Genre>{data && data.genre} 장르 영화를 선호하시나요 ?</Genre> */}
+          <Detail>어떤 성향이 비슷하냐면요</Detail>
+          <br />
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
+          <Detail>- temp</Detail>
         </TestResultList>
         <CharacterCard>
           <CharacterImg src={`/src/assets/characters/${data && data.img}`} />
+          <MovieName>영화 : {data && data.movie}</MovieName>
+          <ActorName>배우 : {data && data.actor}</ActorName>
         </CharacterCard>
       </TestResultWrap>
     </>
@@ -35,11 +41,12 @@ interface characterType {
   id: string;
   genre: string[];
   name: string;
+  movie: string;
+  actor: string;
   img: string;
-  title1: string;
-  title2: string;
   hashtag: string[];
   detail1: string;
+  detail2: string;
 }
 
 const TestResultWrap = styled.div`
@@ -48,30 +55,36 @@ const TestResultWrap = styled.div`
   padding: 5vw;
 `;
 
-const TestResultList = styled.table`
+const TestResultList = styled.div`
   height: auto;
   float: left;
 `;
-const Chracter = styled.th`
-  font-size: 2rem;
+const Chracter = styled.div`
+  font-size: 4rem;
 `;
-const Detail = styled.td`
-  font-size: 1rem;
+const Detail = styled.div`
+  font-size: 1.5rem;
 `;
-const Genre = styled.td`
-  font-size: 1rem;
+const Genre = styled.div`
+  font-size: 1.5rem;
 `;
 
 const CharacterCard = styled.div`
-  perspective: 1500px;
+  display: block;
+  float: right;
+
+  /* perspective: 1500px; */
 `;
 
 const CharacterImg = styled.img`
   width: 500px;
   height: 500px;
   object-fit: cover;
-  float: right;
-  transform-style: preserve-3d;
+
+  /* transform-style: preserve-3d;
   transition: transform 0.05s linear;
-  box-shadow: -20px 40px 80px -50px blue;
+  box-shadow: -20px 40px 80px -50px blue; */
 `;
+
+const MovieName = styled.div``;
+const ActorName = styled.div``;
