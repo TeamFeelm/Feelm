@@ -234,7 +234,7 @@ export const { incrementProgress, decrementProgress, resetProgress, onChangeAnsI
 // Home page
 const homeSlice = createSlice({
   name: "home",
-  initialState: { page: 0, transY: 0, innerHeight: 0, footer: false },
+  initialState: { page: 0, transY: 0, innerHeight: 0, footer: false, firstpage: false },
   reducers: {
     setInnerHeight(state, action: PayloadAction<number>) {
       state.innerHeight = action.payload;
@@ -260,9 +260,12 @@ const homeSlice = createSlice({
         state.transY = state.page * state.innerHeight;
       }
     },
+    firstPage(state) {
+      state.firstpage = true;
+    },
   },
 });
-export const { setInnerHeight, pageDown, pageUp, setTransY } = homeSlice.actions;
+export const { setInnerHeight, pageDown, pageUp, setTransY, firstPage } = homeSlice.actions;
 
 const store = configureStore({
   reducer: {
