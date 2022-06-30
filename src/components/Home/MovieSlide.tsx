@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const MovieSlide = ({ slide }: props) => {
   const movieList = useSelector((state: RootState) => state.movieList);
-  const [shuffle, setShuffle] = useState<movieType[]>([]);
+  const [slice, setSlice] = useState<movieType[]>([]);
   const settings = {
     dots: true,
     dotsClass: "slick-dots",
@@ -20,25 +20,15 @@ const MovieSlide = ({ slide }: props) => {
     autoplaySpeed: 3000,
     arrows: false,
   };
-  /*const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [sty, setSty] = useState<React.CSSProperties>();
-  const moveEvent = (e: React.MouseEvent) => {
-    setX(-(window.innerWidth / 2 - e.pageX) / 40);
-    setY((window.innerHeight / 2 - e.pageY) / 20);
-    setSty({ transform: "rotateY(" + x + "deg) rotateX(" + y + "deg)" });
-  };*/
 
   useEffect(() => {
-    const copyList = [...movieList.movies];
-    const shuffleAndCut = copyList.sort((el) => Math.random() - Math.random()).slice(-7);
-    setShuffle(shuffleAndCut);
+    setSlice(movieList.movies.slice(-7));
   }, [movieList]);
 
   return (
     <>
       <MovieSlider {...settings}>
-        {shuffle.map((movie: movieType) => {
+        {slice.map((movie: movieType) => {
           return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
         })}
       </MovieSlider>
