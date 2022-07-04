@@ -12,7 +12,6 @@ export default function Canvas() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const home = useSelector((state: RootState) => state.home);
 
   const btnClick = () => {
     navigate("/test");
@@ -53,11 +52,12 @@ export default function Canvas() {
 
     window.addEventListener("click", () => {
       window.removeEventListener("mousemove", movepoint);
-      setScale(50);
+      setX(window.innerWidth / 2);
+      setY(window.innerHeight / 2);
+      setScale(10);
       setOpacity(1);
       setVisiblity("hidden");
       dispatch(firstPage());
-      console.log(home.firstpage);
     });
 
     return () => {

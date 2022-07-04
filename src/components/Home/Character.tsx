@@ -10,6 +10,8 @@ export default function Character() {
   const home = useSelector((state: RootState) => state.home);
   const [o, setO] = useState(0);
   const navigate = useNavigate();
+  const [opacity, setOpacity] = useState(0);
+  const [display, setDisplay] = useState("block");
 
   const settings = {
     dots: true,
@@ -29,11 +31,21 @@ export default function Character() {
   useEffect(() => {
     if (home.page === 1) {
       setO(1);
+      setOpacity(1);
+      setTimeout(() => {
+        setOpacity(0);
+      }, 2000);
+      setTimeout(() => {
+        setDisplay("none");
+      }, 4000);
     }
   }, [home.page]);
 
   return (
     <CharacterContainer>
+      <CharacterOverlay opacity={opacity} display={display}>
+        <CharacterOverlayText>당신의 성향에 맞는 캐릭터를 찾아보세요!</CharacterOverlayText>
+      </CharacterOverlay>
       <CharacterBox>
         {TestResultData.map((item, i) => (
           <CharacterCard
@@ -72,12 +84,43 @@ interface temp {
   };
 }
 
+interface overlay {
+  opacity: number;
+  display: string;
+}
+
 const CharacterContainer = styled.div`
   width: 100vw;
   height: 100vh;
   margin: auto;
   display: flex;
   align-items: center;
+`;
+
+const CharacterOverlay = styled.div<overlay>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+  opacity: ${(overlay) => overlay.opacity};
+  display: ${(overlay) => overlay.display};
+  transition-duration: 2s;
+  transition-delay: 0.2s;
+`;
+
+const CharacterOverlayText = styled.h1`
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  @media screen and (max-width: 1200px) {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+  }
 `;
 
 const CharacterBox = styled.div`
