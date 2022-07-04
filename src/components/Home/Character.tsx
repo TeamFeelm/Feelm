@@ -48,19 +48,13 @@ export default function Character() {
       </CharacterOverlay>
       <CharacterBox>
         {TestResultData.map((item, i) => (
-          <CharacterCard
-            src={`/src/assets/characters/${item.img}`}
-            key={i}
-            delay={0.1 * i}
-            opacity={o}
-            onClick={() => navigate(`/test/result/${i}`)}
-          />
+          <CharacterCard src={item.img} key={i} delay={0.1 * i} opacity={o} onClick={() => navigate(`/test/result/${i}`)} />
         ))}
       </CharacterBox>
 
       <CharacterSlider {...settings}>
         {TestResultData.map((item, i) => (
-          <img src={`/src/assets/characters/${item.img}`} key={i} onClick={() => navigate(`/test/result/${i}`)} />
+          <img src={item.img} key={i} onClick={() => navigate(`/test/result/${i}`)} />
         ))}
       </CharacterSlider>
     </CharacterContainer>

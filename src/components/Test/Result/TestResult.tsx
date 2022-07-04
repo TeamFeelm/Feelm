@@ -31,7 +31,7 @@ export default function TestResult() {
           <Detail>- temp</Detail>
         </TestResultList>
         <CharacterCard>
-          <CharacterImg src={`/src/assets/characters/${data && data.img}`} />
+          <CharacterImg src={data && data.img} />
           <MovieName>영화 : {data && data.movie}</MovieName>
           <ActorName>배우 : {data && data.actor}</ActorName>
         </CharacterCard>

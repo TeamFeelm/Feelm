@@ -4,7 +4,13 @@ export default function Footer() {
   return (
     <Foot>
       <a href="https://github.com/TeamFeelm/Feelm" target="_blank">
-        <img src="/src/assets/images/feelm.png" alt="feelm" width={100} height={50} style={{ objectFit: "cover" }} />
+        <img
+          src="https://user-images.githubusercontent.com/104556563/177113230-afb5f872-2161-4edd-9290-999840abc0b0.png"
+          alt="feelm"
+          width={100}
+          height={50}
+          style={{ objectFit: "cover" }}
+        />
       </a>
       <p>Copyright 2022. Feelm Co. all rights reserved.</p>
     </Foot>
