@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 export default function TestResult() {
   const { id } = useParams<{ id: string | undefined }>();
   const data: characterType | undefined = TestResultData.find((el) => el.id === id);
+  const shareResult = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+  };
 
   return (
     <>
@@ -32,6 +35,7 @@ export default function TestResult() {
           <MovieName>영화 : {data && data.movie}</MovieName>
           <ActorName>배우 : {data && data.actor}</ActorName>
         </CharacterCard>
+        <button onClick={shareResult}>공유</button>
       </TestResultWrap>
     </>
   );

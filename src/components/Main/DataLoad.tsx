@@ -12,6 +12,10 @@ export default function DataLoad() {
       dispatch(setMovies(db.data.movieList.sort(() => Math.random() - Math.random())));
       console.log("데이터 로드 성공");
     })();
+    // (async () => {
+    //   const res = await axios.get("https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=81888");
+    //   console.log(res);
+    // })();
     window.scroll(0, 0);
   }, []);
 
