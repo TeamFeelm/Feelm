@@ -6,13 +6,13 @@ export default function TeamComment() {
       name: "재윤",
       title: "",
       comment: ["니하오마", "압살라이마이쿰", "싸와디캅"],
-      img: "/src/assets/images/재윤.png",
+      img: "https://user-images.githubusercontent.com/104556563/177113682-444fcbf5-3fb2-4f23-bfe2-683d0d141bf1.png",
     },
     {
       name: "준용",
       title: "<반딧불이의 숲으로>",
       comment: [" 보고있으면 마음이 평온해지고 힐링되는 영화, 짧은 러닝타임 또한 장점!"],
-      img: "/src/assets/images/준용.jpg",
+      img: "https://user-images.githubusercontent.com/104556563/177113699-7feafbc1-e239-4f57-94e1-520c1a8bc4c2.jpg",
     },
     {
       name: "자경",
@@ -20,13 +20,13 @@ export default function TeamComment() {
       comment: [
         "여러 영화 장르의 분위기를 한 영화에 집약한 느낌을 받을 수 있다, 후반부로 갈수록 긴장감이 짙어져 러닝타임 내내 지루하지 않았음",
       ],
-      img: "/src/assets/images/자경.jpg",
+      img: "https://user-images.githubusercontent.com/104556563/177113722-9c950ac4-9289-492b-8885-2385d882c035.jpg",
     },
     {
       name: "광훈",
       title: "",
       comment: [""],
-      img: "/src/assets/images/광훈.jpg",
+      img: "https://user-images.githubusercontent.com/104556563/177113751-67d7a638-b1c1-470e-9e83-22517de0f902.jpg",
     },
   ];
   return (

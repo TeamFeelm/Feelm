@@ -7,7 +7,12 @@ export default function Layout() {
       <TopNav style={{ display: "flex" }}>
         <NavLink to="/" style={({ isActive }) => (isActive ? { borderBottom: "2px solid #f5c443" } : {})}>
           <Space>
-            <img src="/src/assets/images/feelm.png" width={70} height={46} style={{ objectFit: "cover" }} />
+            <img
+              src="https://user-images.githubusercontent.com/104556563/177113230-afb5f872-2161-4edd-9290-999840abc0b0.png"
+              width={70}
+              height={46}
+              style={{ objectFit: "cover" }}
+            />
           </Space>
         </NavLink>
         <NavLink to="/test" style={({ isActive }) => (isActive ? { borderBottom: "2px solid #f5c443" } : {})}>
