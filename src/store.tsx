@@ -38,7 +38,6 @@ const movieList = createSlice({
     setMovies(state, action: PayloadAction<[]>) {
       state.movies = action.payload;
       state.result = action.payload;
-      console.log(state.movies);
     },
     findMoviesByValue(state, action: PayloadAction<string>) {
       const result = state.movies.filter(

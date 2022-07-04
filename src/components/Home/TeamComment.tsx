@@ -41,24 +41,27 @@ export default function TeamComment() {
               <CommentText>{member[0].comment[0]}</CommentText>
             </CommentL>
           </Member>
+
           <Member>
             <img src={member[1].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[1].name}</span>
             <CommentL>
-              <CommentTitle>{member[1].title}</CommentTitle>
+              <CommentTitleL>{member[1].title}</CommentTitleL>
               <CommentText>{member[1].comment[0]}</CommentText>
             </CommentL>
           </Member>
         </Left>
+
         <Right>
           <Member>
             <img src={member[2].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[2].name}</span>
             <CommentR>
-              <CommentTitle>{member[2].title}</CommentTitle>
+              <CommentTitleR>{member[2].title}</CommentTitleR>
               <CommentText>{member[2].comment[0]}</CommentText>
             </CommentR>
           </Member>
+
           <Member>
             <img src={member[3].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[3].name}</span>
@@ -175,8 +178,14 @@ const CommentText = styled.p`
   text-align: left;
 `;
 
-const CommentTitle = styled.span`
+const CommentTitleL = styled.span`
   position: absolute;
   top: -25px;
   left: 0;
+`;
+
+const CommentTitleR = styled.span`
+  position: absolute;
+  top: -25px;
+  right: 0;
 `;
