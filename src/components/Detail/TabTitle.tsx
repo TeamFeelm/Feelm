@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TabContent } from "..";
 import styled from "styled-components";
-export default function TabTitle({ movie }: movie) {
+export default function TabTitle({ movie, info }: props) {
   const [tabTitle] = useState(["기본", "출연", "시놉시스"]);
   const [tab, setTab] = useState(0);
   return (
@@ -19,7 +19,7 @@ export default function TabTitle({ movie }: movie) {
       {/* 탭 클릭 언더라인 애니메이션 */}
       <Underline>{<Lines x={tab * 100}></Lines>}</Underline>
       {/* 탭별 세부내용 */}
-      <TabContent movie={movie} tab={tab} />
+      <TabContent movie={movie} tab={tab} info={info} />
     </>
   );
 }
@@ -30,7 +30,7 @@ interface styleProps {
   x?: number;
 }
 
-interface movie {
+interface props {
   movie: {
     id: string;
     title: string;
@@ -42,6 +42,16 @@ interface movie {
     runTime: number;
     year: number;
     img: string;
+  };
+  info?: {
+    enTitle: string;
+    title: string;
+    synops: string;
+    rating: string;
+    lines: string;
+    runtime: string;
+    grade: string;
+    peopleImg: string[];
   };
 }
 

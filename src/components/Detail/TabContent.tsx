@@ -1,20 +1,22 @@
 import styled from "styled-components";
-const basic = ({ tab, movie }: propsType) => {
-  return <></>;
-};
 
-export default function TabContent({ tab, movie }: propsType) {
-  console.log(movie);
+export default function TabContent({ tab, movie, info }: propsType) {
   return (
     <ContentBox>
       {(tab === 0 && (
         <>
-          <P>장르: {movie.genre}</P>
-          <P>감독: {movie.director}</P>
+          <P>{info?.enTitle}</P>
+          <P>{info?.rating}</P>
+          <P>{info?.runtime}</P>
         </>
       )) ||
         (tab === 1 && <P>{movie.cast}</P>) ||
-        (tab === 2 && <P>{movie.synop}</P>)}
+        (tab === 2 && (
+          <P>
+            {info?.title}
+            {info?.synops}
+          </P>
+        ))}
     </ContentBox>
   );
 }
@@ -31,6 +33,16 @@ interface propsType {
     runTime: number;
     year: number;
     img: string;
+  };
+  info?: {
+    enTitle: string;
+    title: string;
+    synops: string;
+    rating: string;
+    lines: string;
+    runtime: string;
+    grade: string;
+    peopleImg: string[];
   };
 }
 

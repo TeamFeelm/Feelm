@@ -11,7 +11,7 @@ export default function TestPage() {
       <QuestionsWrap>
         <ProgressBar progress={progress} />
         <QuestionList progress={progress} />
-        <VideoBg src="src\assets\videos\testbg.mp4" muted autoPlay loop>
+        <VideoBg src="src\assets\videos\testbg.mp4" muted autoPlay loop playsInline>
           <strong>Your browser does not support the video tag.</strong>
         </VideoBg>
         <AnswerList progress={progress} />
