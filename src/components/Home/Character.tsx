@@ -146,7 +146,7 @@ const CharacterSlider = styled(Slider)`
   height: 70%;
   display: inline-block;
   display: none;
-  background-color: rgba(1, 5, 27, 1);
+  background-color: rgb(8, 14, 47);
   .slick-slide {
     width: 100%;
     height: 800px;
