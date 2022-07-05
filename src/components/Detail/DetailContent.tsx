@@ -16,7 +16,8 @@ export default function TabTitle({ movie, info }: props) {
           );
         })}
         {/* 탭 클릭 언더라인 애니메이션 */}
-        <Underline>{<Lines x={tab * 100}></Lines>}</Underline>
+        {/* <Underline>{<Lines x={tab * 100}></Lines>}</Underline> */}
+        <Underline x={tab * 100}></Underline>
       </TabBox>
       {/* 탭별 세부내용 */}
       <ContentBox>
@@ -81,21 +82,26 @@ export const TabBox = styled.div`
 `;
 
 export const Tab = styled.div`
-  flex-basis: 33.333333%;
+  flex-basis: 33.33%;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px;
   cursor: pointer;
+  transition: all 0.5s;
   :hover {
-    background-color: #5f5fc7;
-    transition: all 0.5s;
+    background-color: white;
+    color: rgba(1, 5, 27, 1);
   }
 `;
 
 // 탭 타이틀 전체 박스
-export const Underline = styled.div`
-  width: 45vw;
+export const Underline = styled.div<styleProps>`
+  width: 33.33%;
   height: 2px;
-  /* bottom: 2px; */
+  bottom: 2px;
+
+  background-color: #f5c443;
+  transform: translateX(${(props) => props.x}%);
+  transition: transform 0.6s;
   @media screen and (max-width: 768px) {
     width: 65%;
   }
@@ -104,9 +110,6 @@ export const Underline = styled.div`
 // 탭 타이틀 슬라이딩 언더라인
 export const Lines = styled.div<styleProps>`
   flex-basis: 33.333333%;
-  background-color: #f5c443;
-  transform: translateX(${(props) => props.x}%);
-  transition: transform 0.6s;
 `;
 
 export const ContentBox = styled.div`
