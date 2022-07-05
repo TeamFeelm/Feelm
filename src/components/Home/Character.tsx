@@ -30,6 +30,9 @@ export default function Character() {
 
   useEffect(() => {
     if (home.page === 1) {
+      window.addEventListener("click", () => {
+        setDisplay("none");
+      });
       setO(1);
       setOpacity(1);
       setTimeout(() => {
@@ -92,9 +95,9 @@ const CharacterOverlay = styled.div<overlay>`
 
 const CharacterOverlayText = styled.h1`
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  top: 40%;
   font-size: 40px;
   color: #f5c443;
   @media screen and (max-width: 1200px) {
