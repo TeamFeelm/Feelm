@@ -77,7 +77,7 @@ export const TabBox = styled.div`
   font-size: 0.8em;
   margin: auto;
   @media screen and (max-width: 768px) {
-    width: 65%;
+    width: 100%;
   }
 `;
 
@@ -97,19 +97,13 @@ export const Tab = styled.div`
 export const Underline = styled.div<styleProps>`
   width: 33.33%;
   height: 2px;
-  bottom: 2px;
 
   background-color: #f5c443;
   transform: translateX(${(props) => props.x}%);
   transition: transform 0.6s;
   @media screen and (max-width: 768px) {
-    width: 65%;
+    width: 33.33%;
   }
-`;
-
-// 탭 타이틀 슬라이딩 언더라인
-export const Lines = styled.div<styleProps>`
-  flex-basis: 33.333333%;
 `;
 
 export const ContentBox = styled.div`
