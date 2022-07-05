@@ -69,7 +69,9 @@ export default function Canvas() {
     <MovieBox>
       <Mouse inner={inner} x={x} y={y} scale={scale} visibility={visibility} />
       <Text opacity={opacity}>
-        <Header>Find Your Feelm</Header>
+        <Header>
+          당신과 닮은 영화 속 주인공을<br></br>찾아보세요🎬
+        </Header>
       </Text>
       <StartBtn onClick={btnClick} opacity={opacity}>
         TEST START
@@ -108,7 +110,9 @@ const Mouse = styled.div<props>`
   );
 `;
 
-const Header = styled.h1``;
+const Header = styled.h1`
+  font-size: 2em;
+`;
 
 const Video = styled.video`
   position: absolute;
@@ -129,10 +133,9 @@ const Text = styled.div<opacity>`
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 2rem;
-  transition-duration: 1s;
+  transition-duration: 0.4s;
   color: white;
   opacity: ${(opacity) => opacity.opacity};
-  transition-delay: 0.3s;
 `;
 
 const StartBtn = styled.button<opacity>`
@@ -146,10 +149,9 @@ const StartBtn = styled.button<opacity>`
   height: 80px;
   border-radius: 5px;
   font-size: 20px;
-  transition-duration: 1s;
+  transition-duration: 0.4s;
   z-index: 100;
   opacity: ${(props) => props.opacity};
-  transition-delay: 0.3s;
   cursor: pointer;
   &:hover {
     background-color: white;

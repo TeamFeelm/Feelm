@@ -27,7 +27,6 @@ export default function TestPage() {
 }
 
 const QuestionsWrap = styled.div`
-  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgb(3, 10, 46);
