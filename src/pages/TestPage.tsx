@@ -36,5 +36,6 @@ const QuestionsWrap = styled.div`
 
 const VideoBg = styled.video`
   opacity: 0.1;
+  width: 100%;
   object-fit: cover;
 `;

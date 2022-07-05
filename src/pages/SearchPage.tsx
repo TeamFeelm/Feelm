@@ -29,7 +29,7 @@ const SearchPage = () => {
           }}
         ></BsArrowUpCircle>
       )}
-      <Footer height={105}></Footer>
+      <Footer></Footer>
     </SearchBox>
   );
 };

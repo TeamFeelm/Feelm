@@ -38,7 +38,6 @@ interface props {
     synop: string;
     director: string;
     cast: string[];
-    rating: string;
     runTime: number;
     year: number;
     img: string;
@@ -47,11 +46,14 @@ interface props {
     enTitle: string;
     title: string;
     synops: string;
-    rating: string;
     lines: string;
     runtime: string;
     grade: string;
     peopleImg: string[];
+    ntzRating: string;
+    spcRating: string;
+    genre: string;
+    cast: string;
   };
 }
 

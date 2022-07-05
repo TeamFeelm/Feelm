@@ -5,12 +5,10 @@ export default function TabContent({ tab, movie, info }: propsType) {
     <ContentBox>
       {(tab === 0 && (
         <>
-          <P>{info?.enTitle}</P>
-          <P>{info?.rating}</P>
-          <P>{info?.runtime}</P>
+          <P>default</P>
         </>
       )) ||
-        (tab === 1 && <P>{movie.cast}</P>) ||
+        (tab === 1 && <P>{movie.cast} </P>) ||
         (tab === 2 && (
           <P>
             {info?.title}
@@ -29,7 +27,6 @@ interface propsType {
     synop: string;
     director: string;
     cast: string[];
-    rating: string;
     runTime: number;
     year: number;
     img: string;
@@ -38,11 +35,14 @@ interface propsType {
     enTitle: string;
     title: string;
     synops: string;
-    rating: string;
     lines: string;
     runtime: string;
     grade: string;
     peopleImg: string[];
+    ntzRating: string;
+    spcRating: string;
+    genre: string;
+    cast: string;
   };
 }
 

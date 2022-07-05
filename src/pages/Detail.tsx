@@ -28,11 +28,14 @@ export default function Detail() {
           const $ = cheerio.load(res.data);
           const enTitle = $(".mv_info > .h_movie2");
           const story = $(".story_area");
-          const rating = $(".netizen_score").find(".star_score > em");
           const lines = $(".lines").find("li:first-child strong");
           const outline = $(".step1 + dd");
           const grade = $(".step4 + dd");
           const peopleImg: string[] = [];
+          const ntzRating = $(".netizen_score").find(".star_score > em");
+          const spcRating = $(".special_score").find(".star_score > em");
+          const genre = $(".step1 + dd").find("p > span:first-child");
+          const cast = $(".step3 + dd").find("p");
           $(".people > ul > li").each((idx, el) => {
             peopleImg[idx] = $(el).find("img").attr("src")!;
           });
@@ -41,11 +44,14 @@ export default function Detail() {
             enTitle: enTitle.text(),
             title: story.find(".h_tx_story").text(),
             synops: story.find(".con_tx").text(),
-            rating: rating.text(),
             lines: lines.text(),
             runtime: outline.find("span:nth-of-type(3)").text(),
             grade: grade.find("a:nth-of-type(1)").text(),
             peopleImg: peopleImg,
+            ntzRating: ntzRating.text(),
+            spcRating: spcRating.text(),
+            genre: genre.text(),
+            cast: cast.text(),
           });
         });
     }
@@ -55,6 +61,15 @@ export default function Detail() {
     return (
       <Wrap>
         <Poster src={movie.img} width={350} height={500} />
+        <MovieInfo>
+          <p>enTitle : {info?.enTitle}</p>
+          <p>ntzRating : {info?.ntzRating}</p>
+          <p>spcRating : {info?.spcRating}</p>
+          <p>genre : {info?.genre}</p>
+          <p>runtime : {info?.runtime}</p>
+          <p>cast : {info?.cast}</p>
+        </MovieInfo>
+
         <TabTitle movie={movie} info={info} />
       </Wrap>
     );
@@ -69,7 +84,6 @@ interface movieType {
   synop: string;
   director: string;
   cast: string[];
-  rating: string;
   runTime: number;
   year: number;
   img: string;
@@ -79,22 +93,25 @@ interface infoType {
   enTitle: string;
   title: string;
   synops: string;
-  rating: string;
   lines: string;
   runtime: string;
   grade: string;
   peopleImg: string[];
+  ntzRating: string;
+  spcRating: string;
+  genre: string;
+  cast: string;
 }
 
 export const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 800px;
+  margin-top: 25px;
 `;
+
+export const MovieInfo = styled.div``;
+
 export const Poster = styled.img`
   src: ${(props) => props.src};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  margin-top: 25px;
 `;
