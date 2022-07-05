@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../store";
-import { TabContent } from "../components";
+import { Loading } from "../components";
 import styled from "styled-components";
 import axios from "axios";
 import cheerio from "cheerio";
@@ -12,6 +12,7 @@ export default function Detail() {
   const movieList = useSelector((state: RootState) => state.movieList.movies);
   const { id } = useParams<{ id: string }>();
   const [info, setInfo] = useState<infoType | undefined>();
+  const [delayTime, setDelayTime] = useState(1500);
 
   useEffect(() => {
     const loadMovie: movieType | undefined = movieList.find((item) => {
@@ -19,6 +20,21 @@ export default function Detail() {
     });
     setMovie(loadMovie);
   }, []);
+
+  const MovieInfo = lazy(() => {
+    const comp = import("../components/Detail/MovieInfo");
+    const delay = new Promise((resolve) => setTimeout(resolve, delayTime));
+
+    return Promise.all([comp, delay]).then(([moduleExports]) => moduleExports);
+  });
+
+  const TabContent = lazy(() => {
+    const comp = import("../components/Detail/TabContent");
+    const delay = new Promise((resolve) => setTimeout(resolve, delayTime));
+
+    return Promise.all([comp, delay]).then(([moduleExports]) => moduleExports);
+  });
+  // lazy 컴포넌트를 2개 만들어서 로딩이 2회 걸림, 수정필요
 
   useEffect(() => {
     if (movie) {
@@ -60,19 +76,13 @@ export default function Detail() {
   if (movie) {
     return (
       <Wrap>
-        <MovieInfoWrap>
-          <Poster src={movie.img} width={350} height={500} />
-          <MovieInfo>
-            <p>enTitle : {info?.enTitle}</p>
-            <p>ntzRating : {info?.ntzRating}</p>
-            <p>spcRating : {info?.spcRating}</p>
-            <p>genre : {info?.genre}</p>
-            <p>runtime : {info?.runtime}</p>
-            <p>cast : {info?.cast}</p>
-          </MovieInfo>
-        </MovieInfoWrap>
-
-        <TabContent movie={movie} info={info} />
+        <Suspense fallback={<Loading />}>
+          <MovieInfoWrap>
+            <Poster src={movie.img} />
+            <MovieInfo movie={movie} info={info} />
+          </MovieInfoWrap>
+          <TabContent movie={movie} info={info} />
+        </Suspense>
       </Wrap>
     );
   }
@@ -110,15 +120,24 @@ export const Wrap = styled.div`
 `;
 
 export const MovieInfoWrap = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  @media screen and (max-width: 768px) {
+    display: block;
+    text-align: center;
+  }
 `;
 
-export const MovieInfo = styled.div``;
+export const MovieInfo = styled.div`
+  width: 22.5%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 export const Poster = styled.img`
   src: ${(props) => props.src};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: 350px;
+  height: 500px;
 `;
