@@ -29,33 +29,34 @@ const Search = () => {
 const SearchForm = styled.form`
   display: flex;
   justify-content: center;
-  width: fit-content;
-  margin: 75px auto 35px;
+  width: 100%;
+  margin: 60px auto 25px;
 `;
 
 const SearchValue = styled.input`
-  width: 200px;
-  height: 40px;
-  margin-left: 35px;
+  width: 230px;
+  height: 50px;
   border-bottom: 1.5px solid #f5c443;
-  font-family: "yg-jalnan";
-  font-size: 18px;
+  font-family: "SSD";
+  font-size: 1.2em;
   text-align: center;
+  line-height: 1.2em;
   color: white;
   transition: all 0.3s;
   ::placeholder {
-    color: lightgray;
-    font-size: 14px;
-    opacity: 1;
+    color: white;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0.8;
   }
   &:focus {
-    width: 280px;
+    width: 300px;
   }
 `;
 
 const SearchSubmit = styled.button`
   width: 40px;
-  height: 40px;
+  height: 50px;
   border-bottom: 1.5px solid #f5c443;
   .search_btn {
     color: #f5c443;

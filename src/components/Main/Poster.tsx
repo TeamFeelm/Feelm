@@ -31,6 +31,7 @@ const Box = styled.img`
   @media screen and (max-width: 768px) {
     width: 180px;
     height: 250px;
+    margin: 5px;
   }
 `;
 

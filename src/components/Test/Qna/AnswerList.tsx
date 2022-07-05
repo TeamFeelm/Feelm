@@ -55,36 +55,40 @@ interface props {
 }
 
 const AnsWrap = styled.div`
-  font-size: 1.5rem;
+  font-size: 3vh;
   color: white;
   text-align: center;
-  position: fixed;
-  width: fit-content;
-  min-width: 400px;
+  position: absolute;
+  width: 0;
   bottom: 15%;
   left: 50%;
   margin: auto;
   @media screen and (max-width: 480px) {
     position: relative;
-    margin-top: 30px;
+    top: 10vh;
+    left: 0;
   }
 `;
 const AnsNextDiv = styled.div`
   padding: 15px 30px;
   margin-top: 5px;
   transform: translate(-50%, 0);
+  width: fit-content;
+  min-width: 650px;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
   &:hover {
     background-color: white;
     color: rgba(1, 5, 27, 1);
   }
+  @media screen and (max-width: 480px) {
+    min-width: 320px;
+  }
 `;
 const AnsPrevDiv = styled.div`
-  width: fit-content;
+  width: 5.5rem;
   height: fit-content;
-  padding: 5px;
-  position: fixed;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 1.15rem;

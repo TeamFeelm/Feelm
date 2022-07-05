@@ -118,7 +118,7 @@ const Mouse = styled.div<props>`
 `;
 
 const Header = styled.h1`
-  font-size: 2em;
+  font-size: 6vh;
 `;
 
 const Video = styled.video`

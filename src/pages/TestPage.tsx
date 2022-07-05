@@ -27,13 +27,14 @@ export default function TestPage() {
 }
 
 const QuestionsWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgb(3, 10, 46);
-  opacity: 1;
+  width: 100vw;
+  height: fit-content;
 `;
 
 const VideoBg = styled.video`
+  position: absolute;
   opacity: 0.1;
   object-fit: cover;
+  width: 100%;
+  height: 70vh;
 `;

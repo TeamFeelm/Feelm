@@ -29,7 +29,7 @@ const SearchPage = () => {
           }}
         ></BsArrowUpCircle>
       )}
-      <Footer height={105}></Footer>
+      <Footer></Footer>
     </SearchBox>
   );
 };
@@ -43,11 +43,17 @@ const SearchBox = styled.div<size>`
   height: 100%;
   margin: auto;
   position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   @media screen and (max-width: 1200px) {
     width: 90vw;
   }
   @media screen and (max-width: 768px) {
     width: 96vw;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100vw;
   }
 
   .up_btn {

@@ -10,7 +10,7 @@ export default function TeamComment() {
     },
     {
       name: "준용",
-      title: "<반딧불이의 숲으로>",
+      title: "<반딧불이의숲으로>",
       comment: [" 보고있으면 마음이 평온해지고 힐링되는 영화, 짧은 러닝타임 또한 장점!"],
       img: "https://user-images.githubusercontent.com/104556563/177113699-7feafbc1-e239-4f57-94e1-520c1a8bc4c2.jpg",
     },
@@ -24,8 +24,8 @@ export default function TeamComment() {
     },
     {
       name: "병도",
-      title: "<세상에서 가장 아름다운 이별>",
-      comment: [""],
+      title: "<세상에서가장아름다운이별>",
+      comment: ['울고 싶을 때 보는 영화, 대사가 사람의 마음을 울릴 수 있다는 것을 알게 해준 명작 "엄마, 사랑해"'],
       img: "https://user-images.githubusercontent.com/104556563/177113751-67d7a638-b1c1-470e-9e83-22517de0f902.jpg",
     },
   ];
@@ -38,7 +38,7 @@ export default function TeamComment() {
             <span>{member[0].name}</span>
             <CommentL>
               <CommentTitleL>{member[0].title}</CommentTitleL>
-              <CommentText>{member[0].comment[0]}</CommentText>
+              {member[0].comment[0]}
             </CommentL>
           </Member>
 
@@ -47,7 +47,7 @@ export default function TeamComment() {
             <span>{member[1].name}</span>
             <CommentL>
               <CommentTitleL>{member[1].title}</CommentTitleL>
-              <CommentText>{member[1].comment[0]}</CommentText>
+              {member[1].comment[0]}
             </CommentL>
           </Member>
         </Left>
@@ -58,7 +58,7 @@ export default function TeamComment() {
             <span>{member[2].name}</span>
             <CommentR>
               <CommentTitleR>{member[2].title}</CommentTitleR>
-              <CommentText>{member[2].comment[0]}</CommentText>
+              {member[2].comment[0]}
             </CommentR>
           </Member>
 
@@ -67,7 +67,7 @@ export default function TeamComment() {
             <span>{member[3].name}</span>
             <CommentR>
               <CommentTitleR>{member[3].title}</CommentTitleR>
-              <CommentText>{member[3].comment[0]}</CommentText>
+              {member[3].comment[0]}
             </CommentR>
           </Member>
         </Right>
@@ -124,7 +124,11 @@ const CommentL = styled.div`
   left: 93px;
   top: 28px;
   width: 25vw;
-  height: 75px;
+  height: fit-content;
+  text-align: left;
+  padding: 5px 5px 5px 13px;
+  font-size: 1.5vh;
+  line-height: 130%;
   background-color: white;
   border-radius: 12px;
   &:after {
@@ -151,7 +155,11 @@ const CommentR = styled.div`
   right: 93px;
   top: 28px;
   width: 25vw;
-  height: 75px;
+  height: fit-content;
+  text-align: left;
+  padding: 5px 5px 5px 13px;
+  font-size: 1.5vh;
+  line-height: 130%;
   background-color: white;
   border-radius: 12px;
   &:after {
@@ -173,22 +181,16 @@ const CommentR = styled.div`
   }
 `;
 
-const CommentText = styled.p`
-  margin: 10px;
-  line-height: 120%;
-  font-size: 15px;
-  font-weight: lighter;
-  text-align: left;
-`;
-
 const CommentTitleL = styled.span`
   position: absolute;
   top: -25px;
   left: 0;
+  font-size: 1.7vh;
 `;
 
 const CommentTitleR = styled.span`
   position: absolute;
   top: -25px;
   right: 0;
+  font-size: 1.7vh;
 `;

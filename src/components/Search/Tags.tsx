@@ -93,5 +93,8 @@ const Box = styled.div`
   height: fit-content;
   margin: auto;
   margin-top: 30px;
+  @media screen and (max-width: 480px) {
+    width: 95%;
+  }
 `;
 export default Tags;
