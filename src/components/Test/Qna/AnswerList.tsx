@@ -64,6 +64,10 @@ const AnsWrap = styled.div`
   bottom: 15%;
   left: 50%;
   margin: auto;
+  @media screen and (max-width: 480px) {
+    position: relative;
+    margin-top: 30px;
+  }
 `;
 const AnsNextDiv = styled.div`
   padding: 15px 30px;

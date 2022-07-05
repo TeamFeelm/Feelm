@@ -39,7 +39,13 @@ const Tags = () => {
           #전체
         </Tag>
       ) : (
-        <Selected>#전체</Selected>
+        <Selected
+          onClick={() => {
+            dispatch(resetTag());
+          }}
+        >
+          #전체
+        </Selected>
       )}
       {hashTags.map((hashTag, i) =>
         selectedTags.includes(hashTag) ? (

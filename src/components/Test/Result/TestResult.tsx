@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import { TestResultData } from "../..";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { resetAnsIdx, resetProgress } from "../../../store";
+import { useDispatch } from "react-redux";
 
 export default function TestResult() {
   const { id } = useParams<{ id: string | undefined }>();
   const data: characterType | undefined = TestResultData.find((el) => el.id === id);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const shareResult = async () => {
     await navigator.clipboard.writeText(window.location.href);
+    window.alert("클립보드에 복사 되었습니다!");
+  };
+
+  const redirectTest = () => {
+    dispatch(resetProgress());
+    dispatch(resetAnsIdx());
+    navigate("/test");
   };
 
   return (
@@ -35,8 +47,11 @@ export default function TestResult() {
           <MovieName>영화 : {data && data.movie}</MovieName>
           <ActorName>배우 : {data && data.actor}</ActorName>
         </CharacterCard>
-        <button onClick={shareResult}>공유</button>
       </TestResultWrap>
+      <ButtonBox>
+        <Button onClick={shareResult}>공유하기🔗</Button>
+        <Button onClick={redirectTest}>다시하기💨</Button>
+      </ButtonBox>
     </>
   );
 }
@@ -57,11 +72,12 @@ const TestResultWrap = styled.div`
   width: 100%;
   height: 100%;
   padding: 5vw;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const TestResultList = styled.div`
-  height: auto;
-  float: left;
+  width: 400px;
 `;
 const Chracter = styled.div`
   font-size: 4rem;
@@ -69,13 +85,9 @@ const Chracter = styled.div`
 const Detail = styled.div`
   font-size: 1.5rem;
 `;
-const Genre = styled.div`
-  font-size: 1.5rem;
-`;
 
 const CharacterCard = styled.div`
-  display: block;
-  float: right;
+  width: 500px;
 
   /* perspective: 1500px; */
 `;
@@ -92,3 +104,27 @@ const CharacterImg = styled.img`
 
 const MovieName = styled.div``;
 const ActorName = styled.div``;
+
+const ButtonBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: auto;
+`;
+
+const Button = styled.div`
+  width: 250px;
+  height: 70px;
+  margin: 20px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: rgba(1, 5, 27, 1);
+  }
+`;

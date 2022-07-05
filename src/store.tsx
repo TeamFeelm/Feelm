@@ -76,29 +76,23 @@ const progressSlice = createSlice({
   reducers: {
     incrementProgress(state, action: PayloadAction<number>) {
       state.progress += action.payload;
-      console.log("progress is " + state.progress);
     },
     decrementProgress(state, action: PayloadAction<number>) {
       if (state.progress > 0) {
         state.progress -= action.payload;
       }
-      console.log("progress is " + state.progress);
     },
     resetProgress(state) {
       state.progress = 0;
-      console.log("reset progress " + state.progress);
     },
     onChangeAnsIdx(state, action: PayloadAction<number>) {
       state.ansIdxArray = state.ansIdxArray.concat(action.payload);
-      console.log("onChange ansIdxArray " + state.ansIdxArray);
     },
     delLastAnsIdx(state) {
       state.ansIdxArray = state.ansIdxArray.slice(0, state.ansIdxArray.length - 1);
-      console.log("del last idx " + state.ansIdxArray);
     },
     resetAnsIdx(state) {
       state.ansIdxArray = [0];
-      console.log("reset ansIdxArray " + state.ansIdxArray);
     },
     // test-result calculate part
     testResultCalc(state: any): any {

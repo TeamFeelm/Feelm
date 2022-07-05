@@ -58,7 +58,7 @@ const MovieSlider = styled(Slider)`
   display: inline-block;
   .slick-dots {
     position: absolute;
-    top: 30px;
+    top: 10vh;
     height: 30px;
     z-index: 1000;
 
