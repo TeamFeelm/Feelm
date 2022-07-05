@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../store";
-import { TabTitle } from "../components";
+import { TabContent } from "../components";
 import styled from "styled-components";
 import axios from "axios";
 import cheerio from "cheerio";
@@ -60,17 +60,19 @@ export default function Detail() {
   if (movie) {
     return (
       <Wrap>
-        <Poster src={movie.img} width={350} height={500} />
-        <MovieInfo>
-          <p>enTitle : {info?.enTitle}</p>
-          <p>ntzRating : {info?.ntzRating}</p>
-          <p>spcRating : {info?.spcRating}</p>
-          <p>genre : {info?.genre}</p>
-          <p>runtime : {info?.runtime}</p>
-          <p>cast : {info?.cast}</p>
-        </MovieInfo>
+        <MovieInfoWrap>
+          <Poster src={movie.img} width={350} height={500} />
+          <MovieInfo>
+            <p>enTitle : {info?.enTitle}</p>
+            <p>ntzRating : {info?.ntzRating}</p>
+            <p>spcRating : {info?.spcRating}</p>
+            <p>genre : {info?.genre}</p>
+            <p>runtime : {info?.runtime}</p>
+            <p>cast : {info?.cast}</p>
+          </MovieInfo>
+        </MovieInfoWrap>
 
-        <TabTitle movie={movie} info={info} />
+        <TabContent movie={movie} info={info} />
       </Wrap>
     );
   }
@@ -104,8 +106,13 @@ interface infoType {
 }
 
 export const Wrap = styled.div`
-  width: 800px;
-  margin-top: 25px;
+  width: 100vw;
+`;
+
+export const MovieInfoWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MovieInfo = styled.div``;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TabContent } from "..";
 import styled from "styled-components";
 export default function TabTitle({ movie, info }: props) {
-  const [tabTitle] = useState(["기본", "출연", "시놉시스"]);
+  const [tabTitle] = useState(["시놉시스", "출연", "asd"]);
   const [tab, setTab] = useState(0);
   return (
     <>
@@ -15,18 +15,27 @@ export default function TabTitle({ movie, info }: props) {
             </Tab>
           );
         })}
+        {/* 탭 클릭 언더라인 애니메이션 */}
+        <Underline>{<Lines x={tab * 100}></Lines>}</Underline>
       </TabBox>
-      {/* 탭 클릭 언더라인 애니메이션 */}
-      <Underline>{<Lines x={tab * 100}></Lines>}</Underline>
       {/* 탭별 세부내용 */}
-      <TabContent movie={movie} tab={tab} info={info} />
+      <ContentBox>
+        {(tab === 0 && (
+          <>
+            <P>
+              {info?.title}
+              {info?.synops}
+            </P>
+          </>
+        )) ||
+          (tab === 1 && <P>{movie.cast}</P>) ||
+          (tab === 2 && <P></P>)}
+      </ContentBox>
     </>
   );
 }
 
 interface styleProps {
-  bg?: string;
-  color?: string;
   x?: number;
 }
 
@@ -57,23 +66,23 @@ interface props {
   };
 }
 
-export const TabBox = styled.div<styleProps>`
+export const TabBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 45vw;
   padding-top: 40px;
   border-bottom: 1px solid black;
   font-family: "SSD";
   font-size: 0.8em;
+  margin: auto;
   @media screen and (max-width: 768px) {
     width: 65%;
   }
 `;
 
-export const Tab = styled.div<styleProps>`
-  display: flex;
+export const Tab = styled.div`
   flex-basis: 33.333333%;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   padding: 10px 0;
   cursor: pointer;
   :hover {
@@ -84,11 +93,9 @@ export const Tab = styled.div<styleProps>`
 
 // 탭 타이틀 전체 박스
 export const Underline = styled.div`
-  display: flex;
   width: 45vw;
   height: 2px;
-  position: relative;
-  bottom: 2px;
+  /* bottom: 2px; */
   @media screen and (max-width: 768px) {
     width: 65%;
   }
@@ -100,4 +107,18 @@ export const Lines = styled.div<styleProps>`
   background-color: #f5c443;
   transform: translateX(${(props) => props.x}%);
   transition: transform 0.6s;
+`;
+
+export const ContentBox = styled.div`
+  width: 50vw;
+  padding: 20px;
+  margin: auto;
+  font-family: "SSD";
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+`;
+
+export const P = styled.p`
+  line-height: 1.7em;
 `;

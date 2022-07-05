@@ -23,5 +23,4 @@ export { default as SearchResult } from "./Search/SearchResult";
 export { default as SearchForm } from "./Search/SearchForm";
 export { default as Tags } from "./Search/Tags";
 // Detail
-export { default as TabTitle } from "./Detail/TabTitle";
-export { default as TabContent } from "./Detail/TabContent";
+export { default as TabContent } from "./Detail/DetailContent";
