@@ -34,10 +34,10 @@ export default function Character() {
       setOpacity(1);
       setTimeout(() => {
         setOpacity(0);
-      }, 2000);
+      }, 1500);
       setTimeout(() => {
         setDisplay("none");
-      }, 4000);
+      }, 3000);
     }
   }, [home.page]);
 
@@ -95,12 +95,11 @@ const CharacterOverlay = styled.div<overlay>`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1000;
   opacity: ${(overlay) => overlay.opacity};
   display: ${(overlay) => overlay.display};
-  transition-duration: 2s;
-  transition-delay: 0.2s;
+  transition-duration: 1.5s;
 `;
 
 const CharacterOverlayText = styled.h1`
@@ -109,6 +108,7 @@ const CharacterOverlayText = styled.h1`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 40px;
+  color: #f5c443;
   @media screen and (max-width: 1200px) {
     display: block;
     width: 100%;
@@ -146,7 +146,7 @@ const CharacterSlider = styled(Slider)`
   height: 70%;
   display: inline-block;
   display: none;
-  background-color: rgba(1, 5, 27, 1);
+  background-color: rgb(8, 14, 47);
   .slick-slide {
     width: 100%;
     height: 800px;

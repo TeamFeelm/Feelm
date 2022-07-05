@@ -27,6 +27,7 @@ const MovieSlide = ({ slide }: props) => {
 
   return (
     <>
+      <SlideTitle>추천 영화를 만나보세요!</SlideTitle>
       <MovieSlider {...settings}>
         {slice.map((movie: movieType) => {
           return <Poster src={movie.img} id={movie.id} key={movie.id}></Poster>;
@@ -52,13 +53,25 @@ interface movieType {
   img: string;
 }
 
+const SlideTitle = styled.div`
+  text-align: center;
+  font-size: 2.3em;
+  color: #f5c443;
+  width: 100vw;
+  height: 15vh;
+  line-height: 20vh;
+  @media screen and (max-width: 480px) {
+    font-size: 1.6em;
+  }
+`;
+
 const MovieSlider = styled(Slider)`
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   display: inline-block;
   .slick-dots {
     position: absolute;
-    top: 30px;
+    bottom: 10vh;
     height: 30px;
     z-index: 1000;
 
@@ -82,15 +95,19 @@ const MovieSlider = styled(Slider)`
     height: auto;
     div {
       width: 100%;
-      padding-top: 20vh;
-      padding-bottom: 10vh;
+      padding-top: 7vh;
+      padding-bottom: 7vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     div img {
-      box-shadow: 0px 0px 80px 10px #565656;
+      box-shadow: 0px 0px 7vh 10px #565656;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 65vh;
   }
 `;
 

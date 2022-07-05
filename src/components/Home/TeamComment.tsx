@@ -4,8 +4,8 @@ export default function TeamComment() {
   const member = [
     {
       name: "재윤",
-      title: "",
-      comment: ["니하오마", "압살라이마이쿰", "싸와디캅"],
+      title: "<겟아웃>",
+      comment: ["보는 내내 긴장감을 놓을 수 없는 공포 영화, 스토리의 몰입감을 중요시 한다면 추천!"],
       img: "https://user-images.githubusercontent.com/104556563/177113682-444fcbf5-3fb2-4f23-bfe2-683d0d141bf1.png",
     },
     {
@@ -23,8 +23,8 @@ export default function TeamComment() {
       img: "https://user-images.githubusercontent.com/104556563/177113722-9c950ac4-9289-492b-8885-2385d882c035.jpg",
     },
     {
-      name: "광훈",
-      title: "",
+      name: "병도",
+      title: "<세상에서 가장 아름다운 이별>",
       comment: [""],
       img: "https://user-images.githubusercontent.com/104556563/177113751-67d7a638-b1c1-470e-9e83-22517de0f902.jpg",
     },
@@ -37,7 +37,7 @@ export default function TeamComment() {
             <img src={member[0].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[0].name}</span>
             <CommentL>
-              <span>{member[0].title}</span>
+              <CommentTitleL>{member[0].title}</CommentTitleL>
               <CommentText>{member[0].comment[0]}</CommentText>
             </CommentL>
           </Member>
@@ -65,7 +65,10 @@ export default function TeamComment() {
           <Member>
             <img src={member[3].img} width={60} height={60} style={{ borderRadius: "9999px" }} />
             <span>{member[3].name}</span>
-            <CommentR></CommentR>
+            <CommentR>
+              <CommentTitleR>{member[3].title}</CommentTitleR>
+              <CommentText>{member[3].comment[0]}</CommentText>
+            </CommentR>
           </Member>
         </Right>
       </InnerBox>

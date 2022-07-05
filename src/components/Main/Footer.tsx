@@ -19,7 +19,7 @@ export default function Footer() {
 
 const Foot = styled.div`
   height: 105px;
-  background-color: rgba(1, 5, 27, 1);
+  background-color: rgb(8, 14, 47);
   color: white;
   font-size: 15px;
   text-align: center;
