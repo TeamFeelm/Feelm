@@ -18,8 +18,8 @@ export default function Canvas() {
   };
 
   const [inner, setInner] = useState((window.innerWidth + window.innerHeight) * 0.1);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [x, setX] = useState(window.innerWidth / 2);
+  const [y, setY] = useState(window.innerHeight / 2);
   const [scale, setScale] = useState(1);
   const [opacity, setOpacity] = useState(0);
   const [visibility, setVisiblity] = useState("hidden");
@@ -103,9 +103,16 @@ const Mouse = styled.div<props>`
   background: radial-gradient(
     circle ${(props) => props.inner}px at ${(props) => props.x}px ${(props) => props.y}px,
     rgba(8, 14, 47, 0) 50%,
-    rgba(8, 14, 47, 0.3) 70%,
+    rgba(8, 14, 47, 0.1) 60%,
+    rgba(8, 14, 47, 0.15) 65%,
+    rgba(8, 14, 47, 0.2) 70%,
+    rgba(8, 14, 47, 0.3) 75%,
+    rgba(8, 14, 47, 0.5) 85%,
     rgba(8, 14, 47, 0.8) 100%
   );
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const Header = styled.h1``;
