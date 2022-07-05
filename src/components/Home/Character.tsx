@@ -65,18 +65,6 @@ interface props {
   delay: number;
   opacity: number;
 }
-interface temp {
-  item: {
-    id: number;
-    genre: string[];
-    name: string;
-    img: string;
-    title1: string;
-    title2: string;
-    hashtag: string[];
-    detail1: string;
-  };
-}
 
 interface overlay {
   opacity: number;
@@ -139,6 +127,7 @@ const CharacterCard = styled.img<props>`
   opacity: ${(props) => props.opacity};
   transition-delay: ${(props) => props.delay}s;
   transition-duration: 1s;
+  cursor: pointer;
 `;
 
 const CharacterSlider = styled(Slider)`

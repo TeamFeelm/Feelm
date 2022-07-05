@@ -18,6 +18,7 @@ export default function Footer() {
 }
 
 const Foot = styled.div`
+  width: 100vw;
   height: 105px;
   background-color: rgb(8, 14, 47);
   color: white;

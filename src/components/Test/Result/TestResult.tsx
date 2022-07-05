@@ -24,6 +24,11 @@ export default function TestResult() {
   return (
     <>
       <TestResultWrap>
+        <CharacterCard>
+          <CharacterImg src={data && data.img} />
+          <MovieName>영화 : {data && data.movie}</MovieName>
+          <ActorName>배우 : {data && data.actor}</ActorName>
+        </CharacterCard>
         <TestResultList>
           <Chracter>{data && data.name}</Chracter>
           <Detail>{data && data.detail1},</Detail>
@@ -42,11 +47,6 @@ export default function TestResult() {
           <Detail>- temp</Detail>
           <Detail>- temp</Detail>
         </TestResultList>
-        <CharacterCard>
-          <CharacterImg src={data && data.img} />
-          <MovieName>영화 : {data && data.movie}</MovieName>
-          <ActorName>배우 : {data && data.actor}</ActorName>
-        </CharacterCard>
       </TestResultWrap>
       <ButtonBox>
         <Button onClick={shareResult}>공유하기🔗</Button>
@@ -74,6 +74,7 @@ const TestResultWrap = styled.div`
   padding: 5vw;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const TestResultList = styled.div`
@@ -106,7 +107,7 @@ const MovieName = styled.div``;
 const ActorName = styled.div``;
 
 const ButtonBox = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

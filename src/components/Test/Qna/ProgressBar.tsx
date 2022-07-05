@@ -13,6 +13,7 @@ interface props {
 }
 
 const ProgressDiv = styled.div<props>`
+  position: fixed;
   width: ${(props) => props.progress}%;
   height: 5px;
   background-color: #f5c443;
