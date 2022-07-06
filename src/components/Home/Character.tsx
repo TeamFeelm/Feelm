@@ -18,11 +18,11 @@ export default function Character() {
     dotsClass: "slick-dots",
     adaptiveHeight: false,
     infinite: true,
-    speed: 10000,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     arrows: true,
     rows: 2,
     slidesPerRow: 2,
@@ -104,7 +104,10 @@ const CharacterOverlayText = styled.h1`
     display: block;
     width: 100%;
     text-align: center;
-    font-size: 50px;
+    font-size: 35px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 25px;
   }
 `;
 

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 
 export default function Loading() {
   return (
@@ -53,6 +52,9 @@ const TextBox = styled.div`
   color: #f5c443;
   font-size: 30px;
   font-weight: bolder;
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 // const Loader = styled.div`

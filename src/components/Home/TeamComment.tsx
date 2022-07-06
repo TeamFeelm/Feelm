@@ -78,7 +78,6 @@ export default function TeamComment() {
 
 const InnerBox = styled.div`
   width: 48vw;
-  font-size: 50px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -99,6 +98,9 @@ const Member = styled.div`
   text-align: center;
   position: relative;
   color: black;
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
+  }
 `;
 const Left = styled.div`
   padding-bottom: 10vh;
@@ -112,7 +114,7 @@ const B = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #f5c443;
-  font-size: 50px;
+  font-size: 40px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -127,7 +129,7 @@ const CommentL = styled.div`
   height: fit-content;
   text-align: left;
   padding: 5px 5px 5px 13px;
-  font-size: 1.5vh;
+  font-size: 14px;
   line-height: 130%;
   background-color: white;
   border-radius: 12px;
@@ -148,6 +150,9 @@ const CommentL = styled.div`
   @media screen and (max-width: 768px) {
     width: 50vw;
   }
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const CommentR = styled.div`
@@ -158,7 +163,7 @@ const CommentR = styled.div`
   height: fit-content;
   text-align: left;
   padding: 5px 5px 5px 13px;
-  font-size: 1.5vh;
+  font-size: 14px;
   line-height: 130%;
   background-color: white;
   border-radius: 12px;
@@ -179,18 +184,29 @@ const CommentR = styled.div`
   @media screen and (max-width: 768px) {
     width: 50vw;
   }
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const CommentTitleL = styled.span`
   position: absolute;
   top: -25px;
   left: 0;
-  font-size: 1.7vh;
+  font-size: 17px;
+  @media screen and (max-width: 480px) {
+    top: -20px;
+    font-size: 14px;
+  }
 `;
 
 const CommentTitleR = styled.span`
   position: absolute;
   top: -25px;
   right: 0;
-  font-size: 1.7vh;
+  font-size: 17px;
+  @media screen and (max-width: 480px) {
+    top: -20px;
+    font-size: 14px;
+  }
 `;
