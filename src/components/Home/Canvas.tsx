@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, firstPage } from "../../store";
+import { useDispatch } from "react-redux";
+import { firstPage } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
@@ -17,7 +17,7 @@ export default function Canvas() {
     navigate("/test");
   };
 
-  const [inner, setInner] = useState((window.innerWidth + window.innerHeight) * 0.1);
+  const inner = (window.innerWidth + window.innerHeight) * 0.1;
   const [x, setX] = useState(window.innerWidth / 2);
   const [y, setY] = useState(window.innerHeight / 2);
   const [scale, setScale] = useState(1);
@@ -74,7 +74,13 @@ export default function Canvas() {
       <StartBtn onClick={btnClick} opacity={opacity}>
         TEST START
       </StartBtn>
-      <Video ref={video} src="src\assets\images\asd.mp4" autoPlay muted loop></Video>
+      <Video
+        ref={video}
+        src="https://user-images.githubusercontent.com/99634778/177480535-74e71fef-d1a4-4d0d-85ec-ec0211cfe861.mp4"
+        autoPlay
+        muted
+        loop
+      ></Video>
       <canvas ref={canvasRaf} style={{ width: "100vw", height: "100vh" }}></canvas>
     </MovieBox>
   );
@@ -117,6 +123,7 @@ const Mouse = styled.div<props>`
 
 const Video = styled.video`
   position: absolute;
+  object-fit: cover;
   width: 0px;
   height: 0px;
 `;
