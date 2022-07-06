@@ -55,13 +55,13 @@ interface movieType {
 
 const SlideTitle = styled.div`
   text-align: center;
-  font-size: 2.3em;
+  font-size: 33px;
   color: #f5c443;
   width: 100vw;
   height: 15vh;
   line-height: 20vh;
   @media screen and (max-width: 480px) {
-    font-size: 1.6em;
+    font-size: 23px;
   }
 `;
 

@@ -69,9 +69,7 @@ export default function Canvas() {
     <MovieBox>
       <Mouse inner={inner} x={x} y={y} scale={scale} visibility={visibility} />
       <Text opacity={opacity}>
-        <Header>
-          당신과 닮은 영화 속 주인공을<br></br>찾아보세요🎬
-        </Header>
+        당신과 닮은 영화 속 주인공을<br></br>찾아보세요🎬
       </Text>
       <StartBtn onClick={btnClick} opacity={opacity}>
         TEST START
@@ -117,10 +115,6 @@ const Mouse = styled.div<props>`
   }
 `;
 
-const Header = styled.h1`
-  font-size: 6vh;
-`;
-
 const Video = styled.video`
   position: absolute;
   width: 0px;
@@ -136,18 +130,22 @@ const Text = styled.div<opacity>`
   position: absolute;
   width: fit-content;
   text-align: center;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 2rem;
+  width: 90%;
+  top: 15%;
+  left: 5%;
+  font-size: 40px;
   transition-duration: 0.4s;
   color: white;
   opacity: ${(opacity) => opacity.opacity};
+  @media screen and (max-width: 480px) {
+    top: 30%;
+    font-size: 25px;
+  }
 `;
 
 const StartBtn = styled.button<opacity>`
   position: absolute;
-  bottom: 25vh;
+  bottom: 25%;
   left: 50%;
   transform: translate(-50%, 0);
   color: rgba(1, 5, 27, 1);

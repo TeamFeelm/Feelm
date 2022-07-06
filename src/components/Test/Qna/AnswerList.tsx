@@ -55,7 +55,7 @@ interface props {
 }
 
 const AnsWrap = styled.div`
-  font-size: 3vh;
+  font-size: 25px;
   color: white;
   text-align: center;
   position: absolute;
@@ -63,10 +63,14 @@ const AnsWrap = styled.div`
   bottom: 15%;
   left: 50%;
   margin: auto;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     position: relative;
     top: 10vh;
     left: 0;
+    font-size: 19px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
   }
 `;
 const AnsNextDiv = styled.div`
@@ -74,12 +78,17 @@ const AnsNextDiv = styled.div`
   margin-top: 5px;
   transform: translate(-50%, 0);
   width: fit-content;
-  min-width: 650px;
+  min-width: 640px;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
-  &:hover {
-    background-color: white;
-    color: rgba(1, 5, 27, 1);
+  @media screen and (min-width: 768px) {
+    &:hover {
+      background-color: white;
+      color: rgba(1, 5, 27, 1);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 480px;
   }
   @media screen and (max-width: 480px) {
     min-width: 320px;
@@ -91,10 +100,16 @@ const AnsPrevDiv = styled.div`
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  font-size: 1.15rem;
+  font-size: 20px;
   margin-top: 20px;
   cursor: pointer;
   &:hover {
     color: darkgray;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 11px;
   }
 `;
