@@ -73,6 +73,9 @@ const Tag = styled.span`
   padding: 5px 10px;
   display: inline-block;
   cursor: pointer;
+  @media screen and (max-width: 480px) {
+    padding: 2.5px 5px;
+  }
 `;
 
 const Selected = styled.span`
@@ -86,6 +89,9 @@ const Selected = styled.span`
   padding: 5px 10px;
   display: inline-block;
   cursor: pointer;
+  @media screen and (max-width: 480px) {
+    padding: 2.5px 5px;
+  }
 `;
 
 const Box = styled.div`
@@ -93,8 +99,10 @@ const Box = styled.div`
   height: fit-content;
   margin: auto;
   margin-top: 30px;
+  font-size: 16px;
   @media screen and (max-width: 480px) {
     width: 95%;
+    font-size: 12px;
   }
 `;
 export default Tags;

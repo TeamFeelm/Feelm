@@ -104,7 +104,10 @@ const CharacterOverlayText = styled.h1`
     display: block;
     width: 100%;
     text-align: center;
-    font-size: 50px;
+    font-size: 35px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 25px;
   }
 `;
 

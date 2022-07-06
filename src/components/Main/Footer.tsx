@@ -26,4 +26,7 @@ const Foot = styled.div`
   text-align: center;
   transition: 0.3s all ease;
   font-family: "";
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;

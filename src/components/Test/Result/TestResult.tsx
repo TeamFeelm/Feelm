@@ -73,23 +73,46 @@ const TestResultWrap = styled.div`
   height: 100%;
   padding: 5vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const TestResultList = styled.div`
   width: 400px;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin-top: 15px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 const Chracter = styled.div`
-  font-size: 4rem;
+  font-size: 40px;
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 const Detail = styled.div`
-  font-size: 1.5rem;
+  font-size: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const CharacterCard = styled.div`
   width: 500px;
-
+  font-size: 16px;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
   /* perspective: 1500px; */
 `;
 
@@ -97,7 +120,10 @@ const CharacterImg = styled.img`
   width: 500px;
   height: 500px;
   object-fit: cover;
-
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
   /* transform-style: preserve-3d;
   transition: transform 0.05s linear;
   box-shadow: -20px 40px 80px -50px blue; */

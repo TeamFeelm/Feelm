@@ -51,7 +51,7 @@ const Space = styled.div`
   width: 70px;
   height: 46px;
   margin: 0 10px;
-  font-size: 0.8em;
+  font-size: 13px;
   font-family: "SSD";
   border-radius: 30px;
   :hover {

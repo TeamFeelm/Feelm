@@ -35,18 +35,18 @@ const SearchForm = styled.form`
 
 const SearchValue = styled.input`
   width: 230px;
-  height: 50px;
+  height: 45px;
   border-bottom: 1.5px solid #f5c443;
   font-family: "SSD";
-  font-size: 1.2em;
+  font-size: 17px;
   text-align: center;
-  line-height: 1.2em;
+  line-height: 17px;
   color: white;
   transition: all 0.3s;
   ::placeholder {
     color: white;
-    font-size: 0.9em;
-    line-height: 0.9em;
+    font-size: 16px;
+    line-height: 16px;
     opacity: 0.8;
   }
   &:focus {
@@ -56,7 +56,7 @@ const SearchValue = styled.input`
 
 const SearchSubmit = styled.button`
   width: 40px;
-  height: 50px;
+  height: 45px;
   border-bottom: 1.5px solid #f5c443;
   .search_btn {
     color: #f5c443;

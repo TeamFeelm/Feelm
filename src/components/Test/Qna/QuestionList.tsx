@@ -30,18 +30,36 @@ const QueWrap = styled.div`
   margin: auto;
   margin-top: 5px;
   padding-bottom: 20px;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     min-width: 100vw;
   }
 `;
 const QueNum = styled.div`
   font-weight: bold;
-  font-size: 6vh;
+  font-size: 50px;
+  @media screen and (max-width: 768px) {
+    font-size: 37px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 25px;
+  }
 `;
 const QueTitle = styled.div`
   font-weight: bold;
-  font-size: 4vh;
+  font-size: 40px;
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 const QueDetail = styled.div`
-  font-size: 4vh;
+  font-size: 40px;
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
