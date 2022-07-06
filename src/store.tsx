@@ -109,109 +109,179 @@ const progressSlice = createSlice({
       let musical = 0;
       let sports = 0;
 
-      const verygood = 2;
+      const verygood = 1.52;
       const good = 1.12;
       const soso = 0.55;
-      const bad = 0.25;
+      const notbad = 0.25;
+      const bad = -0.3;
       const verybad = -0.85;
 
       // 질문 1번
       if (state.ansIdxArray[1] === 0) {
         noir += verygood;
-        war += good;
-        action += soso;
-        sports += bad;
-        romance += verybad;
-        drama += verybad;
+        war += soso;
+        action += notbad;
+        romance += bad;
       } else if (state.ansIdxArray[1] === 1) {
         comedy += verygood;
-        drama += soso;
+        sports += good;
         war += soso;
-        musical += verybad;
+        anime += notbad;
+        fantasy += notbad;
+        noir += bad;
       } else if (state.ansIdxArray[1] === 2) {
         romance += verygood;
         drama += verygood;
-        thriller += good;
-        action += verybad;
-        noir += verybad;
-        sports += verybad;
+        musical += notbad;
+        thriller += verybad;
       }
-
       // 질문 2번
       if (state.ansIdxArray[2] === 0) {
-        fantasy += verygood;
-        anime += soso;
-        sf += verybad;
-      } else if (state.ansIdxArray[2] === 1) {
-        sf += verygood;
+        fantasy += good;
+        comedy += good;
+        action += soso;
         romance += soso;
+        sf += soso;
+      } else if (state.ansIdxArray[2] === 1) {
+        drama += good;
+        romance += soso;
+        musical += soso;
       } else if (state.ansIdxArray[2] === 2) {
-        action += verygood;
+        action += good;
         thriller += soso;
+        noir += good;
+        anime += soso;
       } else if (state.ansIdxArray[2] === 3) {
-        anime += verygood;
-        fantasy += soso;
+        sports += good;
+        musical += soso;
+        sf += soso;
       }
 
       // 질문 3번
       if (state.ansIdxArray[3] === 0) {
-        drama += verygood;
         sports += soso;
-        sf += verybad;
+        musical += soso;
       } else if (state.ansIdxArray[3] === 1) {
-        musical += verygood;
-        war += soso;
+        fantasy += verygood;
+        sf += good;
+        anime += good;
+        action += notbad;
+        thriller += notbad;
+      } else if (state.ansIdxArray[3] === 2) {
+        drama += soso;
+        romance += soso;
+        comedy += notbad;
       }
 
       // 질문 4번
       if (state.ansIdxArray[4] === 0) {
-        comedy += verygood;
-        musical += soso;
-        sports += verybad;
+        thriller += good;
+        noir += good;
+        sf += soso;
+        sports += soso;
       } else if (state.ansIdxArray[4] === 1) {
-        fantasy += verygood;
+        comedy += good;
+        anime += good;
+        musical += soso;
+        romance += soso;
+      } else if (state.ansIdxArray[4] === 2) {
+        action += good;
+        war += good;
+        fantasy += good;
         drama += soso;
+        comedy += bad;
       }
 
       // 질문 5번
       if (state.ansIdxArray[5] === 0) {
-        noir += verygood;
-        war += soso;
-        anime += verybad;
+        noir += bad;
+        thriller += bad;
+        sf += bad;
+        sports += bad;
+        action += bad;
       } else if (state.ansIdxArray[5] === 1) {
-        thriller += verygood;
-        noir += soso;
+        drama += bad;
+        romance += bad;
+        fantasy += bad;
+        anime += bad;
       }
 
       // 질문 6번
       if (state.ansIdxArray[6] === 0) {
-        sf += verygood;
-        drama += soso;
-        thriller += verybad;
+        anime += good;
+        musical += soso;
+        fantasy += soso;
+        romance += notbad;
+        comedy += notbad;
       } else if (state.ansIdxArray[6] === 1) {
-        war += verygood;
-        comedy += soso;
+        drama += good;
+        action += soso;
+        romance += soso;
+        sf += notbad;
+        musical += notbad;
       }
 
       // 질문 7번
       if (state.ansIdxArray[7] === 0) {
         comedy += verygood;
-        romance += soso;
-        sports += verybad;
+        action += good;
+        musical += soso;
       } else if (state.ansIdxArray[7] === 1) {
-        action += verygood;
-        fantasy += soso;
+        noir += good;
+        thriller += good;
+        action += notbad;
+      } else if (state.ansIdxArray[7] === 2) {
+        fantasy += verygood;
+        sf += good;
+        war += good;
+        sports += soso;
       }
 
       // 질문 8번
       if (state.ansIdxArray[8] === 0) {
-        drama += verygood;
-        action += soso;
-        anime += verybad;
-      } else if (state.ansIdxArray[8] === 1) {
-        musical += verygood;
+        noir += good;
+        anime += good;
+        thriller += soso;
+        war += soso;
         sf += soso;
+      } else if (state.ansIdxArray[8] === 1) {
+        fantasy += good;
+        war += soso;
+        musical += soso;
+        romance += notbad;
+      } else if (state.ansIdxArray[8] === 2) {
+        drama += good;
+        sports += good;
+        comedy += soso;
+      } else if (state.ansIdxArray[8] === 3) {
+        comedy += verygood;
+        noir += notbad;
       }
+
+      // 질문 9번
+      if (state.ansIdxArray[9] === 0) {
+        noir += soso;
+        thriller += soso;
+        action += soso;
+      } else if (state.ansIdxArray[9] === 1) {
+        romance += soso;
+        drama += soso;
+        fantasy += soso;
+      } else if (state.ansIdxArray[9] === 2) {
+        comedy += soso;
+        musical += soso;
+        sf += soso;
+      } else if (state.ansIdxArray[9] === 3) {
+        anime += soso;
+        sports += soso;
+        war += soso;
+      }
+
+      // 질문 10번
+      if (state.ansIdxArray[10] === 0) {
+      } else if (state.ansIdxArray[10] === 1) {
+      }
+
       const resultArr = [action, thriller, noir, drama, romance, sf, fantasy, comedy, war, anime, musical, sports];
       console.log(resultArr);
 

@@ -12,7 +12,7 @@ export default function TestPage() {
         <ProgressBar progress={progress} />
         <QuestionList progress={progress} />
         <VideoBg
-          src="https://user-images.githubusercontent.com/104556563/177116228-11a7f238-22a0-40d7-b359-b288c8c03f32.mp4"
+          src="https://user-images.githubusercontent.com/99634778/177473951-d118fcba-959c-48a8-aa0e-d5d87dece53b.mp4"
           muted
           autoPlay
           loop
