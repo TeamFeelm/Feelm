@@ -129,8 +129,8 @@ const CommentL = styled.div`
   height: fit-content;
   text-align: left;
   padding: 5px 5px 5px 13px;
-  font-size: 14px;
-  line-height: 130%;
+  font-size: 16px;
+  line-height: 20px;
   background-color: white;
   border-radius: 12px;
   &:after {
@@ -152,6 +152,7 @@ const CommentL = styled.div`
   }
   @media screen and (max-width: 480px) {
     font-size: 12px;
+    line-height: 15px;
   }
 `;
 
@@ -163,8 +164,8 @@ const CommentR = styled.div`
   height: fit-content;
   text-align: left;
   padding: 5px 5px 5px 13px;
-  font-size: 14px;
-  line-height: 130%;
+  font-size: 16px;
+  line-height: 20px;
   background-color: white;
   border-radius: 12px;
   &:after {
@@ -186,6 +187,7 @@ const CommentR = styled.div`
   }
   @media screen and (max-width: 480px) {
     font-size: 12px;
+    line-height: 15px;
   }
 `;
 
@@ -193,7 +195,7 @@ const CommentTitleL = styled.span`
   position: absolute;
   top: -25px;
   left: 0;
-  font-size: 17px;
+  font-size: 18px;
   @media screen and (max-width: 480px) {
     top: -20px;
     font-size: 14px;
@@ -204,7 +206,7 @@ const CommentTitleR = styled.span`
   position: absolute;
   top: -25px;
   right: 0;
-  font-size: 17px;
+  font-size: 18px;
   @media screen and (max-width: 480px) {
     top: -20px;
     font-size: 14px;

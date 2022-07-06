@@ -36,10 +36,10 @@ const ResultBox = styled.div`
     width: 580px;
   }
   @media screen and (max-width: 768px) {
-    width: 600px;
+    width: 570px;
   }
   @media screen and (max-width: 625px) {
-    width: 400px;
+    width: 380px;
   }
 `;
 

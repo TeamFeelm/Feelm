@@ -148,12 +148,13 @@ const StartBtn = styled.button<opacity>`
   bottom: 25%;
   left: 50%;
   transform: translate(-50%, 0);
-  color: rgba(1, 5, 27, 1);
+  color: #f5c443;
   background-color: rgba(255, 255, 255, 0.7);
   width: 200px;
   height: 80px;
   border-radius: 5px;
   font-size: 20px;
+  font-family: "yg-jalnan";
   transition-duration: 0.4s;
   z-index: 100;
   opacity: ${(props) => props.opacity};
