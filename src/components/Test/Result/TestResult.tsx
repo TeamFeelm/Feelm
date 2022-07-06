@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { TestResultData } from "../..";
 import { useNavigate, useParams } from "react-router-dom";
-import { resetAnsIdx, resetProgress } from "../../../store";
+import { findMoviesByTag, resetAnsIdx, resetProgress, resetTag } from "../../../store";
 import { useDispatch } from "react-redux";
 
 export default function TestResult() {
   const { id } = useParams<{ id: string | undefined }>();
-  const data: characterType | undefined = TestResultData.find((el) => el.id === id);
+  const data: characterType = TestResultData.find((el) => el.id === id)!;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -15,10 +15,17 @@ export default function TestResult() {
     window.alert("클립보드에 복사 되었습니다!");
   };
 
-  const redirectTest = () => {
+  const resetTest = () => {
     dispatch(resetProgress());
     dispatch(resetAnsIdx());
     navigate("/test");
+  };
+
+  const recommandMovie = (genre: string) => {
+    dispatch(resetTag());
+    dispatch(findMoviesByTag(genre));
+    navigate("/search");
+    window.scroll(0, 0);
   };
 
   return (
@@ -33,7 +40,7 @@ export default function TestResult() {
           <Chracter>{data && data.name}</Chracter>
           <Detail>{data && data.detail1},</Detail>
           <Detail>
-            당신의 캐릭터는... {data && data.movie}의 {data && data.name}!
+            당신의 캐릭터는... {data && data.movie} 의 {data && data.name}!
           </Detail>
           {/* <Genre>{data && data.genre} 장르 영화를 선호하시나요 ?</Genre> */}
           <Detail>어떤 성향이 비슷하냐면요</Detail>
@@ -50,7 +57,14 @@ export default function TestResult() {
       </TestResultWrap>
       <ButtonBox>
         <Button onClick={shareResult}>공유하기🔗</Button>
-        <Button onClick={redirectTest}>다시하기💨</Button>
+        <Button onClick={resetTest}>다시하기💨</Button>
+        <Button
+          onClick={() => {
+            recommandMovie(data.genre[0]);
+          }}
+        >
+          추천영화🎬
+        </Button>
       </ButtonBox>
     </>
   );
@@ -81,7 +95,7 @@ const TestResultWrap = styled.div`
 `;
 
 const TestResultList = styled.div`
-  width: 400px;
+  width: 500px;
   @media screen and (max-width: 768px) {
     width: 80%;
     margin-top: 15px;
