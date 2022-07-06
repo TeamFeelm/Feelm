@@ -70,7 +70,7 @@ const AnsWrap = styled.div`
     font-size: 19px;
   }
   @media screen and (max-width: 480px) {
-    font-size: 13px;
+    font-size: 15px;
   }
 `;
 const AnsNextDiv = styled.div`
