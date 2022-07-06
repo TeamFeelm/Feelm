@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, firstPage } from "../../store";
+import { useDispatch } from "react-redux";
+import { firstPage } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
@@ -17,7 +17,7 @@ export default function Canvas() {
     navigate("/test");
   };
 
-  const [inner, setInner] = useState((window.innerWidth + window.innerHeight) * 0.1);
+  const inner = (window.innerWidth + window.innerHeight) * 0.1;
   const [x, setX] = useState(window.innerWidth / 2);
   const [y, setY] = useState(window.innerHeight / 2);
   const [scale, setScale] = useState(1);
@@ -25,6 +25,24 @@ export default function Canvas() {
   const [visibility, setVisiblity] = useState("hidden");
 
   useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      setOpacity(1);
+      dispatch(firstPage());
+      window.addEventListener("resize", () => {
+        setVisiblity("hidden");
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      window.removeEventListener("mousemove", movepoint);
+      window.removeEventListener("mousemove", clickpoint);
+      setOpacity(1);
+      dispatch(firstPage());
+      if (window.innerWidth > 1024) {
+        setVisiblity("hidden");
+      }
+    });
+
     setVisiblity("visibility");
     const canvas = canvasRaf.current;
 
@@ -48,9 +66,7 @@ export default function Canvas() {
       setY(e.offsetY);
     };
 
-    window.addEventListener("mousemove", movepoint);
-
-    window.addEventListener("click", () => {
+    const clickpoint = (e: MouseEvent) => {
       window.removeEventListener("mousemove", movepoint);
       setX(window.innerWidth / 2);
       setY(window.innerHeight / 2);
@@ -58,7 +74,11 @@ export default function Canvas() {
       setOpacity(1);
       setVisiblity("hidden");
       dispatch(firstPage());
-    });
+    };
+
+    window.addEventListener("mousemove", movepoint);
+
+    window.addEventListener("click", clickpoint);
 
     return () => {
       cancelAnimationFrame(id);
@@ -74,7 +94,13 @@ export default function Canvas() {
       <StartBtn onClick={btnClick} opacity={opacity}>
         TEST START
       </StartBtn>
-      <Video ref={video} src="src\assets\images\asd.mp4" autoPlay muted loop></Video>
+      <Video
+        ref={video}
+        src="https://user-images.githubusercontent.com/99634778/177480535-74e71fef-d1a4-4d0d-85ec-ec0211cfe861.mp4"
+        autoPlay
+        muted
+        loop
+      ></Video>
       <canvas ref={canvasRaf} style={{ width: "100vw", height: "100vh" }}></canvas>
     </MovieBox>
   );
@@ -117,6 +143,7 @@ const Mouse = styled.div<props>`
 
 const Video = styled.video`
   position: absolute;
+  object-fit: cover;
   width: 0px;
   height: 0px;
 `;
