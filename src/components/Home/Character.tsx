@@ -14,7 +14,7 @@ export default function Character() {
   const [display, setDisplay] = useState("block");
 
   const settings = {
-    dots: true,
+    dots: false,
     dotsClass: "slick-dots",
     adaptiveHeight: false,
     infinite: true,
@@ -137,8 +137,8 @@ const CharacterCard = styled.img<props>`
 `;
 
 const CharacterSlider = styled(Slider)`
-  width: 100%;
-  height: 70%;
+  width: 100vw;
+  height: 100%;
   display: inline-block;
   display: none;
   background-color: rgb(8, 14, 47);
@@ -146,8 +146,8 @@ const CharacterSlider = styled(Slider)`
     width: 100%;
     height: 800px;
     div {
-      width: 600px;
-      height: 300px;
+      width: 80%;
+      height: 40%;
       margin: auto;
     }
     div img {
@@ -159,5 +159,6 @@ const CharacterSlider = styled(Slider)`
   }
   @media screen and (max-width: 1200px) {
     display: block;
+    height: 70%;
   }
 `;

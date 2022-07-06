@@ -25,6 +25,24 @@ export default function Canvas() {
   const [visibility, setVisiblity] = useState("hidden");
 
   useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      setOpacity(1);
+      dispatch(firstPage());
+      window.addEventListener("resize", () => {
+        setVisiblity("hidden");
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      window.removeEventListener("mousemove", movepoint);
+      window.removeEventListener("mousemove", clickpoint);
+      setOpacity(1);
+      dispatch(firstPage());
+      if (window.innerWidth > 1024) {
+        setVisiblity("hidden");
+      }
+    });
+
     setVisiblity("visibility");
     const canvas = canvasRaf.current;
 
@@ -48,9 +66,7 @@ export default function Canvas() {
       setY(e.offsetY);
     };
 
-    window.addEventListener("mousemove", movepoint);
-
-    window.addEventListener("click", () => {
+    const clickpoint = (e: MouseEvent) => {
       window.removeEventListener("mousemove", movepoint);
       setX(window.innerWidth / 2);
       setY(window.innerHeight / 2);
@@ -58,7 +74,11 @@ export default function Canvas() {
       setOpacity(1);
       setVisiblity("hidden");
       dispatch(firstPage());
-    });
+    };
+
+    window.addEventListener("mousemove", movepoint);
+
+    window.addEventListener("click", clickpoint);
 
     return () => {
       cancelAnimationFrame(id);

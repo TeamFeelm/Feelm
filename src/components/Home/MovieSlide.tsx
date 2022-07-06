@@ -107,7 +107,7 @@ const MovieSlider = styled(Slider)`
   }
 
   @media screen and (max-width: 480px) {
-    height: 65vh;
+    height: 80vh;
   }
 `;
 
