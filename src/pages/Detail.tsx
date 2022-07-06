@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { RootState } from "../store";
 import { Loading } from "../components";
 import styled from "styled-components";
-import axios from "axios";
-import cheerio from "cheerio";
+import { parse } from "parse5";
 
 export default function Detail() {
   const [movie, setMovie] = useState<movieType>();
@@ -38,7 +37,7 @@ export default function Detail() {
 
   useEffect(() => {
     if (movie) {
-      axios
+      /*axios
         .get(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`)
         .then((res) => {
           const $ = cheerio.load(res.data);
@@ -69,6 +68,76 @@ export default function Detail() {
             genre: genre.text(),
             cast: cast.text(),
           });
+        });*/
+      // 태그네임으로 찾기(탐색노드, 탐색태그, 몇번째)-n은 부모노드에서만 사용할 것
+      const getNodeByTag = (node: any, tag: string, n: number = 1): any => {
+        let count = 0;
+        if (node.childNodes) {
+          for (let i = 0; i < node.childNodes.length; i++) {
+            if (node.tagName === tag) {
+              return node;
+            }
+            const result: any = getNodeByTag(node.childNodes[i], tag);
+            if (result) {
+              count++;
+              if (count === n) {
+                return result;
+              }
+            }
+          }
+        }
+
+        return null;
+      };
+      // 클래스네임으로 찾기(탐색노드, 클래스네임)-첫번째 대상을 반환함
+      const getNodeByClass = (node: any, className: string) => {
+        if (node.childNodes) {
+          for (let i = 0; i < node.childNodes.length; i++) {
+            if (node.attrs) {
+              for (let attr of node.attrs) {
+                if (attr.value === className) {
+                  return node;
+                }
+              }
+            }
+            const result: any = getNodeByClass(node.childNodes[i], className);
+            if (result) {
+              return result;
+            }
+          }
+        }
+        return null;
+      };
+      // 텍스트노드만 찾아서 String으로 반환
+      const Text = (node: any) => {
+        if (node) {
+          let result = "";
+          for (let child of node.childNodes) {
+            if (child.value) {
+              result += child.value;
+            }
+          }
+          return result;
+        }
+        return null;
+      };
+      fetch(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`)
+        .then((res) => res.text())
+        .then((text) => {
+          const head =
+            parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[9]
+              .childNodes[1];
+          const info =
+            parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[19];
+          const enTitle = Text(getNodeByClass(head, "h_movie2"));
+          const ntzrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(info, "netizen_score"), "star_score"), "em"));
+          const spcrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(info, "special_score"), "star_score"), "em"));
+          const synTitle = Text(getNodeByClass(getNodeByClass(info, "story_area"), "h_tx_story"));
+          const synops = Text(getNodeByClass(getNodeByClass(info, "story_area"), "con_tx"));
+          const runtime = Text(
+            getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 1), "p"), "span", 3),
+          );
+          const grade = Text(getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 4), "p"), "a", 1));
         });
     }
   }, [movie]);
