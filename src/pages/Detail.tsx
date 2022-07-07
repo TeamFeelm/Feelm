@@ -12,6 +12,7 @@ export default function Detail() {
   const { id } = useParams<{ id: string }>();
   const [info, setInfo] = useState<infoType>();
   const [isLoad, setIsLoad] = useState<boolean>(false);
+  const [peopleImgs, setPeopleImgs] = useState<string[]>([]);
 
   useEffect(() => {
     const loadMovie: movieType | undefined = movieList.find((item) => {
@@ -61,6 +62,24 @@ export default function Detail() {
         }
         return null;
       };
+      const getPeopleImgs = (node: any) => {
+        if (node.childNodes) {
+          for (let i = 0; i < node.childNodes.length; i++) {
+            if (node.attrs) {
+              for (let attr of node.attrs) {
+                if (attr.value === "thumb_people") {
+                  return node;
+                }
+              }
+            }
+            const result: any = getPeopleImgs(node.childNodes[i]);
+            if (result) {
+              setPeopleImgs((peopleImgs) => peopleImgs.concat(result.childNodes[1].attrs[0].value));
+            }
+          }
+        }
+        return null;
+      };
       // 텍스트노드만 찾아서 String으로 반환
       const Text = (node: any) => {
         if (node) {
@@ -91,6 +110,7 @@ export default function Detail() {
             getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 1), "p"), "span", 3),
           );
           const grade = Text(getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 4), "p"), "a", 1));
+          getPeopleImgs(info);
 
           setInfo({
             enTitle: enTitle!,
@@ -100,6 +120,7 @@ export default function Detail() {
             synops: synops!,
             runtime: runtime!,
             grade: grade!,
+            peopleImgs: peopleImgs,
           });
         })
         .then(() => {
@@ -148,6 +169,7 @@ interface infoType {
   grade: string;
   ntzRating: string;
   spcRating: string;
+  peopleImgs: string[];
 }
 
 export const Wrap = styled.div`
