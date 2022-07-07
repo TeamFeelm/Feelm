@@ -100,6 +100,7 @@ export default function Canvas() {
         autoPlay
         muted
         loop
+        playsInline
       ></Video>
       <canvas ref={canvasRaf} style={{ width: "100vw", height: "100vh" }}></canvas>
     </MovieBox>

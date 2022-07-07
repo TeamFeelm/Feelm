@@ -105,10 +105,6 @@ const MovieSlider = styled(Slider)`
       box-shadow: 0px 0px 7vh 10px #565656;
     }
   }
-
-  @media screen and (max-width: 480px) {
-    height: 80vh;
-  }
 `;
 
 export default MovieSlide;

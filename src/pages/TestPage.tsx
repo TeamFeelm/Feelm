@@ -2,9 +2,13 @@ import { QuestionList, AnswerList, ProgressBar } from "../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 export default function TestPage() {
   const progress = useSelector((state: RootState) => state.progress.progress);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [progress]);
 
   return (
     <>
