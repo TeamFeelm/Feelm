@@ -134,6 +134,7 @@ const progressSlice = createSlice({
         drama += verygood;
         musical += notbad;
         thriller += verybad;
+        action += verybad;
       }
       // 질문 2번
       if (state.ansIdxArray[2] === 0) {
@@ -336,5 +337,6 @@ const store = configureStore({
     progress: progressSlice.reducer,
     home: homeSlice.reducer,
   },
+  devTools: false,
 });
 export default store;
