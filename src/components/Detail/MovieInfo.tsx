@@ -1,14 +1,16 @@
+import styled from "styled-components";
+
 export default function MovieInfo({ movie, info }: props) {
   return (
     <>
       <div>
-        <p>title : {movie?.title}</p>
-        <p>enTitle : {info?.enTitle}</p>
-        <p>ntzRating : {info?.ntzRating}</p>
-        <p>spcRating : {info?.spcRating}</p>
-        <p>genre : {info?.genre}</p>
-        <p>runtime : {info?.runtime}</p>
-        <p>cast : {info?.cast}</p>
+        <TitleWrap>
+          <Title>{movie?.title}</Title>
+          <EngTitle>{info?.enTitle}</EngTitle>
+        </TitleWrap>
+        <Rating>네티즌 평점 : {info?.ntzRating}</Rating>
+        <Rating>기자/평론가 평점 : {info?.spcRating}</Rating>
+        <Runtime>상영시간 : {info?.runtime}</Runtime>
       </div>
     </>
   );
@@ -28,15 +30,28 @@ interface props {
   };
   info?: {
     enTitle: string;
-    title: string;
+    synTitle: string;
     synops: string;
-    lines: string;
     runtime: string;
     grade: string;
-    peopleImg: string[];
     ntzRating: string;
     spcRating: string;
-    genre: string;
-    cast: string;
   };
 }
+
+const TitleWrap = styled.div`
+  margin-bottom: 20px;
+`;
+const Title = styled.div`
+  font-size: 40px;
+`;
+const EngTitle = styled.div`
+  font-size: 20px;
+  color: darkgray;
+`;
+const Rating = styled.div`
+  font-size: 20px;
+`;
+const Runtime = styled.div`
+  font-size: 20px;
+`;

@@ -14,15 +14,13 @@ export default function TabTitle({ movie, info }: props) {
             </Tab>
           );
         })}
-        {/* 탭 클릭 언더라인 애니메이션 */}
-        {/* <Underline>{<Lines x={tab * 100}></Lines>}</Underline> */}
         <Underline x={tab * 100}></Underline>
       </TabBox>
       {/* 탭별 세부내용 */}
       <ContentBox>
         {(tab === 0 && (
           <ContentDetail>
-            <strong>{info?.title}</strong>
+            {info?.synTitle}
             {info?.synops}
           </ContentDetail>
         )) ||
@@ -51,16 +49,12 @@ interface props {
   };
   info?: {
     enTitle: string;
-    title: string;
+    synTitle: string;
     synops: string;
-    lines: string;
     runtime: string;
     grade: string;
-    peopleImg: string[];
     ntzRating: string;
     spcRating: string;
-    genre: string;
-    cast: string;
   };
 }
 
