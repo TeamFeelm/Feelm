@@ -92,11 +92,11 @@ export default function Canvas() {
         당신과 닮은 영화 속 주인공을<br></br>찾아보세요🎬
       </Text>
       <StartBtn onClick={btnClick} opacity={opacity}>
-        TEST START
+        TEST START👆
       </StartBtn>
       <Video
         ref={video}
-        src="https://user-images.githubusercontent.com/99634778/177480535-74e71fef-d1a4-4d0d-85ec-ec0211cfe861.mp4"
+        src="https://user-images.githubusercontent.com/99634778/177707739-e66b6265-f07f-44a2-afe7-1351fe0d026c.mp4"
         autoPlay
         muted
         loop
@@ -176,20 +176,22 @@ const StartBtn = styled.button<opacity>`
   bottom: 25%;
   left: 50%;
   transform: translate(-50%, 0);
-  color: #f5c443;
+  color: rgb(3, 10, 46);
   background-color: rgba(255, 255, 255, 0.7);
-  width: 200px;
-  height: 80px;
+  width: auto;
+  height: auto;
+  padding: 25px 30px 25px 40px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 25px;
   font-family: "yg-jalnan";
   transition-duration: 0.4s;
   z-index: 100;
   opacity: ${(props) => props.opacity};
   cursor: pointer;
   &:hover {
-    background-color: white;
+    background-color: #f5c443;
     transition-duration: 0.2s;
-    font-size: 22px;
+    font-size: 27px;
+    color: white;
   }
 `;

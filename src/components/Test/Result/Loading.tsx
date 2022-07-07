@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
-export default function Loading() {
+export default function Loading({ children }: props) {
   return (
     <>
       <TextBox>
-        테스트 결과를 불러오는 중...
+        {children}
         <LogoBox />
       </TextBox>
     </>
   );
+}
+
+interface props {
+  children: string;
 }
 
 const LogoBox = styled.div`
