@@ -15,7 +15,6 @@ export default function Character() {
 
   const settings = {
     dots: false,
-    dotsClass: "slick-dots",
     adaptiveHeight: false,
     infinite: true,
     speed: 1000,
@@ -23,9 +22,9 @@ export default function Character() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    arrows: true,
     rows: 2,
     slidesPerRow: 2,
+    arrows: true,
   };
 
   useEffect(() => {
@@ -54,7 +53,7 @@ export default function Character() {
           <CharacterCard src={item.img} key={i} delay={0.1 * i} opacity={o} onClick={() => navigate(`/test/result/${i}`)} />
         ))}
       </CharacterBox>
-
+      {/* max-width: 1200px */}
       <CharacterSlider {...settings}>
         {TestResultData.map((item, i) => (
           <img src={item.img} key={i} onClick={() => navigate(`/test/result/${i}`)} />
@@ -138,27 +137,47 @@ const CharacterCard = styled.img<props>`
 
 const CharacterSlider = styled(Slider)`
   width: 100vw;
-  height: 100%;
+  height: auto;
   display: inline-block;
   display: none;
   background-color: rgb(8, 14, 47);
+  .slick-arrow {
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+  }
+  .slick-prev {
+    left: 15px;
+    &::before {
+      font-family: "yg-jalnan";
+      font-size: 50px;
+      content: "<";
+      color: #f5c443;
+    }
+  }
+  .slick-next {
+    right: 15px;
+    &::before {
+      font-family: "yg-jalnan";
+      font-size: 50px;
+      content: ">";
+      color: #f5c443;
+    }
+  }
   .slick-slide {
     width: 100%;
-    height: 800px;
+    height: auto;
     div {
-      width: 80%;
-      height: 40%;
+      width: 60vw;
+      height: auto;
       margin: auto;
     }
     div img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
-      padding: 10px;
+      padding: 5px;
     }
   }
   @media screen and (max-width: 1200px) {
     display: block;
-    height: 70%;
   }
 `;
