@@ -54,6 +54,7 @@ interface props {
     grade: string;
     ntzRating: string;
     spcRating: string;
+    peopleImgs: string[];
   };
 }
 

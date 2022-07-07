@@ -180,4 +180,7 @@ const CharacterSlider = styled(Slider)`
   @media screen and (max-width: 1200px) {
     display: block;
   }
+  @media screen and (max-width: 480px) {
+    height: 70vh;
+  }
 `;

@@ -45,7 +45,7 @@ export default function TestResult() {
           {/* <Genre>{data && data.genre} 장르 영화를 선호하시나요 ?</Genre> */}
           <Detail>어떤 성향이 비슷하냐면요</Detail>
           <br />
-          <Detail>- temp</Detail>
+          <Detail>{data && data.detail2}</Detail>
           <Detail>- temp</Detail>
           <Detail>- temp</Detail>
           <Detail>- temp</Detail>
