@@ -3,15 +3,19 @@ import styled from "styled-components";
 export default function MovieInfo({ movie, info }: props) {
   return (
     <>
-      <div>
-        <TitleWrap>
+      <MovieInfoWrap>
+        <Wrap>
           <Title>{movie?.title}</Title>
           <EngTitle>{info?.enTitle}</EngTitle>
-        </TitleWrap>
-        <Rating>네티즌 평점 : {info?.ntzRating}</Rating>
-        <Rating>기자/평론가 평점 : {info?.spcRating}</Rating>
-        <Runtime>상영시간 : {info?.runtime}</Runtime>
-      </div>
+        </Wrap>
+        <Wrap>
+          <Rating>네티즌 평점 : {info?.ntzRating}</Rating>
+          <Rating>기자/평론가 평점 : {info?.spcRating}</Rating>
+        </Wrap>
+        <Wrap>
+          <Runtime>상영시간 : {info?.runtime}</Runtime>
+        </Wrap>
+      </MovieInfoWrap>
     </>
   );
 }
@@ -39,8 +43,17 @@ interface props {
   };
 }
 
-const TitleWrap = styled.div`
-  margin-bottom: 20px;
+const MovieInfoWrap = styled.div`
+  width: 350px;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    width: 90%;
+  }
+`;
+const Wrap = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 0px 0px 20px 20px;
 `;
 const Title = styled.div`
   font-size: 40px;
