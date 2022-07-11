@@ -144,11 +144,11 @@ export default function Detail() {
               <MovieInfo movie={movie} info={info} />
             </MovieInfoWrap>
             <TabContent movie={movie} info={info} peopleImgs={peopleImgs} />
+            <Footer></Footer>
           </Wrap>
         ) : (
           <Loading>영화 정보를 불러오는 중...</Loading>
         )}
-        <Footer></Footer>
       </>
     );
   }
