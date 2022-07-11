@@ -6,7 +6,6 @@ import { firstPage } from "../../store";
 
 export default function Canvas() {
   const canvasRaf = useRef() as React.MutableRefObject<HTMLCanvasElement>;
-  let ctx: any = undefined;
 
   const video = useRef() as React.MutableRefObject<HTMLVideoElement>;
 
@@ -46,16 +45,16 @@ export default function Canvas() {
     setVisiblity("visibility");
     const canvas = canvasRaf.current;
 
-    ctx = canvas.getContext("2d");
+    let ctx = canvas.getContext("2d");
 
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
 
-    let id: any;
+    let id: number;
 
-    const render: any = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(video.current, 0, 0, canvas.width, canvas.height);
+    const render = () => {
+      ctx!.clearRect(0, 0, canvas.width, canvas.height);
+      ctx!.drawImage(video.current, 0, 0, canvas.width, canvas.height);
       id = requestAnimationFrame(render);
     };
 

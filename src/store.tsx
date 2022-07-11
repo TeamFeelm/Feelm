@@ -95,7 +95,7 @@ const progressSlice = createSlice({
       state.ansIdxArray = [0];
     },
     // test-result calculate part
-    testResultCalc(state: any): any {
+    testResultCalc(state) {
       let action = 0;
       let thriller = 0;
       let noir = 0;
