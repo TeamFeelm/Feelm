@@ -96,21 +96,22 @@ export default function Detail() {
       fetch(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`)
         .then((res) => res.text())
         .then((text) => {
-          const head =
-            parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[9]
-              .childNodes[1];
-          const info =
-            parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[19];
-          const enTitle = Text(getNodeByClass(head, "h_movie2"));
-          const ntzrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(info, "netizen_score"), "star_score"), "em"));
-          const spcrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(info, "special_score"), "star_score"), "em"));
-          const synTitle = Text(getNodeByClass(getNodeByClass(info, "story_area"), "h_tx_story"));
-          const synops = Text(getNodeByClass(getNodeByClass(info, "story_area"), "con_tx"));
-          const runtime = Text(
-            getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 1), "p"), "span", 3),
-          );
-          const grade = Text(getNodeByTag(getNodeByTag(getNodeByTag(getNodeByClass(head, "info_spec"), "dd", 4), "p"), "a", 1));
-          getPeopleImgs(info);
+          console.log(parse(text).childNodes[1]);
+          const html = parse(text).childNodes[1];
+          // const head =
+          //   parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[9]
+          //     .childNodes[1];
+          // const info =
+          //   parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[19];
+          const enTitle = Text(getNodeByClass(html, "h_movie2"));
+          const ntzrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(html, "netizen_score"), "star_score"), "em"));
+          const spcrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(html, "special_score"), "star_score"), "em"));
+          const synTitle = Text(getNodeByClass(getNodeByClass(html, "story_area"), "h_tx_story"));
+          const synops = Text(getNodeByClass(getNodeByClass(html, "story_area"), "con_tx"));
+          console.log(synops);
+          const runtime = Text(getNodeByTag(getNodeByClass(html, "info_spec"), "span", 3));
+          console.log(runtime);
+          getPeopleImgs(html);
 
           setInfo({
             enTitle: enTitle!,
@@ -119,11 +120,14 @@ export default function Detail() {
             synTitle: synTitle!,
             synops: synops!,
             runtime: runtime!,
-            grade: grade!,
             peopleImgs: peopleImgs,
           });
         })
         .then(() => {
+          setIsLoad(true);
+        })
+        .catch((err) => {
+          console.error(err);
           setIsLoad(true);
         });
     }
@@ -166,7 +170,6 @@ interface infoType {
   synTitle: string;
   synops: string;
   runtime: string;
-  grade: string;
   ntzRating: string;
   spcRating: string;
   peopleImgs: string[];

@@ -33,7 +33,6 @@ interface props {
     synTitle: string;
     synops: string;
     runtime: string;
-    grade: string;
     ntzRating: string;
     spcRating: string;
     peopleImgs: string[];
