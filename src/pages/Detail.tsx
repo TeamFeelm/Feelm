@@ -16,7 +16,7 @@ export default function Detail() {
 
   useEffect(() => {
     const loadMovie: movieType | undefined = movieList.find((item) => {
-      return item.id == id;
+      return item.id === id;
     });
     setMovie(loadMovie);
   }, []);

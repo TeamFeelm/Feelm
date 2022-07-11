@@ -51,7 +51,7 @@ const movieList = createSlice({
     },
     findMoviesByTag(state, action: PayloadAction<string>) {
       if (state.selectedTags.includes(action.payload)) {
-        state.selectedTags = state.selectedTags.filter((item) => item != action.payload);
+        state.selectedTags = state.selectedTags.filter((item) => item !== action.payload);
       } else {
         state.selectedTags = state.selectedTags.concat(action.payload);
       }
