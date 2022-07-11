@@ -96,7 +96,6 @@ export default function Detail() {
       fetch(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`)
         .then((res) => res.text())
         .then((text) => {
-          console.log(parse(text).childNodes[1]);
           const html = parse(text).childNodes[1];
           // const head =
           //   parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[9]
@@ -108,9 +107,7 @@ export default function Detail() {
           const spcrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(html, "special_score"), "star_score"), "em"));
           const synTitle = Text(getNodeByClass(getNodeByClass(html, "story_area"), "h_tx_story"));
           const synops = Text(getNodeByClass(getNodeByClass(html, "story_area"), "con_tx"));
-          console.log(synops);
           const runtime = Text(getNodeByTag(getNodeByClass(html, "info_spec"), "span", 3));
-          console.log(runtime);
           getPeopleImgs(html);
 
           setInfo({
@@ -193,4 +190,5 @@ export const Poster = styled.img`
   src: ${(props) => props.src};
   width: 350px;
   height: 500px;
+  background-color: rgba(255, 255, 255, 0.1);
 `;

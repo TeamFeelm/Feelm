@@ -2,22 +2,9 @@ import { DefaultTheme } from "styled-components";
 
 // 파란색 컬러웨이 찾기 ( + 화이트, 블랙 )
 const colors = {
-  orange000: "#FF3D00",
-  orange100: "#FF4C00",
-  orange200: "#FFF1EB",
-  orange300: "#FF7F49",
-  orange400: "#FFAD8A",
-  orange500: "#FFE9E0",
-  gray100: "#242424",
-  gray200: "#3D3D3D",
-  gray300: "#555555",
-  gray400: "#6F6F6F",
-  white: "#FFFFFF",
-  white200: "#F7F7F7",
-  white300: "#EFEFEF",
-  white400: "#DFDFDF",
-  white500: "#C1C1C1",
-  red100: "#CE2525",
+  deepnavy: "rgb(3, 10, 46)",
+  navy: "rgb(8, 14, 47)",
+  yellow: "rgb(245, 196, 67)",
 };
 
 // clamp 속성 이용해보기

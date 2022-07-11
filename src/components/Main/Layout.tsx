@@ -1,5 +1,5 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 
 export default function Layout() {
   return (
@@ -47,7 +47,7 @@ const Space = styled.div`
   flex-basis: 33.33%;
   justify-content: center;
   align-items: center;
-  color: #f5c443;
+  color: rgb(245, 196, 67);
   width: 70px;
   height: 46px;
   margin: 0 10px;

@@ -20,7 +20,7 @@ export default function Character() {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 4000,
     rows: 2,
     slidesPerRow: 2,

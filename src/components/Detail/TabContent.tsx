@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 export default function TabTitle({ movie, info }: props) {
-  const [tabTitle] = useState(["시놉시스", "배우/제작진", "etc"]);
+  const [tabTitle] = useState(["시놉시스", "배우/제작진"]);
   const [tab, setTab] = useState(0);
   return (
     <>
@@ -24,8 +24,7 @@ export default function TabTitle({ movie, info }: props) {
             {info?.synops}
           </ContentDetail>
         )) ||
-          (tab === 1 && <ContentDetail>{movie.cast}</ContentDetail>) ||
-          (tab === 2 && <ContentDetail></ContentDetail>)}
+          (tab === 1 && <ContentDetail>{movie.cast}</ContentDetail>)}
       </ContentBox>
     </>
   );
@@ -66,13 +65,14 @@ export const TabBox = styled.div`
   font-family: "SSD";
   font-size: 1em;
   margin: auto;
+  background-color: rgba(255, 255, 255, 0.1);
   @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
 
 export const Tab = styled.div`
-  width: 33.33%;
+  width: 50%;
   text-align: center;
   padding: 20px;
   cursor: pointer;
@@ -85,15 +85,12 @@ export const Tab = styled.div`
 
 // 탭 타이틀 전체 박스
 export const Underline = styled.div<styleProps>`
-  width: 33.33%;
+  width: 50%;
   height: 2px;
 
   background-color: #f5c443;
   transform: translateX(${(props) => props.x}%);
   transition: 0.5s;
-  @media screen and (max-width: 768px) {
-    width: 33.33%;
-  }
 `;
 
 export const ContentBox = styled.div`
