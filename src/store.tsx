@@ -51,7 +51,7 @@ const movieList = createSlice({
     },
     findMoviesByTag(state, action: PayloadAction<string>) {
       if (state.selectedTags.includes(action.payload)) {
-        state.selectedTags = state.selectedTags.filter((item) => item != action.payload);
+        state.selectedTags = state.selectedTags.filter((item) => item !== action.payload);
       } else {
         state.selectedTags = state.selectedTags.concat(action.payload);
       }
@@ -95,7 +95,7 @@ const progressSlice = createSlice({
       state.ansIdxArray = [0];
     },
     // test-result calculate part
-    testResultCalc(state: any): any {
+    testResultCalc(state) {
       let action = 0;
       let thriller = 0;
       let noir = 0;

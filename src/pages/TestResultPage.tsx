@@ -11,7 +11,7 @@ export default function TestResultPage() {
   const TestResult = lazy(() => {
     const comp = import("../components/Test/Result/TestResult");
     const setdt = () => {
-      if (progress == 9) {
+      if (progress === 9) {
         setDelayTime(3000);
         dispatch(resetProgress());
         dispatch(resetAnsIdx());
@@ -24,7 +24,7 @@ export default function TestResultPage() {
 
   return (
     <>
-      <Suspense fallback={delayTime == 0 ? null : <Loading>테스트 결과를 불러오는 중...</Loading>}>
+      <Suspense fallback={delayTime === 0 ? null : <Loading>테스트 결과를 불러오는 중...</Loading>}>
         <TestResult></TestResult>
       </Suspense>
     </>

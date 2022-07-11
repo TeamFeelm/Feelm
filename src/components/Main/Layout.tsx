@@ -1,5 +1,5 @@
-import { Outlet, Link, NavLink } from "react-router-dom";
-import styled, { DefaultTheme } from "styled-components";
+import { Outlet, NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export default function Layout() {
   return (

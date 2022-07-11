@@ -11,7 +11,7 @@ export default function AnswerList({ progress }: props) {
   const navigate = useNavigate();
   const testResultIdx = useSelector((state: RootState) => state.progress.testResultIdx);
 
-  const next = (idx: any) => {
+  const next = (idx: number) => {
     if (progress < 9) {
       dispatch(incrementProgress(1));
       dispatch(onChangeAnsIdx(idx));
