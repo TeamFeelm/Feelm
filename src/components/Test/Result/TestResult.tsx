@@ -38,12 +38,10 @@ export default function TestResult() {
         </CharacterCard>
         <TestResultList>
           <Chracter>{data && data.name}</Chracter>
-          <Detail>
-            <Clr>{data && data.detail1}</Clr>,
-          </Detail>
+          <Detail>{data && data.detail1},</Detail>
           <Detail>당신의 캐릭터는...</Detail>
           <Detail>
-            <Clr>{data && "<" + data.movie + ">"}</Clr>의 <Clr color={""}>{data && data.name}</Clr>!
+            {data && "<" + data.movie + ">"}의 <Clr>{data && data.name}</Clr>!
           </Detail>
           <br />
           <Detail>어떤 성향이 비슷한가 보자면,</Detail>
