@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../store";
-import { Loading, MovieInfo, TabContent } from "../components";
+import { Footer, Loading, MovieInfo, TabContent } from "../components";
 import styled from "styled-components";
 import { parse } from "parse5";
 
@@ -148,6 +148,7 @@ export default function Detail() {
         ) : (
           <Loading>영화 정보를 불러오는 중...</Loading>
         )}
+        <Footer></Footer>
       </>
     );
   }
