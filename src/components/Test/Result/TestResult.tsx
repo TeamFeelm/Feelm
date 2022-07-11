@@ -45,8 +45,12 @@ export default function TestResult() {
           </Detail>
           <br />
           <Detail>어떤 성향이 비슷한가 보자면,</Detail>
-          <Detail>- {data && data.detail2}</Detail>
-          <Detail>- {data && data.detail3}</Detail>
+          <Detail>
+            <Bg>{data && data.detail2}</Bg>
+          </Detail>
+          <Detail>
+            <Bg>{data && data.detail3}</Bg>
+          </Detail>
         </TestResultList>
       </TestResultWrap>
       <ButtonBox>
@@ -116,6 +120,13 @@ const Detail = styled.div<styleProps>`
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
+`;
+
+const Bg = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
 `;
 
 const Clr = styled.span<styleProps>`
