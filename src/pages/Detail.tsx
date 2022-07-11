@@ -108,7 +108,6 @@ export default function Detail() {
           // const info =
           //   parse(text).childNodes[1].childNodes![2].childNodes[1].childNodes[27].childNodes[17].childNodes[1].childNodes[19];
           const enTitle = Text(getNodeByClass(html, "h_movie2"));
-          console.log(enTitle);
           const ntzrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(html, "netizen_score"), "star_score"), "em"));
           const spcrating = Text(getNodeByTag(getNodeByClass(getNodeByClass(html, "special_score"), "star_score"), "em"));
           const synTitle = Text(getNodeByClass(getNodeByClass(html, "story_area"), "h_tx_story"));
@@ -123,7 +122,6 @@ export default function Detail() {
             synTitle: synTitle!,
             synops: synops!,
             runtime: runtime!,
-            peopleImgs: peopleImgs,
           });
         })
         .then(() => {
@@ -145,7 +143,7 @@ export default function Detail() {
               <Poster src={movie.img} />
               <MovieInfo movie={movie} info={info} />
             </MovieInfoWrap>
-            <TabContent movie={movie} info={info} />
+            <TabContent movie={movie} info={info} peopleImgs={peopleImgs} />
           </Wrap>
         ) : (
           <Loading>영화 정보를 불러오는 중...</Loading>
@@ -175,7 +173,6 @@ interface infoType {
   runtime: string;
   ntzRating: string;
   spcRating: string;
-  peopleImgs: string[];
 }
 
 export const Wrap = styled.div`
