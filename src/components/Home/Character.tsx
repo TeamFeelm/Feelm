@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { TestResultData } from "..";
 import { useNavigate } from "react-router-dom";
 
-export default function Character() {
+export default function Character({ slide }: props) {
   const home = useSelector((state: RootState) => state.home);
   const [o, setO] = useState(0);
   const navigate = useNavigate();
@@ -22,8 +22,8 @@ export default function Character() {
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 4000,
-    rows: 2,
-    slidesPerRow: 2,
+    rows: slide,
+    slidesPerRow: slide,
     arrows: true,
   };
 
@@ -49,14 +49,20 @@ export default function Character() {
         <CharacterOverlayText>당신의 성향에 맞는 캐릭터를 찾아보세요!</CharacterOverlayText>
       </CharacterOverlay>
       <CharacterBox>
-        {TestResultData.map((item, i) => (
-          <CharacterCard src={item.img} key={i} delay={0.1 * i} opacity={o} onClick={() => navigate(`/test/result/${i}`)} />
+        {TestResultData.map((item) => (
+          <CharacterCard
+            src={item.img}
+            key={item.id}
+            delay={0.1 * Number(item.id)}
+            opacity={o}
+            onClick={() => navigate(`/test/result/${item.id}`)}
+          />
         ))}
       </CharacterBox>
       {/* max-width: 1200px */}
       <CharacterSlider {...settings}>
-        {TestResultData.map((item, i) => (
-          <img src={item.img} key={i} onClick={() => navigate(`/test/result/${i}`)} />
+        {TestResultData.map((item) => (
+          <SliderCard src={item.img} key={item.id} onClick={() => navigate(`/test/result/${item.id}`)} />
         ))}
       </CharacterSlider>
     </CharacterContainer>
@@ -64,6 +70,10 @@ export default function Character() {
 }
 
 interface props {
+  slide: number;
+}
+
+interface card {
   delay: number;
   opacity: number;
 }
@@ -79,6 +89,9 @@ const CharacterContainer = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 480px) {
+    height: 70vh;
+  }
 `;
 
 const CharacterOverlay = styled.div<overlay>`
@@ -123,7 +136,7 @@ const CharacterBox = styled.div`
   }
 `;
 
-const CharacterCard = styled.img<props>`
+const CharacterCard = styled.img<card>`
   width: 15%;
   height: 40%;
   background: #050e39;
@@ -180,7 +193,13 @@ const CharacterSlider = styled(Slider)`
   @media screen and (max-width: 1200px) {
     display: block;
   }
+`;
+
+const SliderCard = styled.img`
+  width: 100%;
+  height: auto;
+  cursor: pointer;
   @media screen and (max-width: 480px) {
-    height: 70vh;
+    width: 110%;
   }
 `;
