@@ -38,10 +38,12 @@ export default function TestResult() {
         </CharacterCard>
         <TestResultList>
           <Chracter>{data && data.name}</Chracter>
-          <Detail>{data && data.detail1},</Detail>
+          <Detail>
+            <Clr>{data && data.detail1}</Clr>,
+          </Detail>
           <Detail>당신의 캐릭터는...</Detail>
           <Detail>
-            {data && "<" + data.movie + ">"} 의 {data && data.name}!
+            <Clr>{data && "<" + data.movie + ">"}</Clr>의 <Clr color={""}>{data && data.name}</Clr>!
           </Detail>
           <br />
           <Detail>어떤 성향이 비슷한가 보자면,</Detail>
@@ -113,10 +115,9 @@ const Chracter = styled.div`
     font-size: 25px;
   }
 `;
-const Detail = styled.div<styleProps>`
+const Detail = styled.div`
   font-size: 20px;
   word-break: keep-all;
-  color: ${(p) => p.color};
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
@@ -129,8 +130,8 @@ const Bg = styled.div`
   padding: 10px;
 `;
 
-const Clr = styled.span<styleProps>`
-  color: ${(p) => p.color};
+const Clr = styled.span`
+  color: rgb(245, 196, 67);
 `;
 
 const CharacterCard = styled.div`
