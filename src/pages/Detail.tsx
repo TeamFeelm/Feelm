@@ -26,7 +26,7 @@ export default function Detail() {
       // 태그네임으로 찾기(탐색노드, 탐색태그, 몇번째)-n은 부모노드에서만 사용할 것
       const getNodeByTag = (node: any, tag: string, n: number = 1): any => {
         let count = 0;
-        if (node.childNodes) {
+        if (node !== null && node.childNodes) {
           for (let i = 0; i < node.childNodes.length; i++) {
             if (node.tagName === tag) {
               return node;
@@ -45,7 +45,7 @@ export default function Detail() {
       };
       // 클래스네임으로 찾기(탐색노드, 클래스네임)-첫번째 대상을 반환함
       const getNodeByClass = (node: any, className: string) => {
-        if (node.childNodes) {
+        if (node !== null && node.childNodes) {
           for (let i = 0; i < node.childNodes.length; i++) {
             if (node.attrs) {
               for (let attr of node.attrs) {
@@ -63,7 +63,7 @@ export default function Detail() {
         return null;
       };
       const getPeopleImgs = (node: any) => {
-        if (node.childNodes) {
+        if (node !== null && node.childNodes) {
           for (let i = 0; i < node.childNodes.length; i++) {
             if (node.attrs) {
               for (let attr of node.attrs) {
@@ -93,7 +93,12 @@ export default function Detail() {
         }
         return null;
       };
-      fetch(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`)
+      fetch(`https://cors-iwytbbtss.herokuapp.com/https://movie.naver.com/movie/bi/mi/basic.naver?code=${movie?.id}`, {
+        headers: new Headers({
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+        }),
+      })
         .then((res) => res.text())
         .then((text) => {
           const html = parse(text).childNodes[1];
@@ -117,7 +122,6 @@ export default function Detail() {
             synTitle: synTitle!,
             synops: synops!,
             runtime: runtime!,
-            peopleImgs: peopleImgs,
           });
         })
         .then(() => {
@@ -139,7 +143,7 @@ export default function Detail() {
               <Poster src={movie.img} />
               <MovieInfo movie={movie} info={info} />
             </MovieInfoWrap>
-            <TabContent movie={movie} info={info} />
+            <TabContent movie={movie} info={info} peopleImgs={peopleImgs} />
           </Wrap>
         ) : (
           <Loading>영화 정보를 불러오는 중...</Loading>
@@ -169,7 +173,6 @@ interface infoType {
   runtime: string;
   ntzRating: string;
   spcRating: string;
-  peopleImgs: string[];
 }
 
 export const Wrap = styled.div`

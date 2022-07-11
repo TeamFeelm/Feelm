@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-export default function TabTitle({ movie, info }: props) {
-  const [tabTitle] = useState(["시놉시스", "배우/제작진"]);
+export default function TabContent({ movie, info, peopleImgs }: props) {
+  const tabTitle = ["줄거리", "감독/배우"];
   const [tab, setTab] = useState(0);
   return (
     <>
@@ -19,12 +19,24 @@ export default function TabTitle({ movie, info }: props) {
       {/* 탭별 세부내용 */}
       <ContentBox>
         {(tab === 0 && (
-          <ContentDetail>
-            {info?.synTitle}
+          <div>
+            <h3>{info?.synTitle}</h3>
             {info?.synops}
-          </ContentDetail>
+          </div>
         )) ||
-          (tab === 1 && <ContentDetail>{movie.cast}</ContentDetail>)}
+          (tab === 1 && (
+            <ContentDetail>
+              <Staff>
+                <CastImg src={peopleImgs![0]}></CastImg>감독: {movie.director}
+              </Staff>
+              {movie.cast.map((cast, i) => (
+                <Staff key={i}>
+                  <CastImg src={peopleImgs![i + 1]}></CastImg>
+                  {cast}
+                </Staff>
+              ))}
+            </ContentDetail>
+          ))}
       </ContentBox>
     </>
   );
@@ -53,25 +65,26 @@ interface props {
     runtime: string;
     ntzRating: string;
     spcRating: string;
-    peopleImgs: string[];
   };
+  peopleImgs?: string[];
 }
 
-export const TabBox = styled.div`
+const TabBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 700px;
   border-bottom: 1px solid black;
   font-family: "SSD";
-  font-size: 1em;
+  font-size: 18px;
   margin: auto;
+  margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
 
-export const Tab = styled.div`
+const Tab = styled.div`
   width: 50%;
   text-align: center;
   padding: 20px;
@@ -84,7 +97,7 @@ export const Tab = styled.div`
 `;
 
 // 탭 타이틀 전체 박스
-export const Underline = styled.div<styleProps>`
+const Underline = styled.div<styleProps>`
   width: 50%;
   height: 2px;
 
@@ -93,19 +106,33 @@ export const Underline = styled.div<styleProps>`
   transition: 0.5s;
 `;
 
-export const ContentBox = styled.div`
+const ContentBox = styled.div`
   width: 700px;
   margin: auto;
   font-family: "SSD";
-  font-size: 1em;
+  font-size: 16px;
   word-break: keep-all;
   @media screen and (max-width: 768px) {
     width: 90%;
   }
 `;
 
-export const ContentDetail = styled.p`
+const ContentDetail = styled.div`
   width: 100%;
-  line-height: 1.75em;
-  transition: 0.5s;
+  line-height: 25px;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const Staff = styled.div`
+  width: max-content;
+  margin: 13px;
+`;
+
+const CastImg = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 9999px;
+  display: block;
+  margin: auto;
 `;
