@@ -7,7 +7,8 @@
     "actor": "톰 크루즈",
     "img": "https://user-images.githubusercontent.com/104556563/177114718-64c3f1a8-43ea-4a91-baa5-0934dff12904.jpg",
     "detail1": "뛰어난 적응력과 상황판단이 빠르고 논리적인",
-    "detail2": "",
+    "detail2": "결단력있게 행동하고, 맡은 바에 책임을 다합니다",
+    "detail3": "놀 땐 놀고, 일할 땐 일하는 타입, 공과사를 잘 구분합니다.",
     "hashtag": ["ISTP "]
   },
   {
@@ -18,7 +19,8 @@
     "actor": "하비에르 바르뎀",
     "img": "https://user-images.githubusercontent.com/104556563/177114752-5e3853eb-1593-468f-8a29-3874aa2d81c7.jpg",
     "detail1": "한번 시작한 일은 끝까지 해내는",
-    "detail2": "",
+    "detail2": "보수적인 경향이 있어, 반복적인 일을 잘 인내합니다.",
+    "detail3": "뛰어난 사리분별력과 강한 현실감각이 있으며, 표현을 직설적으로 합니다.",
     "hashtag": ["ISTJ "]
   },
   {
@@ -30,6 +32,7 @@
     "img": "https://user-images.githubusercontent.com/104556563/177114776-b995c482-83c8-4a32-9256-5e349428991f.jpg",
     "detail1": "현실적이며 실용을 중시하는",
     "detail2": "",
+    "detail3": "",
     "hashtag": ["ESTJ "]
   },
   {
@@ -40,7 +43,8 @@
     "actor": "케이트 윈슬렛",
     "img": "https://user-images.githubusercontent.com/104556563/177115077-b231e2d3-d89a-437a-961a-18b01d4891e1.jpg",
     "detail1": "이상적인 세계를 만들어가는",
-    "detail2": "",
+    "detail2": "사려 깊게 생각하고, 기분이 태도가 되지않도록 노력합니다.",
+    "detail3": "상대방의 고민을 해결하기위한 방안을 제시하기보단, 정신적인 지지를 주는 편입니다.",
     "hashtag": ["INFP "]
   },
   {
@@ -51,8 +55,8 @@
     "actor": "레이첼 맥아담스",
     "img": "https://user-images.githubusercontent.com/104556563/177115124-4793e00b-1eec-4cd6-a235-df2ff2f7cba1.jpg",
     "detail1": "열정적이며 새로운 관계를 만드는",
-    "detail2": "메리메리",
-    "detail3": "하지만 내심 사람들의 눈치를 많이 보기 때문에 종종 상처를 받기도 합니다.",
+    "detail2": "새로운 사람을 만나는 것을 좋아하며, 양보를 잘 합니다.",
+    "detail3": "사람들의 눈치를 많이 보기 때문에 종종 상처를 받기도 합니다.",
     "hashtag": ["ENFP "]
   },
   {
@@ -63,7 +67,8 @@
     "actor": "앤 해서웨이",
     "img": "https://user-images.githubusercontent.com/104556563/177115150-799b7557-8898-4762-b707-27ac6efa6931.jpg",
     "detail1": "뛰어난 전략가이며 비평적인 관점을 가진",
-    "detail2": "",
+    "detail2": "호기심이 많으며, 낯선 일은 행동과 경험보단 글로 배우려 합니다.",
+    "detail3": "정서적인 표현이 부족한 편이라, 친해지기 전까지는 어떤 사람인지 알기 어려울 수 있습니다.",
     "hashtag": ["INTP "]
   },
   {
@@ -74,7 +79,8 @@
     "actor": "다니엘 래드클리프",
     "img": "https://user-images.githubusercontent.com/104556563/177115166-61dd52ef-29c2-4e24-8f7e-26fbd5dbe14f.jpg",
     "detail1": "풍부한 상상력을 바탕으로 새로운 것에 도전하는",
-    "detail2": "",
+    "detail2": "문제 해결 능력이 뛰어나며, 항상 새로운 것을 추구합니다.",
+    "detail3": "자기주장이 강하지만, 정당한 의견은 수용할 수 있는 자세를 갖고있습니다.",
     "hashtag": ["ENTP "]
   },
   {
@@ -85,7 +91,8 @@
     "actor": "유해진",
     "img": "https://user-images.githubusercontent.com/104556563/177115182-2d8ac4d3-ade0-4aaf-bf6f-70e348c6efe4.jpg",
     "detail1": "분위기 메이커이자 긍정적인",
-    "detail2": "",
+    "detail2": "사회성이 좋아 자칫 불편할 수도 있는 자리에서도 내색하지않습니다.",
+    "detail3": "어느 누구에게나 공평하며, 사소한 의견도 지나치지않습니다.",
     "hashtag": ["ESFP "]
   },
   {
@@ -97,6 +104,7 @@
     "img": "https://user-images.githubusercontent.com/104556563/177115193-886f9968-e75a-4079-84a5-a7bc73f81212.png",
     "detail1": "친절하며 봉사정신이 투철한",
     "detail2": "",
+    "detail3": "",
     "hashtag": ["ESFJ "]
   },
   {
@@ -104,10 +112,11 @@
     "genre": ["애니메이션"],
     "name": "포키",
     "movie": "토이스토리 시리즈",
-    "actor": "",
+    "actor": "토니 헤일(성우)",
     "img": "https://user-images.githubusercontent.com/104556563/177115217-7ad7f38a-eaec-43df-89f2-0571edbfdc4f.jpg",
-    "detail1": "활동적이며 다양함을 선호하는",
-    "detail2": "",
+    "detail1": "성실하고 온화하며 이타주의적인",
+    "detail2": "보수적이고 변화에 소극적이며, 타인의 의견을 신중히 들어줍니다.",
+    "detail3": "눈치가 빠르고, 정이 많은 성격입니다.",
     "hashtag": ["ESTP "]
   },
   {
@@ -119,6 +128,7 @@
     "img": "https://user-images.githubusercontent.com/104556563/177115232-fee71685-6c98-4cf1-9e65-de9e397a1459.jpg",
     "detail1": "따뜻한 감성과 겸손을 지니고 예술성을 가진",
     "detail2": "",
+    "detail3": "",
     "hashtag": ["ISFP "]
   },
   {
@@ -129,7 +139,8 @@
     "actor": "힐러리 스웽크",
     "img": "https://user-images.githubusercontent.com/104556563/177115246-5aefc730-4a69-4bbd-85a4-4b6b1a2dd2d3.jpeg",
     "detail1": "비전을 가지며 리더쉽이 강한",
-    "detail2": "",
+    "detail2": "재능이 있든 없든 포기하지않고, 맡은 바에 충실한 태도를 보입니다.",
+    "detail3": "결과보단 과정을 중요시하는 성격입니다.",
     "hashtag": ["ENTJ "]
   }
 ]
