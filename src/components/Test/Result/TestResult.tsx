@@ -39,20 +39,14 @@ export default function TestResult() {
         <TestResultList>
           <Chracter>{data && data.name}</Chracter>
           <Detail>{data && data.detail1},</Detail>
+          <Detail>당신의 캐릭터는...</Detail>
           <Detail>
-            당신의 캐릭터는... {data && data.movie} 의 {data && data.name}!
+            {data && "<" + data.movie + ">"} 의 {data && data.name}!
           </Detail>
-          {/* <Genre>{data && data.genre} 장르 영화를 선호하시나요 ?</Genre> */}
-          <Detail>어떤 성향이 비슷하냐면요</Detail>
           <br />
-          <Detail>{data && data.detail2}</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
-          <Detail>- temp</Detail>
+          <Detail>어떤 성향이 비슷한가 보자면,</Detail>
+          <Detail>- {data && data.detail2}</Detail>
+          <Detail>- {data && data.detail3}</Detail>
         </TestResultList>
       </TestResultWrap>
       <ButtonBox>
@@ -80,6 +74,11 @@ interface characterType {
   hashtag: string[];
   detail1: string;
   detail2: string;
+  detail3: string;
+}
+interface styleProps {
+  color?: string;
+  bgcolor?: string;
 }
 
 const TestResultWrap = styled.div`
@@ -110,11 +109,17 @@ const Chracter = styled.div`
     font-size: 25px;
   }
 `;
-const Detail = styled.div`
+const Detail = styled.div<styleProps>`
   font-size: 20px;
+  word-break: keep-all;
+  color: ${(p) => p.color};
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
+`;
+
+const Clr = styled.span<styleProps>`
+  color: ${(p) => p.color};
 `;
 
 const CharacterCard = styled.div`
@@ -138,13 +143,18 @@ const CharacterImg = styled.img`
     width: 100%;
     height: auto;
   }
-  /* transform-style: preserve-3d;
-  transition: transform 0.05s linear;
-  box-shadow: -20px 40px 80px -50px blue; */
 `;
 
-const MovieName = styled.div``;
-const ActorName = styled.div``;
+const MovieName = styled.span`
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 0px 5px 0px 0px;
+`;
+const ActorName = styled.span`
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 0px 5px 0px 0px;
+`;
 
 const ButtonBox = styled.div`
   width: fit-content;

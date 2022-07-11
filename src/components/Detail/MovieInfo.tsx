@@ -50,15 +50,18 @@ interface props {
 const MovieInfoWrap = styled.div`
   width: 350px;
   @media screen and (max-width: 768px) {
+    width: 100%;
     justify-content: center;
-    width: 90%;
     margin: auto;
   }
 `;
 const Wrap = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px;
-  margin: 0px 20px 20px 20px;
+  margin: 0px 0px 20px 20px;
+  @media screen and (max-width: 768px) {
+    margin: 0px 20px 20px 20px;
+  }
 `;
 const Title = styled.div`
   font-size: 32px;

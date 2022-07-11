@@ -177,6 +177,7 @@ interface infoType {
 
 export const Wrap = styled.div`
   width: 100vw;
+  margin-top: 70px;
 `;
 
 export const MovieInfoWrap = styled.div`
@@ -194,4 +195,6 @@ export const Poster = styled.img`
   width: 350px;
   height: 500px;
   background-color: rgba(255, 255, 255, 0.1);
+  object-fit: contain;
+  margin-bottom: 20px;
 `;
