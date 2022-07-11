@@ -112,6 +112,7 @@ const ContentBox = styled.div`
   font-family: "SSD";
   font-size: 16px;
   word-break: keep-all;
+  margin-bottom: 50px;
   @media screen and (max-width: 768px) {
     width: 90%;
   }
@@ -122,6 +123,7 @@ const ContentDetail = styled.div`
   line-height: 25px;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 `;
 
 const Staff = styled.div`

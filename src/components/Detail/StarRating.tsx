@@ -28,7 +28,7 @@ const Filled = styled.div<props>`
   top: 0;
   left: 0;
   color: #f5c443;
-  z-index: 10;
+  z-index: 5;
   width: ${(props) => Number(props.rating) * 10}%;
   overflow: hidden;
 `;
