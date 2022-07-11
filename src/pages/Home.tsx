@@ -52,7 +52,7 @@ export default function Home() {
       <Outer transY={home.transY} ref={outerRef}>
         <Canvas></Canvas>
         <Divider></Divider>
-        <Character />
+        <Character slide={slide} />
         <Divider></Divider>
         <MovieSlide slide={slide}></MovieSlide>
         <Divider></Divider>
