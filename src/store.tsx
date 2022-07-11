@@ -284,10 +284,8 @@ const progressSlice = createSlice({
       }
 
       const resultArr = [action, thriller, noir, drama, romance, sf, fantasy, comedy, war, anime, musical, sports];
-      console.log(resultArr);
 
       state.testResultIdx = resultArr.findIndex((el) => el >= Math.max.apply(null, resultArr));
-      console.log(state.testResultIdx);
     },
   },
 });

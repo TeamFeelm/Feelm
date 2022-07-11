@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StarRating from "./StarRating";
 
 export default function MovieInfo({ movie, info }: props) {
   return (
@@ -9,8 +10,12 @@ export default function MovieInfo({ movie, info }: props) {
           <EngTitle>{info?.enTitle}</EngTitle>
         </Wrap>
         <Wrap>
-          <Rating>네티즌 평점 : {info?.ntzRating}</Rating>
-          <Rating>기자/평론가 평점 : {info?.spcRating}</Rating>
+          <Rating>
+            네티즌 평점 : <StarRating rating={info?.ntzRating!}></StarRating>
+          </Rating>
+          <Rating>
+            기자/평론가 평점 : <StarRating rating={info?.spcRating!}></StarRating>
+          </Rating>
         </Wrap>
         <Wrap>
           <Runtime>상영시간 : {info?.runtime}</Runtime>
@@ -39,7 +44,6 @@ interface props {
     runtime: string;
     ntzRating: string;
     spcRating: string;
-    peopleImgs: string[];
   };
 }
 
@@ -48,18 +52,19 @@ const MovieInfoWrap = styled.div`
   @media screen and (max-width: 768px) {
     justify-content: center;
     width: 90%;
+    margin: auto;
   }
 `;
 const Wrap = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px;
-  margin: 0px 0px 20px 20px;
+  margin: 0px 20px 20px 20px;
 `;
 const Title = styled.div`
-  font-size: 40px;
+  font-size: 32px;
 `;
 const EngTitle = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   color: darkgray;
 `;
 const Rating = styled.div`

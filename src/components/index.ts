@@ -25,3 +25,4 @@ export { default as Tags } from "./Search/Tags";
 // Detail
 export { default as TabContent } from "./Detail/TabContent";
 export { default as MovieInfo } from "./Detail/MovieInfo";
+export { default as StartRating } from "./Detail/StarRating";
