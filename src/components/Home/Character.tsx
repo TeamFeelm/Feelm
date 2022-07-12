@@ -192,6 +192,12 @@ const CharacterSlider = styled(Slider)`
   }
   @media screen and (max-width: 1200px) {
     display: block;
+    .slick-slide {
+      div {
+        width: 80vw;
+        height: auto;
+      }
+    }
   }
 `;
 
@@ -199,7 +205,4 @@ const SliderCard = styled.img`
   width: 100%;
   height: auto;
   cursor: pointer;
-  @media screen and (max-width: 480px) {
-    width: 110%;
-  }
 `;
