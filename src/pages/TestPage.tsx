@@ -13,8 +13,6 @@ export default function TestPage() {
   return (
     <>
       <QuestionsWrap>
-        <ProgressBar progress={progress} />
-        <QuestionList progress={progress} />
         <VideoBg
           src="https://user-images.githubusercontent.com/99634778/177473951-d118fcba-959c-48a8-aa0e-d5d87dece53b.mp4"
           muted
@@ -24,6 +22,8 @@ export default function TestPage() {
         >
           <strong>Your browser does not support the video tag.</strong>
         </VideoBg>
+        <ProgressBar progress={progress} />
+        <QuestionList progress={progress} />
         <AnswerList progress={progress} />
       </QuestionsWrap>
     </>
@@ -36,10 +36,9 @@ const QuestionsWrap = styled.div`
 `;
 
 const VideoBg = styled.video`
-  position: absolute;
-  opacity: 0.1;
+  position: fixed;
+  opacity: 0.08;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  width: 100%;
-  height: 70vh;
 `;
